@@ -32,4 +32,12 @@ public class UsuarioBean implements Serializable{
         UsuarioDAOImp usuarioDAOImp = new UsuarioDAOImp();
         return usuarioDAOImp.login(us);
     }
+    public boolean buscarUsuario(Usuario us) {
+        UsuarioDAOImp usuarioDAOImp = new UsuarioDAOImp();
+        return usuarioDAOImp.buscarUsuario(us);
+    }
+    public void agregarUsuario(Usuario us) {
+        UsuarioDAOImp usuarioDAOImp = new UsuarioDAOImp();
+        usuarioDAOImp.add(us);
+    }
 }

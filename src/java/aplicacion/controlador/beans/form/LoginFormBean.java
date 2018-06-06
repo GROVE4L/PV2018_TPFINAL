@@ -45,9 +45,7 @@ public class LoginFormBean implements Serializable{
     public String validarUsuario() {
         
         Usuario usuarioValidado = usuarioBean.validarUsuario(this.usuarioLogin);
-        System.out.println("LINEA 1");
-        FacesContext facesContext = FacesContext.getCurrentInstance();        
-        System.out.println("LINEA 2");
+        FacesContext facesContext = FacesContext.getCurrentInstance();
         
         if(usuarioValidado == null) {            
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -56,10 +54,13 @@ public class LoginFormBean implements Serializable{
             return null;
         }
         else {
+            
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioValido", usuarioLogin);
+            
             switch(usuarioValidado.getUsuTipoUsuario()) {
                 case "administrativo": facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Usuario SI existe",
-                            "Este usuario es Administrador"));
+                            "Este usuario es Administrador"));              
                 return "usuarioAdministrador?faces-redirect=true";                
                 case "supervisor": facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Usuario SI existe",

@@ -14,5 +14,6 @@ public interface IUsuarioDAO{
     public void add(Usuario usuario);
     public void update(Usuario usuario);
     public void delete(Usuario usuario);
+    public boolean buscarUsuario(Usuario usuario);
     public List<Usuario> devolverUsuarios();
 }
