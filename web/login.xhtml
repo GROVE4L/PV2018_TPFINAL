@@ -18,10 +18,10 @@
                     <p:growl sticky="true" showDetail="true"/>
                     <p:panelGrid columns="2" styleClass="ui-noborder">
                         <p:outputLabel for="inputNombre" value="Usuario" />
-                        <p:inputText id="inputNombre" placeholder="Usuario" required="true" requiredMessage="Debe ingresar un Usuario" value="#{loginFormBean.usuarioLogin.usuario}"/>
+                        <p:inputText id="inputNombre" placeholder="Usuario" required="true" requiredMessage="Debe ingresar un Usuario" value="#{loginFormBean.usuarioLogin.usuNombreUsuario}"/>
                         
                         <p:outputLabel for="inputPass" value="Contraseña"/>                        
-                        <p:password id="inputPass" placeholder="Contraseña" required="true" requiredMessage="Debe ingresar una Constraseña."  value="#{loginFormBean.usuarioLogin.contrasena}"/>
+                        <p:password id="inputPass" placeholder="Contraseña" required="true" requiredMessage="Debe ingresar una Constraseña."  value="#{loginFormBean.usuarioLogin.usuPassword}"/>
                         
                         <h:panelGroup/>
                         <p:commandButton id="btnValidar" value="Validar Usuario" update="frmLogin" action="#{loginFormBean.validarUsuario()}"/>

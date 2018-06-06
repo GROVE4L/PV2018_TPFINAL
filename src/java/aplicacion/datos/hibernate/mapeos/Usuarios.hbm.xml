@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05/06/2018 00:58:07 by Hibernate Tools 4.3.1 -->
+<!-- Generated 06/06/2018 16:25:29 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="sql10241449" name="aplicacion.modelo.dominio.Usuario" optimistic-lock="version" table="usuarios">
-    <id name="id" type="java.lang.Integer">
-      <column name="id"/>
+  <class catalog="convento" name="aplicacion.modelo.dominio.Usuario" optimistic-lock="version" table="usuarios">
+    <id name="usuCodigo" type="java.lang.Integer">
+      <column name="usu_codigo"/>
       <generator class="identity"/>
     </id>
-    <property name="nombre" type="string">
-      <column length="20" name="nombre" not-null="true"/>
+    <property name="usuNombreUsuario" type="string">
+      <column length="10" name="usu_nombre_usuario" not-null="true" unique="true"/>
     </property>
-    <property name="apellido" type="string">
-      <column length="20" name="apellido" not-null="true"/>
+    <property name="usuPassword" type="string">
+      <column name="usu_password" not-null="true"/>
     </property>
-    <property name="usuario" type="string">
-      <column length="20" name="usuario" not-null="true"/>
+    <property name="usuTipoUsuario" type="string">
+      <column length="15" name="usu_tipo_usuario" not-null="true"/>
     </property>
-    <property name="contrasena" type="string">
-      <column name="contrasena" not-null="true"/>
-    </property>
-    <property name="email" type="string">
-      <column length="25" name="email"/>
-    </property>
-    <property name="dni" type="long">
-      <column name="dni" not-null="true"/>
-    </property>
-    <property name="tipoUsuario" type="int">
-      <column name="tipo_usuario" not-null="true"/>
+    <property name="usuEstado" type="boolean">
+      <column name="usu_estado" not-null="true"/>
     </property>
   </class>
 </hibernate-mapping>

@@ -43,8 +43,12 @@ public class LoginFormBean implements Serializable{
     }
         
     public String validarUsuario() {
+        
         Usuario usuarioValidado = usuarioBean.validarUsuario(this.usuarioLogin);
-        FacesContext facesContext = FacesContext.getCurrentInstance();
+        System.out.println("LINEA 1");
+        FacesContext facesContext = FacesContext.getCurrentInstance();        
+        System.out.println("LINEA 2");
+        
         if(usuarioValidado == null) {            
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
                             "Usuario no Existe!",
@@ -52,16 +56,16 @@ public class LoginFormBean implements Serializable{
             return null;
         }
         else {
-            switch(usuarioValidado.getTipoUsuario()) {
-                case 1: facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+            switch(usuarioValidado.getUsuTipoUsuario()) {
+                case "administrativo": facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Usuario SI existe",
                             "Este usuario es Administrador"));
                 return "usuarioAdministrador?faces-redirect=true";                
-                case 2: facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                case "supervisor": facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Usuario SI existe",
                             "Este usuario es Supervisor")); 
                 return "usuarioSupervisor?faces-redirect=true";
-                case 3: facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                case "final": facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Usuario SI existe",
                             "Este usuario es Común")); 
                 return "usuarioComun?faces-redirect=true";

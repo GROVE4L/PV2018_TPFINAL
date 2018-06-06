@@ -2,6 +2,7 @@ package aplicacion.dao;
 
 import aplicacion.modelo.dominio.Usuario;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -10,4 +11,8 @@ import java.util.ArrayList;
 public interface IUsuarioDAO{
     
     public Usuario login(Usuario usuario);
+    public void add(Usuario usuario);
+    public void update(Usuario usuario);
+    public void delete(Usuario usuario);
+    public List<Usuario> devolverUsuarios();
 }

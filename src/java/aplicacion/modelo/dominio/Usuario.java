@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 05/06/2018 00:58:07 by Hibernate Tools 4.3.1
+// Generated 06/06/2018 16:25:28 by Hibernate Tools 4.3.1
 
 
 
@@ -9,92 +9,56 @@ package aplicacion.modelo.dominio;
 public class Usuario  implements java.io.Serializable {
 
 
-     private Integer id;
-     private String nombre;
-     private String apellido;
-     private String usuario;
-     private String contrasena;
-     private String email;
-     private long dni;
-     private int tipoUsuario; //1 usuarioAdmin 2 usuarioSupervisor 3 usuarioComún
+     private Integer usuCodigo;
+     private String usuNombreUsuario;
+     private String usuPassword;
+     private String usuTipoUsuario;
+     private boolean usuEstado;
 
     public Usuario() {
     }
 
-	
-    public Usuario(String nombre, String apellido, String usuario, String contrasena, long dni, int tipoUsuario) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.usuario = usuario;
-        this.contrasena = contrasena;
-        this.dni = dni;
-        this.tipoUsuario = tipoUsuario;
-    }
-    public Usuario(String nombre, String apellido, String usuario, String contrasena, String email, long dni, int tipoUsuario) {
-       this.nombre = nombre;
-       this.apellido = apellido;
-       this.usuario = usuario;
-       this.contrasena = contrasena;
-       this.email = email;
-       this.dni = dni;
-       this.tipoUsuario = tipoUsuario;
+    public Usuario(String usuNombreUsuario, String usuPassword, String usuTipoUsuario, boolean usuEstado) {
+       this.usuNombreUsuario = usuNombreUsuario;
+       this.usuPassword = usuPassword;
+       this.usuTipoUsuario = usuTipoUsuario;
+       this.usuEstado = usuEstado;
     }
    
-    public Integer getId() {
-        return this.id;
+    public Integer getUsuCodigo() {
+        return this.usuCodigo;
     }
     
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUsuCodigo(Integer usuCodigo) {
+        this.usuCodigo = usuCodigo;
     }
-    public String getNombre() {
-        return this.nombre;
-    }
-    
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public String getApellido() {
-        return this.apellido;
+    public String getUsuNombreUsuario() {
+        return this.usuNombreUsuario;
     }
     
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setUsuNombreUsuario(String usuNombreUsuario) {
+        this.usuNombreUsuario = usuNombreUsuario;
     }
-    public String getUsuario() {
-        return this.usuario;
-    }
-    
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-    public String getContrasena() {
-        return this.contrasena;
+    public String getUsuPassword() {
+        return this.usuPassword;
     }
     
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setUsuPassword(String usuPassword) {
+        this.usuPassword = usuPassword;
     }
-    public String getEmail() {
-        return this.email;
-    }
-    
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public long getDni() {
-        return this.dni;
+    public String getUsuTipoUsuario() {
+        return this.usuTipoUsuario;
     }
     
-    public void setDni(long dni) {
-        this.dni = dni;
+    public void setUsuTipoUsuario(String usuTipoUsuario) {
+        this.usuTipoUsuario = usuTipoUsuario;
     }
-    public int getTipoUsuario() {
-        return this.tipoUsuario;
+    public boolean isUsuEstado() {
+        return this.usuEstado;
     }
     
-    public void setTipoUsuario(int tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
+    public void setUsuEstado(boolean usuEstado) {
+        this.usuEstado = usuEstado;
     }
 
 
