@@ -52,7 +52,7 @@ public class RegistroFormBean implements Serializable{
                             "Elija otro nombre de usuario."));
         }
         else {
-            this.usuarioRegistro.setUsuEstado(false);
+            this.usuarioRegistro.setUsuEstado(true);
             this.usuarioRegistro.setUsuTipoUsuario("final");
             usuarioBean.agregarUsuario(this.usuarioRegistro);
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,

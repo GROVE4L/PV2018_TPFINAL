@@ -7,13 +7,9 @@
 
     <body>
 
-        <ui:composition template="./estructura/sinUsuarioTemplate.xhtml">
-
-            <ui:define name="top">
-                
-            </ui:define>
-
-            <ui:define name="content">                
+        <ui:composition template="./estructura/masterTemplate.xhtml">
+            <ui:define name="content">
+                              
                 <h:form id="frmValidar">
                     <p:growl id="mensajes" sticky="true"/>
                     <p:panelGrid id="pnlIngreso" columns="2" styleClass="ui-noborder">
@@ -31,10 +27,6 @@
                         <p:commandButton id="btnAgregar" value="Registrarse" action="registrarUsuario?faces-redirect=true"/>
                     </p:panelGrid>
                 </h:form>                
-            </ui:define>
-
-            <ui:define name="bottom">
-                
             </ui:define>
 
         </ui:composition>

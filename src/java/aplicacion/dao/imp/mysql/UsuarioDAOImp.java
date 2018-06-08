@@ -61,7 +61,7 @@ public class UsuarioDAOImp implements IUsuarioDAO {
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
         Criteria crit = s.createCriteria(Usuario.class);
-        crit.add(Restrictions.like("usuEstado", false)); 
+        crit.add(Restrictions.like("usuEstado", true)); 
         usuarios = (List<Usuario>) crit.list();
         return usuarios;        
     }    
