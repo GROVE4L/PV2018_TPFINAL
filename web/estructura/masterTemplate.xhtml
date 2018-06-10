@@ -10,40 +10,61 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet name="./css/usuarios.css"/>
         <title>Facelets Template</title>
     </h:head>
 
     <h:body>
+        <div id="contenedor">
         <div id="top">
             <ui:insert name="top">
-                <h:form rendered="true">
-                    <p:menubar>                    
-                        <p:menuitem value="Inicio" url="login.xhtml"/>
-                        <p:menuitem rendered="#{loginFormBean.verificarSesion() eq false}" value="Registro" url="#"/>
-                        <p:submenu rendered="#{loginFormBean.verificarSesion()}" label="Consultas" icon="ui-icon-help">
-                            <p:menuitem value="Consulta 1" url="#"/>
-                            <p:menuitem value="Consulta 2" url="#"/>
-                        </p:submenu>
-                        
-                        <p:submenu rendered="#{loginFormBean.esAdministrativo()}" label="Tablas" icon="ui-icon-help">
-                            <p:menuitem value="Tabla Libro" url="#"/>
-                            <p:menuitem value="Tablas Autores" url="#"/>
-                        </p:submenu>
-                        <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Tablas" icon="ui-icon-help">
-                            <p:menuitem value="Tabla Libro" url="#"/>
-                            <p:menuitem value="Tablas Autores" url="#"/>
-                        </p:submenu>
-                        <p:menuitem rendered="#{loginFormBean.esAdministrativo()}" value="Agregar Supervisores" url="#"/>                        
-
-                        <f:facet name="options">
-                            <h:form rendered="#{loginFormBean.verificarSesion()}">                            
-                                <p:outputLabel value="Ahora esta logueado como #{loginFormBean.obtenerSesion().usuNombreUsuario}" />                                
-                                <p:commandButton value="Desloguear" action="#{loginFormBean.deslog()}" icon="ui-icon-extlink" />
-                            </h:form>
-                        </f:facet>
-                    </p:menubar>
-                </h:form>
+                <div id="tooplate_header">
+                    <div id="titulo">
+                        <center><h1>IGLESIA SAN FRANCISCO</h1></center>
+                    </div> 
+                </div>
+                <div id="tooplate_middle">
+                        <h:form rendered="true">
+                            <p:menubar>                    
+                                <p:menuitem value="Inicio" url="login.xhtml"/>
+                                <p:menuitem rendered="#{loginFormBean.verificarSesion() eq false}" value="Registro" url="#"/>
+                                
+                                <p:menuitem rendered="#{loginFormBean.esFinal()}" value="Lista de Libros"/>
+                                <p:menuitem rendered="#{loginFormBean.esFinal()}" value="Pedidos"/>
+                                <p:menuitem rendered="#{loginFormBean.esFinal()}" value="Informacion"/>
+                                
+                                <p:menuitem rendered="#{loginFormBean.esAdministrativo()}" value="Pedidos Usuarios"/>
+                                <p:menuitem rendered="#{loginFormBean.esAdministrativo()}" value="Lista de Libros"/>
+                                
+                                <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Tablas" icon="ui-icon-help">
+                                    <p:menuitem value="Tabla Libro" url="#"/>
+                                    <p:menuitem value="Tablas Autores" url="#"/>
+                                </p:submenu>
+                                                       
+                                <f:facet name="options">
+                                    <h:form rendered="#{loginFormBean.verificarSesion()}">                            
+                                        <p:outputLabel value="Ahora esta logueado como #{loginFormBean.obtenerSesion().usuNombreUsuario}" />                                
+                                        <p:commandButton value="Desloguear" action="#{loginFormBean.deslog()}" icon="ui-icon-extlink" />
+                                    </h:form>
+                                </f:facet>
+                                <f:facet name="options">
+                                    <h:form rendered="#{loginFormBean.verificarSesion()eq false}">                            
+                                        <p:growl id="mensajes" sticky="true"/>
+                                        
+                                            <p:outputLabel for="inputNombre" value="Usuario" />
+                                            <p:inputText id="inputNombre" size="10" placeholder="Usuario" required="true" requiredMessage="Debe ingresar un Usuario" value="#{loginFormBean.usuarioLogin.usuNombreUsuario}"/>
+                                            <p:outputLabel for="inputPass" value="Contraseña"/>                        
+                                            <p:password id="inputPass" size="10" placeholder="Contraseña" required="true" requiredMessage="Debe ingresar una Constraseña."  value="#{loginFormBean.usuarioLogin.usuPassword}"/>
+                                            <p:commandButton id="btnValidar" value="Validar Usuario" update="mensajes" action="#{loginFormBean.validarUsuario()}"/>                        
+                                            <p:outputLabel value="¿No tiene cuenta?" /> 
+                                            <p:commandButton id="btnAgregar" value="Registrarse" action="../registrarUsuario?faces-redirect=true"/>
+                                    </h:form>
+                                </f:facet>
+                            </p:menubar>
+                        </h:form>
+                    </div>
             </ui:insert>
+            
         </div>
 
         <div id="content" class="center_content">
@@ -51,7 +72,11 @@
         </div>
 
         <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
+            <ui:insert name="bottom">
+                Univeridad Nacional de Jujuy - Apu - Programacion visual 2018
+            </ui:insert>
+        </div>
         </div>
     </h:body>
+
 </html>

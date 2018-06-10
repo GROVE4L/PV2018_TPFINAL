@@ -1,61 +1,64 @@
-
-#top {
+#bottom{
+    background-color: honeydew;
+    margin: 10px 0px 0px 0px;
+    padding: 5px;
     position: relative;
+}
+
+#contenedor{
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.7);
+    margin: 0 auto; /*esto hace que el contenedor se centre verticalmente*/
+    padding: 2px;
+    text-align: left; /* debemos colocarlo sino todo el texto se centro por la parte derecha*/
+    width:  960px; /*este sera el ancho por defecto, lo heredaran encabezado*/
+}
+
+#top{
     background-color: #036fab;
     color: white;
-    padding: 5px;
-    margin: 0px 0px 10px 0px;
-}
-
-#bottom {
+    padding: 0px;
     position: relative;
-    background-color: #c2dfef;
-    padding: 5px;
-    margin: 10px 0px 0px 0px;
-}
-
-#left {
-    float: left;
-    background-color: #ece3a5;
-    padding: 5px;
-    width: 150px;
-}
-
-#right {
-    float: right;
-    background-color: #ece3a5;
-    padding: 5px;
-    width: 150px;
 }
 
 .center_content {
-    position: relative;
-    background-color: #dddddd;
-    padding: 5px;
+    height: 462px;
+    padding: 0px;
 }
 
-.left_content {
-    background-color: #dddddd;
-    padding: 5px;
-    margin-left: 170px;
+#tooplate_header {
+    background: url(../images/tooplate_header1.jpg) no-repeat;
+    height: 111px;
+    margin: 0 auto;
+    padding: 0 40px;
 }
 
-.right_content {
-    background-color: #dddddd;
-    padding: 5px;
-    margin: 0px 170px 0px 170px;
+#tooplate_middle {
+    background: url(../images/tooplate_middle.jpg) no-repeat;
+    clear: both;
+    height: 30px;
+    margin: 0 auto;
+    padding: 20px 40px;
 }
 
-#top a:link, #top a:visited {
-  color: white;
-  font-weight : bold;
-  text-decoration: none;
+#tooplate_main {
+    background: url(../images/tooplate_main.jpg) no-repeat;
+    clear: both;
+    height: 330px;
+    margin: 0 auto;
+    padding: 10px 40px 0;
 }
 
-#top a:link:hover, #top a:visited:hover  {
-  color: black;
-  font-weight : bold;
-  text-decoration : underline;
+#tooplate_main_iglesia {
+    background: url(../images/Iglesia.jpg) no-repeat;
+    clear: both;
+    height: 330px;
+    margin: 0 auto;
+    padding: 10px 40px 0;
 }
-
-
+/*controla la linea punteada*/
+#titulo{ 
+    float: left;
+    width: 880px; /*largo*/
+    margin-top: 10%;/*posicion*/
+    color: #ff9041;
+}
