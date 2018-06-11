@@ -1,6 +1,8 @@
 package aplicacion.controlador.beans;
 
-import aplicacion.dao.imp.mysql.UsuarioDAOImp;
+import aplicacion.datos.hibernate.dao.imp.PerfilDAOImp;
+import aplicacion.datos.hibernate.dao.imp.UsuarioDAOImp;
+import aplicacion.modelo.dominio.Perfil;
 import aplicacion.modelo.dominio.Usuario;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -35,6 +37,10 @@ public class UsuarioBean implements Serializable{
     public boolean buscarUsuario(Usuario us) {
         UsuarioDAOImp usuarioDAOImp = new UsuarioDAOImp();
         return usuarioDAOImp.buscarUsuario(us);
+    }
+    public int obtenerCodigoUsuario(Usuario us) {
+        UsuarioDAOImp usuarioDAOImp = new UsuarioDAOImp();
+        return usuarioDAOImp.obtenerCodigoUsuario(us);
     }
     public void agregarUsuario(Usuario us) {
         UsuarioDAOImp usuarioDAOImp = new UsuarioDAOImp();

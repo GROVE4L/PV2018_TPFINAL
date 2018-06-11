@@ -1,0 +1,15 @@
+package aplicacion.datos.hibernate.dao;
+
+import aplicacion.modelo.dominio.Perfil;
+import java.util.List;
+
+/**
+ *
+ * @author Rojas, Guido G.
+ */
+public interface IPerfilDAO {        
+    public void add(Perfil perfil);
+    public void update(Perfil perfil);
+    public void delete(Perfil perfil);
+    public Perfil buscarPerfil(Perfil perfil);
+}

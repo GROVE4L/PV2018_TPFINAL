@@ -1,6 +1,8 @@
 package aplicacion.controlador.beans.form;
 
+import aplicacion.controlador.beans.PerfilBean;
 import aplicacion.controlador.beans.UsuarioBean;
+import aplicacion.modelo.dominio.Perfil;
 import aplicacion.modelo.dominio.Usuario;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
@@ -19,11 +21,32 @@ public class RegistroFormBean implements Serializable{
 
     @ManagedProperty(value = "#{usuarioBean}")
     private UsuarioBean usuarioBean;
+    @ManagedProperty(value = "#{perfilBean}")
+    private PerfilBean perfilBean;
+    
     
     private Usuario usuarioRegistro;
+    private Perfil usuarioPerfil;
     
     public RegistroFormBean() {
         this.usuarioRegistro = new Usuario();
+        this.usuarioPerfil = new Perfil();
+    }
+
+    public PerfilBean getPerfilBean() {
+        return perfilBean;
+    }
+
+    public void setPerfilBean(PerfilBean perfilBean) {
+        this.perfilBean = perfilBean;
+    }
+
+    public Perfil getUsuarioPerfil() {
+        return usuarioPerfil;
+    }
+
+    public void setUsuarioPerfil(Perfil usuarioPerfil) {
+        this.usuarioPerfil = usuarioPerfil;
     }
 
     public Usuario getUsuarioRegistro() {
@@ -42,8 +65,11 @@ public class RegistroFormBean implements Serializable{
         this.usuarioBean = usuarioBean;
     }
         
-    public void registrarUsuario() {        
-        boolean existeUsuario = usuarioBean.buscarUsuario(this.usuarioRegistro);        
+    public void registrarUsuario() {
+        System.out.println("Usuario Registrado: ");
+        System.out.println("Nombre: "+this.usuarioRegistro.getUsuNombreUsuario());
+                
+        boolean existeUsuario = usuarioBean.buscarUsuario(this.usuarioRegistro);
         FacesContext facesContext = FacesContext.getCurrentInstance();
         
         if(existeUsuario) {
@@ -55,9 +81,13 @@ public class RegistroFormBean implements Serializable{
             this.usuarioRegistro.setUsuEstado(true);
             this.usuarioRegistro.setUsuTipoUsuario("final");
             usuarioBean.agregarUsuario(this.usuarioRegistro);
+            int codigo = usuarioBean.obtenerCodigoUsuario(this.usuarioRegistro);            
+            this.usuarioPerfil.setPerUsuario(codigo);
+            perfilBean.agregarPerfil(this.usuarioPerfil);
+            
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Usuario Registrado exitosamente!",
                             "Vuelva a la pantalla de inicio para ingresar con su nuevo usuario."));
-        }        
+        }
     }
 }

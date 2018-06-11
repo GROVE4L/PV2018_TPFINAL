@@ -1,6 +1,6 @@
 package aplicacion.controlador.beans;
 
-import aplicacion.dao.imp.mysql.EditorialDAOImp;
+import aplicacion.datos.hibernate.dao.imp.EditorialDAOImp;
 import aplicacion.modelo.dominio.Editorial;
 import java.io.Serializable;
 import java.util.List;
