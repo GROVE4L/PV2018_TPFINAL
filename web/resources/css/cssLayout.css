@@ -51,9 +51,10 @@
 #tooplate_main_iglesia {
     background: url(../images/Iglesia.jpg) no-repeat;
     clear: both;
-    height: 330px;
+    height: 430px;
+    width: 500px;
     margin: 0 auto;
-    padding: 10px 40px 0;
+    padding: 10px 40px 0px;
 }
 /*controla la linea punteada*/
 #titulo{ 

@@ -10,23 +10,26 @@
         <ui:composition template="./estructura/masterTemplate.xhtml">
 
             <ui:define name="content"> 
-                
-                    <h:form id="frmRegistro">
-                        <p:growl id="mensajes" sticky="true" showDetail="true" />
-                        <p:panelGrid id="pnlRegistro" columns="2" styleClass="ui-noborder">
-                            <p:outputLabel for="inputNombre" value="Nombre de Usuario" />
-                            <p:inputText id="inputNombre" placeholder="Usuario" required="true" requiredMessage="Debe ingresar un Usuario" value="#{registroFormBean.usuarioRegistro.usuNombreUsuario}"/>
-                            <p:outputLabel for="inputPass" value="Contraseña"/>                        
-                            <p:password id="inputPass" placeholder="Contraseña" required="true" requiredMessage="Debe ingresar una Constraseña." value="#{registroFormBean.usuarioRegistro.usuPassword}"/>
-                            <p:commandButton id="btnRegistro" value="Registrarse" update="frmRegistro" action="#{registroFormBean.registrarUsuario()}"/>
-                        </p:panelGrid>
+                <div id="tooplate_main">
+                    <h:form id="frmRegistro" rendered="#{(loginFormBean.verificarSesion() eq false )}">
+                        <p:panel header="Registrar" >
+                            <p:growl id="mensajes" sticky="true" showDetail="true" />
+                            <p:panelGrid id="pnlRegistro" columns="2" styleClass="ui-noborder">
+                                <p:outputLabel for="inputNombre" value="Nombre de Usuario" />
+                                <p:inputText id="inputNombre" placeholder="Usuario" required="true" requiredMessage="Debe ingresar un Usuario" value="#{registroFormBean.usuarioRegistro.usuNombreUsuario}"/>
+                                <p:outputLabel for="inputPass" value="Contraseña"/>                        
+                                <p:password id="inputPass" placeholder="Contraseña" required="true" requiredMessage="Debe ingresar una Constraseña." value="#{registroFormBean.usuarioRegistro.usuPassword}"/>
+                                <p:commandButton id="btnRegistro" value="Registrarse" update="frmRegistro" action="#{registroFormBean.registrarUsuario()}"/>
+                            </p:panelGrid>
+                        </p:panel>                            
                     </h:form>
-   
+                    <h:form rendered="#{loginFormBean.verificarSesion()}">
+                        Para registrar un nuevo usuario tiene que desloguearse
+                    </h:form>
+                </div>
             </ui:define>
 
-            <ui:define name="bottom">
-                
-            </ui:define>
+            
 
         </ui:composition>
 

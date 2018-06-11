@@ -11,8 +11,11 @@
 
             <ui:define name="content">
                 <div id="tooplate_main">
-                    <h:form id="frmLogin">
+                    <h:form id="frmLogin" rendered="#{loginFormBean.verificarSesion()} #{loginFormBean.esSupervisor()}">
                         Hola Supervisor
+                    </h:form>
+                    <h:form rendered="#{(loginFormBean.verificarSesion() eq false )}">
+                        Session no iniciada
                     </h:form>
                 </div>
                 
