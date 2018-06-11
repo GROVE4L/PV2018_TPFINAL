@@ -1,7 +1,6 @@
 package aplicacion.dao;
 
 import aplicacion.modelo.dominio.Usuario;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

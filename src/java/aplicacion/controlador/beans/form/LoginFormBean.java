@@ -95,21 +95,21 @@ public class LoginFormBean implements Serializable{
             //System.out.println("nombre: "+((Usuario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioValido")).getUsuNombreUsuario());
             /////////////////////
             switch(usuarioValidado.getUsuTipoUsuario()) {
-                case "administrativo": facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                case "administrativo": /*facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Usuario SI existe",
-                            "Este usuario es Administrador"));              
+                            "Este usuario es Administrador"));*/              
                 return "usuarioAdministrador?faces-redirect=true";                
-                case "supervisor": facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                case "supervisor": /*facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Usuario SI existe",
-                            "Este usuario es Supervisor")); 
+                            "Este usuario es Supervisor"));*/ 
                 return "usuarioSupervisor?faces-redirect=true";
-                case "final": facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                case "final": /*facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Usuario SI existe",
-                            "Este usuario es Común")); 
+                            "Este usuario es Común"));*/ 
                 return "usuarioComun?faces-redirect=true";
-                default: facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                default: /*facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Usuario SI existe",
-                            "Este ususario es Indeterminado")); 
+                            "Este ususario es Indeterminado"));*/ 
                 return null;
             }
         }

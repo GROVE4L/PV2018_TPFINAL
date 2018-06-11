@@ -26,8 +26,7 @@
                 <div id="tooplate_middle">
                         <h:form rendered="true">
                             <p:menubar>                    
-                                <p:menuitem value="Inicio" url="login.xhtml"/>
-                                <p:menuitem rendered="#{loginFormBean.verificarSesion() eq false}" value="Registro" url="#"/>
+                                <p:menuitem value="Inicio" url="login.xhtml"/>                             
                                 
                                 <p:menuitem rendered="#{loginFormBean.esFinal()}" value="Lista de Libros"/>
                                 <p:menuitem rendered="#{loginFormBean.esFinal()}" value="Pedidos"/>
@@ -44,13 +43,13 @@
                                 <f:facet name="options">
                                     <h:form rendered="#{loginFormBean.verificarSesion()}">                            
                                         <p:outputLabel value="Ahora esta logueado como #{loginFormBean.obtenerSesion().usuNombreUsuario}" />                                
+                                        <p:spacer width="15" height="15"/>                                        
                                         <p:commandButton value="Desloguear" action="#{loginFormBean.deslog()}" icon="ui-icon-extlink" />
                                     </h:form>
                                 </f:facet>
                                 <f:facet name="options">
                                     <h:form rendered="#{loginFormBean.verificarSesion()eq false}">                            
-                                        <p:growl id="mensajes" sticky="true"/>
-                                        
+                                        <p:growl id="mensajes" sticky="true"/>                                        
                                             <p:outputLabel for="inputNombre" value="Usuario" />
                                             <p:inputText id="inputNombre" size="10" placeholder="Usuario" required="true" requiredMessage="Debe ingresar un Usuario" value="#{loginFormBean.usuarioLogin.usuNombreUsuario}"/>
                                             <p:outputLabel for="inputPass" value="Contraseña"/>                        

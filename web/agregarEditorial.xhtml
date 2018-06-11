@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./estructura/masterTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form rendered="#{loginFormBean.verificarSesion() eq false}" onsubmit="">
+                    <!-- Redireccion a pagina login -->
+                    <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
+                </h:form>
+                <h:form rendered="#{loginFormBean.verificarSesion()}">
+                    <p:panel id="panelContenedorRegistro">
+                        <p:growl id="mensajes" showDetail="false"/>
+                        <p:panelGrid id="panelRegistro" styleClass="ui-noborder" columns="3" rendered="#{loginFormBean.esAdministrativo()}">
+                            <p:outputLabel for="inpNombre" value="Nombre Editorial"/>
+                            <p:inputText id="inpNombre" maxlength="20" value="#{agregarEditorialFormBean.editorial.editNombre}" requiredMessage="Debe ingresar un nombre de editorial." required="true"/>
+                            <p:commandButton id="btnAgregarEditorial" update="panelContenedorRegistro tablaEditoriales" action="#{agregarEditorialFormBean.agregarEditorial()}" value="Agregar Editorial"/>
+                        </p:panelGrid>
+                    </p:panel>
+                    <p:separator/>
+                    <p:dataTable id="tablaEditoriales" value="#{agregarEditorialFormBean.listadoEditoriales()}" var="edit">
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{edit.editNombre}"/>
+                        </p:column>
+                        <p:column headerText="Estado">
+                            <h:outputText rendered="#{edit.editEstado}" value="Activo" />
+                            <h:outputText rendered="#{edit.editEstado eq false}" value="No Activo" />
+                        </p:column>                        
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+            
+        </ui:composition>
+
+    </body>
+</html>
