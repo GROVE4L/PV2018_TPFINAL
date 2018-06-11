@@ -11,7 +11,7 @@
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
         <h:outputStylesheet name="./css/usuarios.css"/>
-        <title>Facelets Template</title>
+        <title>Basílica San Francisco</title>
     </h:head>
 
     <h:body>
@@ -57,7 +57,7 @@
                                             <p:password id="inputPass" size="10" placeholder="Contraseña" required="true" requiredMessage="Debe ingresar una Constraseña."  value="#{loginFormBean.usuarioLogin.usuPassword}"/>
                                             <p:commandButton id="btnValidar" value="Validar Usuario" update="mensajes" action="#{loginFormBean.validarUsuario()}"/>                        
                                             <p:outputLabel value="¿No tiene cuenta?" /> 
-                                            <p:commandButton id="btnAgregar" value="Registrarse" action="../registrarUsuario?faces-redirect=true"/>
+                                            <p:commandButton id="btnAgregar" immediate="true" value="Registrarse" action="registrarUsuario?faces-redirect=true"/>
                                     </h:form>
                                 </f:facet>
                             </p:menubar>

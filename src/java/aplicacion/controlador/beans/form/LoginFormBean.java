@@ -76,7 +76,7 @@ public class LoginFormBean implements Serializable{
     public Usuario obtenerSesion() { //Se usa para obtener los atributos del usuario logeado
         return (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioValido");
     }
-   
+
     public String validarUsuario() {
         
         Usuario usuarioValidado = usuarioBean.validarUsuario(this.usuarioLogin);
