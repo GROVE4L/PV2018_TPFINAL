@@ -4,12 +4,14 @@ import aplicacion.controlador.beans.AutorBean;
 import aplicacion.controlador.converters.Texto;
 import aplicacion.modelo.dominio.Autor;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -25,9 +27,9 @@ public class AgregarAutorFormBean implements Serializable{
     private Autor autor;
     
     public AgregarAutorFormBean() {
-        this.autor = new Autor();        
+        this.autor = new Autor();
     }
-
+    
     public AutorBean getAutorBean() {
         return autorBean;
     }
@@ -42,12 +44,11 @@ public class AgregarAutorFormBean implements Serializable{
 
     public void setAutor(Autor autor) {
         this.autor = autor;
-    }   
+    }  
     
     public Autor buscarAutor() {        
         return autorBean.buscarAutor(this.autor);
     }
-    
     public List<Autor> listadoAutores() {        
         return autorBean.listarAutores();
     }

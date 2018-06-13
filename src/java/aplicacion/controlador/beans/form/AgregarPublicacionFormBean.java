@@ -76,7 +76,7 @@ public class AgregarPublicacionFormBean implements Serializable{
         else { //La publicacion ya existe..
             FacesContext facesContext = FacesContext.getCurrentInstance();
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                            "Esta publicación ya existe!",
+                            "Este codigo de publicación ya existe!",
                             ""));
         }
     }

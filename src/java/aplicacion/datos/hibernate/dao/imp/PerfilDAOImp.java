@@ -36,8 +36,17 @@ public class PerfilDAOImp implements IPerfilDAO {
     }
 
     @Override
-    public Perfil buscarPerfil(Perfil perfil) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean buscarPerfil(Perfil perfil) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.      
+        
+        boolean encontrado = false;
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        Criteria crit = s.createCriteria(Perfil.class);        
+        crit.add(Restrictions.like("perDni", perfil.getPerDni())); //1) como esta en clase 2)con que comparar
+        if(!crit.list().isEmpty())
+            encontrado = true;
+        return encontrado; 
     }
 
 

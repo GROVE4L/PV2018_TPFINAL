@@ -20,6 +20,9 @@
                     <p:panel id="panelContenedorRegistro">
                         <p:growl id="mensajes" showDetail="false"/>
                         <p:panelGrid id="panelRegistro" styleClass="ui-noborder" columns="2">
+                            <p:outputLabel for="inpCodigo" value="Código Publicacion"/>
+                            <p:inputText id="inpCodigo" maxlength="20" value="#{agregarPublicacionFormBean.publicacion.pubCodigo}" requiredMessage="Debe ingresar un código de publicación." required="true"/>
+                            
                             <p:outputLabel for="inpNombre" value="Nombre Publicacion"/>
                             <p:inputText id="inpNombre" maxlength="20" value="#{agregarPublicacionFormBean.publicacion.pubNombre}" requiredMessage="Debe ingresar un nombre de publicación." required="true"/>
                             
@@ -42,6 +45,9 @@
                     </p:panel>
                     <p:separator/>
                     <p:dataTable id="tablaPublicaciones" value="#{agregarPublicacionFormBean.listadoPublicaciones()}" var="p">                        
+                        <p:column headerText="Código">
+                            <h:outputText value="#{p.pubCodigo}"/>
+                        </p:column>
                         <p:column headerText="Publicación">
                             <h:outputText value="#{p.pubNombre}"/>
                         </p:column>

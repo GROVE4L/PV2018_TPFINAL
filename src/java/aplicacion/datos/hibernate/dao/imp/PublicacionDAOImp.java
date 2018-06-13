@@ -49,8 +49,7 @@ public class PublicacionDAOImp implements IPublicacionDAO {
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();        
         Criteria crit = s.createCriteria(Publicacion.class);
-        crit.add(Restrictions.like("pubNombre", p.getPubNombre())); //1) como esta en clase 2)con que comparar        
-        crit.add(Restrictions.like("pubEditorial", p.getPubEditorial())); //1) como esta en clase 2)con que comparar        
+        crit.add(Restrictions.like("pubCodigo", p.getPubCodigo())); //1) como esta en clase 2)con que comparar        
         if(crit.list().isEmpty())
             return null;
         else 

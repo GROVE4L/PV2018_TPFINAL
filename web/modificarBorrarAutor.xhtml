@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./estructura/masterTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form rendered="#{loginFormBean.verificarSesion() eq false}" onsubmit="">
+                    <!-- Redireccion a pagina login -->
+                    <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
+                </h:form>
+                <h:form id="formEdicion" rendered="#{loginFormBean.verificarSesion() and loginFormBean.esSupervisor()}">                    
+                    <p:panel id="panelContenedorModificarBorrar">
+                        <p:growl id="mensajes" showDetail="false"/>
+                        <br/>
+                        Listado de Autores                        
+                        <p:dataTable var="aut" value="#{agregarAutorFormBean.listadoAutores()}"
+                                     widgetVar="listaAutoresWV" emptyMessage="Nada Encontrado">
+                            <f:facet name="header">
+                                <p:outputPanel>
+                                    <h:outputText value="Buscar en todos los campos:"/>
+                                    <p:inputText id="globalFilter"
+                                                onkeyup="PF('listaAutoresWV').filter()"
+                                                style="width:150px" placeholder="Busqueda"/>
+                                </p:outputPanel>
+                            </f:facet>
+
+                            <p:column headerText="Codigo" filterBy="#{aut.autCodigo}" filterMatchMode="contains">
+                                <h:outputText value="#{aut.autCodigo}"/>
+                            </p:column>
+
+                            <p:column headerText="Nombres" filterBy="#{aut.autNombres}" filterMatchMode="contains">
+                                <h:outputText value="#{aut.autNombres}"/>
+                            </p:column>
+                            <p:column headerText="Apellidos" filterBy="#{aut.autApellidos}" filterMatchMode="contains">
+                                <h:outputText value="#{aut.autApellidos}"/>
+                            </p:column>
+                            
+                            <p:column style="width:80px" headerText="Opciones">
+                                <p:commandButton icon="ui-icon-pencil" />
+                                <p:spacer width="5" height="5"/>  
+                                <p:commandButton icon="ui-icon-trash" />
+                            </p:column>
+                        </p:dataTable>
+                        
+                    </p:panel>                    
+                </h:form>
+            </ui:define>
+            
+        </ui:composition>
+
+    </body>
+</html>
