@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/06/2018 01:01:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="convento" name="aplicacion.modelo.dominio.Publicacion" optimistic-lock="version" table="publicaciones">
+    <id name="pubCodigo" type="string">
+      <column length="15" name="pub_codigo"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="pubNombre" type="string">
+      <column length="100" name="pub_nombre" not-null="true"/>
+    </property>
+    <property name="pubResumen" type="string">
+      <column length="200" name="pub_resumen"/>
+    </property>
+    <property name="pubEstado" type="boolean">
+      <column name="pub_estado" not-null="true"/>
+    </property>
+    <property name="pubTipo" type="string">
+      <column length="15" name="pub_tipo" not-null="true">
+        <comment>{REVISTA-LIBRO}</comment>
+      </column>
+    </property>
+    <property name="pubStock" type="int">
+      <column name="pub_stock" not-null="true"/>
+    </property>
+    <property name="pubEditorial" type="int">
+      <column name="pub_editorial" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>
