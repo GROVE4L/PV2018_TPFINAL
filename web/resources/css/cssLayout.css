@@ -26,14 +26,16 @@
 }
 
 #tooplate_header {
-    background: url(../images/tooplate_header1.jpg) no-repeat;
+    /*background: url(../images/tooplate_header1.jpg) no-repeat;*/
+    background: url(../images/iglesia_header.jpg) no-repeat;
     height: 111px;
     margin: 0 auto;
     padding: 0 40px;
 }
 
 #tooplate_middle {
-    background: url(../images/tooplate_middle.jpg) no-repeat;
+    /*background: url(../images/tooplate_middle.jpg) no-repeat;*/
+    background: url(../images/iglesia_middle.jpg) no-repeat;
     clear: both;
     height: 30px;
     margin: 0 auto;
@@ -41,25 +43,18 @@
 }
 
 #tooplate_main {
-    background: url(../images/tooplate_main.jpg) no-repeat;
+    /*background: url(../images/tooplate_main.jpg) no-repeat;*/
+    background: url(../images/iglesia_main.jpg) no-repeat;
     clear: both;
-    height: 330px;
+    height: 1500px;
     margin: 0 auto;
     padding: 10px 40px 0;
 }
 
-#tooplate_main_iglesia {
-    background: url(../images/Iglesia.jpg) no-repeat;
-    clear: both;
-    height: 430px;
-    width: 500px;
-    margin: 0 auto;
-    padding: 10px 40px 0px;
-}
 /*controla la linea punteada*/
 #titulo{ 
     float: left;
     width: 880px; /*largo*/
     margin-top: 10%;/*posicion*/
-    color: #ff9041;
+    color: #ffffff;
 }
