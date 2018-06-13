@@ -6,7 +6,11 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/convento?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">alumno</property>
+    <property name="hibernate.connection.password">root</property>
+    <mapping resource="aplicacion/datos/hibernate/mapeos/Editoriales.hbm.xml"/>
     <mapping resource="aplicacion/datos/hibernate/mapeos/Usuarios.hbm.xml"/>
+    <mapping resource="aplicacion/datos/hibernate/mapeos/Perfiles.hbm.xml"/>
+    <mapping resource="aplicacion/datos/hibernate/mapeos/Autores.hbm.xml"/>
+    <mapping resource="aplicacion/datos/hibernate/mapeos/Publicaciones.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

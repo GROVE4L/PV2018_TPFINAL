@@ -1,7 +1,6 @@
 package aplicacion.datos.hibernate.dao;
 
 import aplicacion.modelo.dominio.Perfil;
-import java.util.List;
 
 /**
  *

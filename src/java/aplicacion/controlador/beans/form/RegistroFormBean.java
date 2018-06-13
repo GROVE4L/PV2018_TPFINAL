@@ -66,22 +66,20 @@ public class RegistroFormBean implements Serializable{
     }
         
     public void registrarUsuario() {
-        System.out.println("Usuario Registrado: ");
-        System.out.println("Nombre: "+this.usuarioRegistro.getUsuNombreUsuario());
-                
         boolean existeUsuario = usuarioBean.buscarUsuario(this.usuarioRegistro);
         FacesContext facesContext = FacesContext.getCurrentInstance();
         
-        if(existeUsuario) {
+        if(existeUsuario) 
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
                             "Nombre de usuario ya esta registrado.",
-                            "Elija otro nombre de usuario."));
-        }
+                            "Elija otro nombre de usuario."));        
         else {
             this.usuarioRegistro.setUsuEstado(true);
             this.usuarioRegistro.setUsuTipoUsuario("final");
-            usuarioBean.agregarUsuario(this.usuarioRegistro);
-            int codigo = usuarioBean.obtenerCodigoUsuario(this.usuarioRegistro);            
+            usuarioBean.agregarUsuario(this.usuarioRegistro);            
+            int codigo = usuarioBean.obtenerCodigoUsuario(this.usuarioRegistro); //Obtener codigo de usuario
+            //para guardarlo en el perfil. Relación.
+            
             this.usuarioPerfil.setPerUsuario(codigo);
             perfilBean.agregarPerfil(this.usuarioPerfil);
             
