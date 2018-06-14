@@ -29,6 +29,21 @@ public class EditorialBean implements Serializable{
         this.editorial = editorial;
     }
 
+    public void recuperarEditorial(Editorial e) {
+        EditorialDAOImp editorialDAOImp = new EditorialDAOImp();
+        editorialDAOImp.recover(e);
+    }
+    
+    public void borrarEditorial(Editorial e) {
+        EditorialDAOImp editorialDAOImp = new EditorialDAOImp();
+        editorialDAOImp.delete(e);
+    }
+    
+    public void modificarEditorial(Editorial e) {
+        EditorialDAOImp editorialDAOImp = new EditorialDAOImp();
+        editorialDAOImp.update(e);
+    }
+    
     public Editorial buscarEditorial(Editorial ed) {
         EditorialDAOImp editorialDAOImp = new EditorialDAOImp();
         return editorialDAOImp.buscarEditorial(ed);

@@ -26,12 +26,22 @@ public class AutorDAOImp implements IAutorDAO {
 
     @Override
     public void update(Autor a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        s.update(a);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override
     public void delete(Autor a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        s.delete(a);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override

@@ -23,11 +23,21 @@ public class AgregarEditorialFormBean implements Serializable{
     private EditorialBean editorialBean;
     
     private Editorial editorial;
+    private Editorial editorialSeleccionada;
     
     public AgregarEditorialFormBean() {
-        this.editorial = new Editorial();        
+        this.editorial = new Editorial();
+        this.editorialSeleccionada = new Editorial();
     }
 
+    public Editorial getEditorialSeleccionada() {
+        return editorialSeleccionada;
+    }
+
+    public void setEditorialSeleccionada(Editorial editorialSeleccionada) {
+        this.editorialSeleccionada = editorialSeleccionada;
+    }
+    
     public EditorialBean getEditorialBean() {
         return editorialBean;
     }
@@ -42,6 +52,20 @@ public class AgregarEditorialFormBean implements Serializable{
 
     public void setEditorial(Editorial editorial) {
         this.editorial = editorial;
+    }
+    
+    public void modificarEditorial() {
+        editorialBean.modificarEditorial(editorialSeleccionada);
+    }
+    
+    public void recuperarEditorial(Editorial e) {
+        e.setEditEstado(true);
+        editorialBean.recuperarEditorial(e);
+    }
+    
+    public void borrarEditorial(Editorial e) {
+        e.setEditEstado(false);
+        editorialBean.borrarEditorial(e);
     }
     
     public Editorial buscarEditorial() {        
