@@ -26,7 +26,6 @@
 }
 
 #tooplate_header {
-    /*background: url(../images/tooplate_header1.jpg) no-repeat;*/
     background: url(../images/iglesia_header.jpg) no-repeat;
     height: 111px;
     margin: 0 auto;
@@ -34,7 +33,6 @@
 }
 
 #tooplate_middle {
-    /*background: url(../images/tooplate_middle.jpg) no-repeat;*/
     background: url(../images/iglesia_middle.jpg) no-repeat;
     clear: both;
     height: 30px;
@@ -43,7 +41,6 @@
 }
 
 #tooplate_main {
-    /*background: url(../images/tooplate_main.jpg) no-repeat;*/
     background: url(../images/iglesia_main.jpg) no-repeat;
     clear: both;
     height: 1500px;
