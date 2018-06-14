@@ -19,39 +19,49 @@
                     <p:panel id="panelContenedorModificarBorrar">
                         <p:growl id="mensajes" showDetail="false"/>
                         <br/>
-                        Listado de Autores                        
-                        <p:dataTable id="tablaAutores" var="aut" value="#{agregarAutorFormBean.listadoAutores()}"
-                                     widgetVar="listaAutoresWV" emptyMessage="Nada Encontrado">
+                        Listado de Editoriales                      
+                        <p:dataTable id="tablaEditoriales" var="e" value="#{agregarEditorialFormBean.listadoEditoriales()}"
+                                     widgetVar="listaEditorialesWV" emptyMessage="Nada Encontrado">
                             <f:facet name="header">
                                 <p:outputPanel>
                                     <h:outputText value="Buscar en todos los campos:"/>
                                     <p:inputText id="globalFilter"
-                                                onkeyup="PF('listaAutoresWV').filter()"
+                                                onkeyup="PF('listaEditorialesWV').filter()"
                                                 style="width:150px" placeholder="Busqueda"/>
                                 </p:outputPanel>
                             </f:facet>
 
-                            <p:column headerText="Codigo" filterStyle="display:none" filterBy="#{aut.autCodigo}" filterMatchMode="contains">
-                                <h:outputText value="#{aut.autCodigo}"/>
+                            <p:column headerText="Codigo" filterStyle="display:none" filterBy="#{e.ediCodigo}" filterMatchMode="contains">
+                                <h:outputText value="#{e.ediCodigo}"/>
                             </p:column>
 
-                            <p:column headerText="Nombres" filterStyle="display:none" filterBy="#{aut.autNombres}" filterMatchMode="contains">
-                                <h:outputText value="#{aut.autNombres}"/>
+                            <p:column headerText="Nombre Editorial" filterStyle="display:none" filterBy="#{e.editNombre}" filterMatchMode="contains">
+                                <h:outputText value="#{e.editNombre}"/>
                             </p:column>
-                            <p:column headerText="Apellidos" filterStyle="display:none" filterBy="#{aut.autApellidos}" filterMatchMode="contains">
-                                <h:outputText value="#{aut.autApellidos}"/>
+                            <p:column headerText="Estado" filterBy="#{e.editEstado}" filterStyle="display:none" filterMatchMode="contains">
+                                <h:outputText value="#{e.editEstado ? 'Activo' : 'No Activo'}"/>
+                                
                             </p:column>
                             
-                            <p:column style="width:80px" headerText="Opciones">
-                                <p:commandButton icon="ui-icon-pencil" oncomplete="PF('modificarWV').show()" action="#{agregarAutorFormBean.setAutorSeleccionado(aut)}" update=":dlgModificacion" />
+                            <p:column style="width:110px" headerText="Opciones">
+                                <p:commandButton icon="ui-icon-pencil" oncomplete="PF('modificarWV').show()" action="#{agregarEditorialFormBean.setEditorialSeleccionada(e)}" update=":dlgModificacion" />
                                 <p:spacer width="5" height="5"/>  
-                                <p:commandButton icon="ui-icon-trash" action="#{agregarAutorFormBean.borrarAutor(aut)}" update=":formEdicion:tablaAutores">                                    
+                                <p:commandButton icon="ui-icon-trash" action="#{agregarEditorialFormBean.borrarEditorial(e)}" update=":formEdicion:tablaEditoriales">
                                     <p:confirm header="Confirmación" message="¿Esta seguro de borrar?" icon="ui-icon-alert" />
                                             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                                             <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                                             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                                         </p:confirmDialog>
                                 </p:commandButton>
+                                <p:spacer width="5" height="5"/>
+                                <p:commandButton icon="ui-icon-refresh" action="#{agregarEditorialFormBean.recuperarEditorial(e)}" update=":formEdicion:tablaEditoriales">
+                                    <p:confirm header="Confirmación" message="¿Esta seguro de recuperar esta Editorial?" icon="ui-icon-alert" />
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                        </p:confirmDialog>
+                                </p:commandButton>
+                                            
                             </p:column>
                         </p:dataTable>                        
                     </p:panel>                    
@@ -61,21 +71,18 @@
                     <p:dialog id="dlgModificacion"
                       widgetVar="modificarWV"
                       modal="true" resizable="false"
-                      header="Formulario Para Modificar Autores"
+                      header="Formulario Para Modificar Editoriales"
                       showEffect="drop" hideEffect="drop">
                         <p:growl id="msjDlg" showDetail="false"
                                  showSummary="true" sticky="false"/>
                             <h:form id="frmModificar">
-                                <h:panelGrid id="tblModificarUsuario" columns="2" cellpadding="2">
+                                <h:panelGrid id="tblModificarEditorial" columns="2" cellpadding="2">
                                     
-                                    <p:outputLabel for="inputNombres" value="Nombres"/>                                     
-                                    <p:inputText id="inputNombres" value="#{agregarAutorFormBean.autorSeleccionado.autNombres}" required="true" size="40" maxlength="20"/>
+                                    <p:outputLabel for="inputNombre" value="Nombre Editorial"/>                                     
+                                    <p:inputText id="inputNombre" value="#{agregarEditorialFormBean.editorialSeleccionada.editNombre}" required="true" size="40" maxlength="20"/>
                                     
-                                    <p:outputLabel for="inputApellidos" value="Apellidos"/> 
-                                    <p:inputText id="inputApellidos" value="#{agregarAutorFormBean.autorSeleccionado.autApellidos}" required="true" size="40" maxlength="20"/>
-                                    
-                                    <p:commandButton value="GUARDAR DATOS" oncomplete="PF('modificarWV').hide()" update=":msjDlg :frmModificar :formEdicion:panelContenedorModificarBorrar" action="#{agregarAutorFormBean.modificarAutor()}">
-                                        <p:confirm header="Confirmación" message="¿Esta seguro de editar?" icon="ui-icon-alert" />                                        
+                                    <p:commandButton value="GUARDAR DATOS" oncomplete="PF('modificarWV').hide()" update=":msjDlg :frmModificar :formEdicion:panelContenedorModificarBorrar" action="#{agregarEditorialFormBean.modificarEditorial()}">
+                                        <p:confirm header="Confirmación" message="¿Esta seguro de editar?" icon="ui-icon-alert" />
                                             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                                             <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                                             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
@@ -83,9 +90,6 @@
                                     </p:commandButton>    
                                     <p:commandButton immediate="true" value="SALIR" style=" float: right"
                                                  oncomplete="PF('modificarWV').hide()"/>
-                                    
-                                    
-                                    
                                 </h:panelGrid>
                           </h:form>   
                     </p:dialog>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/06/2018 00:50:08 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aplicacion.modelo.dominio.Clasificacion" table="clasificaciones" catalog="convento" optimistic-lock="version">
+        <id name="claCodigo" type="java.lang.Integer">
+            <column name="cla_codigo" />
+            <generator class="identity" />
+        </id>
+        <property name="claIdentificador" type="int">
+            <column name="cla_identificador" not-null="true" unique="true" />
+        </property>
+        <property name="claDescripcion" type="string">
+            <column name="cla_descripcion" length="100" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

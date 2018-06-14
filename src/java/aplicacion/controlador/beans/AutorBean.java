@@ -28,7 +28,16 @@ public class AutorBean implements Serializable{
     public void setAutor(Autor autor) {
         this.autor = autor;
     }
-        
+    
+    public void borrarAutor(Autor a) {
+        AutorDAOImp autorDAOImp = new AutorDAOImp();
+        autorDAOImp.delete(a);
+    }
+    
+    public void modificarAutor(Autor a) {
+        AutorDAOImp autorDAOImp = new AutorDAOImp();
+        autorDAOImp.update(a);
+    }
 
     public Autor buscarAutor(Autor a) {
         AutorDAOImp autorDAOImp = new AutorDAOImp();

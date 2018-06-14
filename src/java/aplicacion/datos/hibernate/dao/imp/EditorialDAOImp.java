@@ -5,6 +5,7 @@ import aplicacion.datos.hibernate.configuracion.HibernateUtil;
 import aplicacion.modelo.dominio.Editorial;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -26,12 +27,24 @@ public class EditorialDAOImp implements IEditorialDAO {
 
     @Override
     public void update(Editorial editorial) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        s.update(editorial);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override
     public void delete(Editorial editorial) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Session s = HibernateUtil.getSessionFactory().openSession();        
+        s.beginTransaction();
+        s.update(editorial);
+        s.getTransaction().commit();
+        s.close();
+        
     }
 
     @Override
@@ -54,6 +67,16 @@ public class EditorialDAOImp implements IEditorialDAO {
         s.beginTransaction();        
         Criteria crit = s.createCriteria(Editorial.class);        
         return crit.list();        
+    }
+
+    @Override
+    public void recover(Editorial editorial) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session s = HibernateUtil.getSessionFactory().openSession();        
+        s.beginTransaction();
+        s.update(editorial);
+        s.getTransaction().commit();
+        s.close();
     }
 
 }

@@ -11,6 +11,7 @@ public interface IEditorialDAO {
     public void add(Editorial editorial);
     public void update(Editorial editorial);
     public void delete(Editorial editorial);
+    public void recover(Editorial editorial);
     public Editorial buscarEditorial(Editorial editorial);
     public List<Editorial> devolverEditoriales();
 }
