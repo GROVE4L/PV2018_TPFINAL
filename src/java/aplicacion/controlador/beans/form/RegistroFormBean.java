@@ -71,7 +71,7 @@ public class RegistroFormBean implements Serializable{
         FacesContext facesContext = FacesContext.getCurrentInstance();        
         System.out.println("El usuario Existe?: "+existeUsuario);
         System.out.println("El perfil existe?: "+existePerfil);
-        
+        System.out.println("El perfil existe?: "+usuarioPerfil.getPerDni().getClass());
         if(existeUsuario || existePerfil)
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
                             "Este usuario ya esta registrado.",

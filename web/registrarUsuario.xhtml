@@ -23,29 +23,36 @@
                                 <p:separator/>
                                 <p:outputLabel/>
                                 <p:outputLabel value="Datos Personal" />
-                                <p:outputLabel/>
+                                <p:outputLabel/>                                
                                 <p:outputLabel for="inputNombre" value="Nombre" />
-                                <p:inputText id="inputNombre" value="#{registroFormBean.usuarioPerfil.perNombres}" placeholder="Nombre" required="true" requiredMessage="Debe ingresar un Nombre"/>
+                                <p:inputText id="inputNombre" value="#{registroFormBean.usuarioPerfil.perNombres}" placeholder="Nombre" required="true" requiredMessage="Debe ingresar un Nombre" maxlength="15"/>
                                 
                                 <p:outputLabel for="inputApellido" value="Apellido" />
-                                <p:inputText id="inputApellido" value="#{registroFormBean.usuarioPerfil.perApellidos}" placeholder="Apellido" required="true" requiredMessage="Debe ingresar un Apellido"/>
+                                <p:inputText id="inputApellido" value="#{registroFormBean.usuarioPerfil.perApellidos}" placeholder="Apellido" required="true" requiredMessage="Debe ingresar un Apellido" maxlength="10"/>
                                 
                                 <p:outputLabel for="inputDNI" value="DNI" />
                                 <p:inputNumber id="inputDNI" value="#{registroFormBean.usuarioPerfil.perDni}" placeholder="DNI" required="true" requiredMessage="Ingrese un DNI" decimalPlaces="0">
                                     <f:validateLength minimum="8" maximum="8" />
                                 </p:inputNumber>
-                                
+                                                                
                                 <p:outputLabel for="inputFechaNac" value="Fecha Nacimiento" />
-                                <p:calendar pattern="dd/MM/yyyy" id="inputFechaNac" value="#{registroFormBean.usuarioPerfil.perFechaNac}" placeholder="Fecha Nacimiento" required="true" requiredMessage="Ingrese una Fecha"/>
+                                <p:calendar pattern="dd/MM/yyyy" id="inputFechaNac" value="#{registroFormBean.usuarioPerfil.perFechaNac}" 
+                                            placeholder="Fecha Nacimiento" required="true" requiredMessage="Ingrese una Fecha"
+                                            locale="es" mask="true"/>
                                 
                                 <p:outputLabel for="inputEMail" value="E-Mail" />
-                                <p:inputText id="inputEMail" placeholder="E-Mail" required="true" value="#{registroFormBean.usuarioPerfil.perEmail}" requiredMessage="Ingrese un EMail"/>
+                                <p:inputText id="inputEMail" placeholder="E-Mail" required="true" value="#{registroFormBean.usuarioPerfil.perEmail}" requiredMessage="Ingrese un EMail">
+                                    <f:validator validatorId="custom.emailValidator" />
+                                </p:inputText>
                                 
                                 <p:outputLabel for="inputDireccion" value="Dirección" />
-                                <p:inputText id="inputDireccion" placeholder="Dirección" value="#{registroFormBean.usuarioPerfil.perDireccion}" required="true" requiredMessage="Ingrese una Dirección"/>
+                                <p:inputText id="inputDireccion" placeholder="Dirección" value="#{registroFormBean.usuarioPerfil.perDireccion}" required="true" requiredMessage="Ingrese una Dirección" maxlength="20"/>
                                 
                                 <p:outputLabel for="inputTelefono" value="Teléfono" />
-                                <p:inputNumber id="inputTelefono" placeholder="Teléfono" required="true" value="#{registroFormBean.usuarioPerfil.perTelefono}" requiredMessage="Ingrese un Teléfono" decimalPlaces="0"/>                                    
+                                <p:inputNumber id="inputTelefono" placeholder="Teléfono" required="true" value="#{registroFormBean.usuarioPerfil.perTelefono}" requiredMessage="Ingrese un Teléfono" decimalPlaces="0">
+                                    <f:validateLength minimum="8" maximum="8"/>
+                                    <f:validateLongRange maximum="8"/>
+                                </p:inputNumber>                                    
                                 
                                 
                                 <p:commandButton id="btnRegistro" value="Registrarse" update="frmRegistro" action="#{registroFormBean.registrarUsuario()}"/>
