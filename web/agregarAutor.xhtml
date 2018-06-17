@@ -16,23 +16,25 @@
                     <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
                 </h:form>
                 <h:form rendered="#{loginFormBean.verificarSesion() and loginFormBean.esSupervisor()}">
-                    <p:panel id="panelContenedorRegistro">
-                        <p:growl id="mensajes" showDetail="false"/>
-                        <p:panelGrid id="panelRegistro" styleClass="ui-noborder" columns="3">
-                            <p:outputLabel for="inpNombre" value="Nombre Autor"/>
-                            <p:inputText id="inpNombre" maxlength="20" placeholder="Nombre de autor" value="#{agregarAutorFormBean.autor.autNombres}" requiredMessage="Debe ingresar un nombre de autor." required="true"/>
-                            <p:outputLabel/>
-                            <p:outputLabel for="inpAutor" value="Apellido Autor"/>
-                            <p:inputText id="inpAutor" maxlength="20" placeholder="Apellido de autor" value="#{agregarAutorFormBean.autor.autApellidos}" requiredMessage="Debe ingresar un apellido de autor." required="true"/>
-                            <p:commandButton id="btnAgregarAutor" update="panelContenedorRegistro" action="#{agregarAutorFormBean.agregarAutor()}" value="Agregar Autor"/>
-                        </p:panelGrid>
-                    </p:panel>
-                    <p:separator/>
-                    <p:dataTable id="tablaAutores" value="#{agregarAutorFormBean.listadoAutores()}" var="a">
-                        <p:column headerText="Nombre">
-                            <h:outputText value="#{a.autNombres} #{a.autApellidos}"/>
-                        </p:column>                        
-                    </p:dataTable>
+                    <div id="tooplate_main">
+                        <p:panel id="panelContenedorRegistro">
+                            <p:growl id="mensajes" showDetail="false"/>
+                            <p:panelGrid id="panelRegistro" styleClass="ui-noborder" columns="3">
+                                <p:outputLabel for="inpNombre" value="Nombre Autor"/>
+                                <p:inputText id="inpNombre" maxlength="20" placeholder="Nombre de autor" value="#{agregarAutorFormBean.autor.autNombres}" requiredMessage="Debe ingresar un nombre de autor." required="true"/>
+                                <p:outputLabel/>
+                                <p:outputLabel for="inpAutor" value="Apellido Autor"/>
+                                <p:inputText id="inpAutor" maxlength="20" placeholder="Apellido de autor" value="#{agregarAutorFormBean.autor.autApellidos}" requiredMessage="Debe ingresar un apellido de autor." required="true"/>
+                                <p:commandButton id="btnAgregarAutor" update="panelContenedorRegistro" action="#{agregarAutorFormBean.agregarAutor()}" value="Agregar Autor"/>
+                            </p:panelGrid>
+                        </p:panel>
+                        <p:separator/>
+                        <p:dataTable id="tablaAutores" value="#{agregarAutorFormBean.listadoAutores()}" var="a">
+                            <p:column headerText="Nombre">
+                                <h:outputText value="#{a.autNombres} #{a.autApellidos}"/>
+                            </p:column>                        
+                        </p:dataTable>
+                    </div>
                 </h:form>
             </ui:define>
             

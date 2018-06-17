@@ -16,55 +16,58 @@
                     <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
                 </h:form>
                 <h:form id="formEdicion" rendered="#{loginFormBean.verificarSesion() and loginFormBean.esSupervisor()}">                    
-                    <p:panel id="panelContenedorModificarBorrar">
-                        <p:growl id="mensajes" showDetail="false"/>
-                        <br/>
-                        Listado de Editoriales                      
-                        <p:dataTable id="tablaEditoriales" var="e" value="#{agregarEditorialFormBean.listadoEditoriales()}"
-                                     widgetVar="listaEditorialesWV" emptyMessage="Nada Encontrado">
-                            <f:facet name="header">
-                                <p:outputPanel>
-                                    <h:outputText value="Buscar en todos los campos:"/>
-                                    <p:inputText id="globalFilter"
-                                                onkeyup="PF('listaEditorialesWV').filter()"
-                                                style="width:150px" placeholder="Busqueda"/>
-                                </p:outputPanel>
-                            </f:facet>
-
-                            <p:column headerText="Codigo" filterStyle="display:none" filterBy="#{e.ediCodigo}" filterMatchMode="contains">
-                                <h:outputText value="#{e.ediCodigo}"/>
-                            </p:column>
-
-                            <p:column headerText="Nombre Editorial" filterStyle="display:none" filterBy="#{e.editNombre}" filterMatchMode="contains">
-                                <h:outputText value="#{e.editNombre}"/>
-                            </p:column>
-                            <p:column headerText="Estado" filterBy="#{e.editEstado}" filterStyle="display:none" filterMatchMode="contains">
-                                <h:outputText value="#{e.editEstado ? 'Activo' : 'No Activo'}"/>
-                                
-                            </p:column>
-                            
-                            <p:column style="width:110px" headerText="Opciones">
-                                <p:commandButton icon="ui-icon-pencil" oncomplete="PF('modificarWV').show()" action="#{agregarEditorialFormBean.setEditorialSeleccionada(e)}" update=":dlgModificacion" />
-                                <p:spacer width="5" height="5"/>  
-                                <p:commandButton icon="ui-icon-trash" action="#{agregarEditorialFormBean.borrarEditorial(e)}" update=":formEdicion:tablaEditoriales">
-                                    <p:confirm header="Confirmación" message="¿Esta seguro de borrar?" icon="ui-icon-alert" />
-                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                                        </p:confirmDialog>
-                                </p:commandButton>
-                                <p:spacer width="5" height="5"/>
-                                <p:commandButton icon="ui-icon-refresh" action="#{agregarEditorialFormBean.recuperarEditorial(e)}" update=":formEdicion:tablaEditoriales">
-                                    <p:confirm header="Confirmación" message="¿Esta seguro de recuperar esta Editorial?" icon="ui-icon-alert" />
-                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                                        </p:confirmDialog>
-                                </p:commandButton>
+                    <div id="tooplate_main">
+                        <p:panel id="panelContenedorModificarBorrar" >
+                            <p:growl id="mensajes" showDetail="false"/>
+                            <br/>
                                             
-                            </p:column>
-                        </p:dataTable>                        
-                    </p:panel>                    
+                            <p:dataTable id="tablaEditoriales" var="e" value="#{agregarEditorialFormBean.listadoEditoriales()}"
+                                         widgetVar="listaEditorialesWV" emptyMessage="Nada Encontrado">
+                                
+                                <f:facet name="header">
+                                    <p:outputPanel>
+                                        <h:outputText value="Buscar en todos los campos:"/>
+                                        <p:inputText id="globalFilter"
+                                                     onkeyup="PF('listaEditorialesWV').filter()"
+                                                     style="width:150px" placeholder="Busqueda"/>
+                                    </p:outputPanel>
+                                </f:facet>
+
+                                <p:column headerText="Codigo" filterStyle="display:none" filterBy="#{e.ediCodigo}" filterMatchMode="contains">
+                                    <h:outputText value="#{e.ediCodigo}"/>
+                                </p:column>
+
+                                <p:column headerText="Nombre Editorial" filterStyle="display:none" filterBy="#{e.editNombre}" filterMatchMode="contains">
+                                    <h:outputText value="#{e.editNombre}"/>
+                                </p:column>
+                                <p:column headerText="Estado" filterBy="#{e.editEstado}" filterStyle="display:none" filterMatchMode="contains">
+                                    <h:outputText value="#{e.editEstado ? 'Activo' : 'No Activo'}"/>
+
+                                </p:column>
+
+                                <p:column style="width:110px" headerText="Opciones">
+                                    <p:commandButton icon="ui-icon-pencil" oncomplete="PF('modificarWV').show()" action="#{agregarEditorialFormBean.setEditorialSeleccionada(e)}" update=":dlgModificacion" />
+                                    <p:spacer width="5" height="5"/>  
+                                    <p:commandButton icon="ui-icon-trash" action="#{agregarEditorialFormBean.borrarEditorial(e)}" update=":formEdicion:tablaEditoriales">
+                                        <p:confirm header="Confirmación" message="¿Esta seguro de borrar?" icon="ui-icon-alert" />
+                                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                        </p:confirmDialog>
+                                    </p:commandButton>
+                                    <p:spacer width="5" height="5"/>
+                                    <p:commandButton icon="ui-icon-refresh" action="#{agregarEditorialFormBean.recuperarEditorial(e)}" update=":formEdicion:tablaEditoriales">
+                                        <p:confirm header="Confirmación" message="¿Esta seguro de recuperar esta Editorial?" icon="ui-icon-alert" />
+                                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                        </p:confirmDialog>
+                                    </p:commandButton>
+
+                                </p:column>
+                            </p:dataTable>                        
+                        </p:panel>
+                    </div>    
                 </h:form>
                 
                 

@@ -16,45 +16,47 @@
                     <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
                 </h:form>
                 <h:form id="formEdicion" rendered="#{loginFormBean.verificarSesion() and loginFormBean.esSupervisor()}">                    
-                    <p:panel id="panelContenedorModificarBorrar">
-                        <p:growl id="mensajes" showDetail="false"/>
-                        <br/>
-                        Listado de Autores                        
-                        <p:dataTable id="tablaAutores" var="aut" value="#{agregarAutorFormBean.listadoAutores()}"
-                                     widgetVar="listaAutoresWV" emptyMessage="Nada Encontrado">
-                            <f:facet name="header">
-                                <p:outputPanel>
-                                    <h:outputText value="Buscar en todos los campos:"/>
-                                    <p:inputText id="globalFilter"
-                                                onkeyup="PF('listaAutoresWV').filter()"
-                                                style="width:150px" placeholder="Busqueda"/>
-                                </p:outputPanel>
-                            </f:facet>
+                    <div id="tooplate_main">
+                        <p:panel id="panelContenedorModificarBorrar">
+                            <p:growl id="mensajes" showDetail="false"/>
+                            <br/>
+                            Listado de Autores                        
+                            <p:dataTable id="tablaAutores" var="aut" value="#{agregarAutorFormBean.listadoAutores()}"
+                                         widgetVar="listaAutoresWV" emptyMessage="Nada Encontrado">
+                                <f:facet name="header">
+                                    <p:outputPanel>
+                                        <h:outputText value="Buscar en todos los campos:"/>
+                                        <p:inputText id="globalFilter"
+                                                     onkeyup="PF('listaAutoresWV').filter()"
+                                                     style="width:150px" placeholder="Busqueda"/>
+                                    </p:outputPanel>
+                                </f:facet>
 
-                            <p:column headerText="Codigo" filterStyle="display:none" filterBy="#{aut.autCodigo}" filterMatchMode="contains">
-                                <h:outputText value="#{aut.autCodigo}"/>
-                            </p:column>
+                                <p:column headerText="Codigo" filterStyle="display:none" filterBy="#{aut.autCodigo}" filterMatchMode="contains">
+                                    <h:outputText value="#{aut.autCodigo}"/>
+                                </p:column>
 
-                            <p:column headerText="Nombres" filterStyle="display:none" filterBy="#{aut.autNombres}" filterMatchMode="contains">
-                                <h:outputText value="#{aut.autNombres}"/>
-                            </p:column>
-                            <p:column headerText="Apellidos" filterStyle="display:none" filterBy="#{aut.autApellidos}" filterMatchMode="contains">
-                                <h:outputText value="#{aut.autApellidos}"/>
-                            </p:column>
-                            
-                            <p:column style="width:80px" headerText="Opciones">
-                                <p:commandButton icon="ui-icon-pencil" oncomplete="PF('modificarWV').show()" action="#{agregarAutorFormBean.setAutorSeleccionado(aut)}" update=":dlgModificacion" />
-                                <p:spacer width="5" height="5"/>  
-                                <p:commandButton icon="ui-icon-trash" action="#{agregarAutorFormBean.borrarAutor(aut)}" update=":formEdicion:tablaAutores">                                    
-                                    <p:confirm header="Confirmación" message="¿Esta seguro de borrar?" icon="ui-icon-alert" />
-                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:column headerText="Nombres" filterStyle="display:none" filterBy="#{aut.autNombres}" filterMatchMode="contains">
+                                    <h:outputText value="#{aut.autNombres}"/>
+                                </p:column>
+                                <p:column headerText="Apellidos" filterStyle="display:none" filterBy="#{aut.autApellidos}" filterMatchMode="contains">
+                                    <h:outputText value="#{aut.autApellidos}"/>
+                                </p:column>
+
+                                <p:column style="width:80px" headerText="Opciones">
+                                    <p:commandButton icon="ui-icon-pencil" oncomplete="PF('modificarWV').show()" action="#{agregarAutorFormBean.setAutorSeleccionado(aut)}" update=":dlgModificacion" />
+                                    <p:spacer width="5" height="5"/>  
+                                    <p:commandButton icon="ui-icon-trash" action="#{agregarAutorFormBean.borrarAutor(aut)}" update=":formEdicion:tablaAutores">                                    
+                                        <p:confirm header="Confirmación" message="¿Esta seguro de borrar?" icon="ui-icon-alert" />
+                                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                                             <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                                             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                                         </p:confirmDialog>
-                                </p:commandButton>
-                            </p:column>
-                        </p:dataTable>                        
-                    </p:panel>                    
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>                        
+                        </p:panel>  
+                    </div>    
                 </h:form>
                 
                 

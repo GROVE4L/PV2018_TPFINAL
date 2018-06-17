@@ -34,12 +34,19 @@
                                 
                                 <p:menuitem rendered="#{loginFormBean.esAdministrativo()}" value="Pedidos Usuarios"/>
                                 <p:menuitem rendered="#{loginFormBean.esAdministrativo()}" value="Lista de Libros"/>
-                                
-                                <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Tablas" icon="ui-icon-help">
-                                    <p:menuitem value="Tabla Libro" url="#"/>
-                                    <p:menuitem value="Tablas Autores" url="#"/>
+                               
+                                <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Publicaciones" icon="ui-icon-help">
+                                    <p:menuitem value="Agregar Publicaciones" url="agregarPublicacion.xhtml"/>   
                                 </p:submenu>
-                                                       
+                                <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Editorial" icon="ui-icon-help">
+                                    <p:menuitem value="Agregar Editorial" url="agregarEditorial.xhtml"/>   
+                                    <p:menuitem value="Modificar o Eliminar Editorial" url="modificarBorrarEditorial.xhtml"/>  
+                                </p:submenu>
+                                <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Autor" icon="ui-icon-help">
+                                    <p:menuitem value="Agregar Autor" url="agregarAutor.xhtml"/>   
+                                    <p:menuitem value="Modificar o Eliminar Autor" url="modificarBorrarAutor.xhtml"/>  
+                                </p:submenu>
+                                
                                 <f:facet name="options">
                                     <h:form rendered="#{loginFormBean.verificarSesion()}">                            
                                         <p:outputLabel value="Ahora esta logueado como #{loginFormBean.obtenerSesion().usuNombreUsuario}" />                                

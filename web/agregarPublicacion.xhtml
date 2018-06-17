@@ -17,53 +17,55 @@
                     <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
                 </h:form>
                 <h:form rendered="#{loginFormBean.verificarSesion() and loginFormBean.esSupervisor()}">
-                    <p:panel id="panelContenedorRegistro">
-                        <p:growl id="mensajes" showDetail="false"/>
-                        <p:panelGrid id="panelRegistro" styleClass="ui-noborder" columns="2">
-                            <p:outputLabel for="inpCodigo" value="Código Publicacion"/>
-                            <p:inputText id="inpCodigo" maxlength="20" value="#{agregarPublicacionFormBean.publicacion.pubCodigo}" requiredMessage="Debe ingresar un código de publicación." required="true"/>
-                            
-                            <p:outputLabel for="inpNombre" value="Nombre Publicacion"/>
-                            <p:inputText id="inpNombre" maxlength="20" value="#{agregarPublicacionFormBean.publicacion.pubNombre}" requiredMessage="Debe ingresar un nombre de publicación." required="true"/>
-                            
-                            <p:outputLabel for="inpResumen" value="Resumen"/>
-                            <p:inputText id="inpResumen" maxlength="150" value="#{agregarPublicacionFormBean.publicacion.pubResumen}" requiredMessage="Debe ingresar un resumen para la publicacion." required="true"/>
-                            
-                            <p:outputLabel for="inpTipo" value="Tipo"/>
-                            <p:inputText id="inpTipo" maxlength="20" value="#{agregarPublicacionFormBean.publicacion.pubTipo}" requiredMessage="Debe ingresar un tipo a la publicacion." required="true"/>
-                            
-                            <p:outputLabel for="inpStock" value="Cantidad Existente"/>
-                            <p:inputNumber id="inpStock" maxlength="20" decimalPlaces="0" value="#{agregarPublicacionFormBean.publicacion.pubStock}" requiredMessage="Debe ingresar la cantidad actual existente." required="true"/>
-                            
-                            <p:outputLabel value="Editorial"/>
-                            <p:selectOneMenu value="#{agregarPublicacionFormBean.publicacion.pubEditorial}">
-                                <f:selectItems value="#{agregarEditorialFormBean.listadoEditoriales()}" var="editorial" itemValue="#{editorial.ediCodigo}" itemLabel="#{editorial.editNombre}"/>
-                            </p:selectOneMenu>
-                            
-                            <p:commandButton id="btnAgregarAutor" update="panelContenedorRegistro tablaPublicaciones" action="#{agregarPublicacionFormBean.agregarPublicacion()}" value="Agregar Publicación"/>
-                        </p:panelGrid>
-                    </p:panel>
-                    <p:separator/>
-                    <p:dataTable id="tablaPublicaciones" value="#{agregarPublicacionFormBean.listadoPublicaciones()}" var="p">                        
-                        <p:column headerText="Código">
-                            <h:outputText value="#{p.pubCodigo}"/>
-                        </p:column>
-                        <p:column headerText="Publicación">
-                            <h:outputText value="#{p.pubNombre}"/>
-                        </p:column>
-                        <p:column headerText="Editorial">
-                            <h:outputText value="#{p.pubEditorial}"/>
-                        </p:column>
-                        <p:column headerText="Resumen">
-                            <h:outputText value="#{p.pubResumen}"/>
-                        </p:column>
-                        <p:column headerText="Tipo">
-                            <h:outputText value="#{p.pubTipo}"/>
-                        </p:column>
-                        <p:column headerText="Cantidad">
-                            <h:outputText value="#{p.pubStock}"/>
-                        </p:column>
-                    </p:dataTable>
+                    <div id="tooplate_main">
+                        <p:panel id="panelContenedorRegistro">
+                            <p:growl id="mensajes" showDetail="false"/>
+                            <p:panelGrid id="panelRegistro" styleClass="ui-noborder" columns="2">
+                                <p:outputLabel for="inpCodigo" value="Código Publicacion"/>
+                                <p:inputText id="inpCodigo" maxlength="20" value="#{agregarPublicacionFormBean.publicacion.pubCodigo}" requiredMessage="Debe ingresar un código de publicación." required="true"/>
+
+                                <p:outputLabel for="inpNombre" value="Nombre Publicacion"/>
+                                <p:inputText id="inpNombre" maxlength="20" value="#{agregarPublicacionFormBean.publicacion.pubNombre}" requiredMessage="Debe ingresar un nombre de publicación." required="true"/>
+
+                                <p:outputLabel for="inpResumen" value="Resumen"/>
+                                <p:inputText id="inpResumen" maxlength="150" value="#{agregarPublicacionFormBean.publicacion.pubResumen}" requiredMessage="Debe ingresar un resumen para la publicacion." required="true"/>
+
+                                <p:outputLabel for="inpTipo" value="Tipo"/>
+                                <p:inputText id="inpTipo" maxlength="20" value="#{agregarPublicacionFormBean.publicacion.pubTipo}" requiredMessage="Debe ingresar un tipo a la publicacion." required="true"/>
+
+                                <p:outputLabel for="inpStock" value="Cantidad Existente"/>
+                                <p:inputNumber id="inpStock" maxlength="20" decimalPlaces="0" value="#{agregarPublicacionFormBean.publicacion.pubStock}" requiredMessage="Debe ingresar la cantidad actual existente." required="true"/>
+
+                                <p:outputLabel value="Editorial"/>
+                                <p:selectOneMenu value="#{agregarPublicacionFormBean.publicacion.pubEditorial}">
+                                    <f:selectItems value="#{agregarEditorialFormBean.listadoEditoriales()}" var="editorial" itemValue="#{editorial.ediCodigo}" itemLabel="#{editorial.editNombre}"/>
+                                </p:selectOneMenu>
+
+                                <p:commandButton id="btnAgregarAutor" update="panelContenedorRegistro tablaPublicaciones" action="#{agregarPublicacionFormBean.agregarPublicacion()}" value="Agregar Publicación"/>
+                            </p:panelGrid>
+                        </p:panel>
+                        <p:separator/>
+                        <p:dataTable id="tablaPublicaciones" value="#{agregarPublicacionFormBean.listadoPublicaciones()}" var="p">                        
+                            <p:column headerText="Código">
+                                <h:outputText value="#{p.pubCodigo}"/>
+                            </p:column>
+                            <p:column headerText="Publicación">
+                                <h:outputText value="#{p.pubNombre}"/>
+                            </p:column>
+                            <p:column headerText="Editorial">
+                                <h:outputText value="#{p.pubEditorial}"/>
+                            </p:column>
+                            <p:column headerText="Resumen">
+                                <h:outputText value="#{p.pubResumen}"/>
+                            </p:column>
+                            <p:column headerText="Tipo">
+                                <h:outputText value="#{p.pubTipo}"/>
+                            </p:column>
+                            <p:column headerText="Cantidad">
+                                <h:outputText value="#{p.pubStock}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </div>
                 </h:form>
             </ui:define>
             
