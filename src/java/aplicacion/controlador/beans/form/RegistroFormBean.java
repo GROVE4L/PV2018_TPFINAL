@@ -76,7 +76,8 @@ public class RegistroFormBean implements Serializable{
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
                             "Este usuario ya esta registrado.",
                             "Elija otro nombre de usuario."));        
-        else {
+        else 
+        {
             this.usuarioRegistro.setUsuEstado(true);
             this.usuarioRegistro.setUsuTipoUsuario("final");
             usuarioBean.agregarUsuario(this.usuarioRegistro);            

@@ -17,7 +17,7 @@ import org.primefaces.validate.ClientValidator;
 
 /**
  *
- * @author german
+ * @author german---
  */
 /**
  * Custom JSF Validator for Email input
@@ -30,7 +30,8 @@ public class EmailValidator implements Validator, ClientValidator {
     private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" 
                                                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     
-    public EmailValidator() {
+    public EmailValidator() 
+    {
         pattern = Pattern.compile(EMAIL_PATTERN);
     }
 
@@ -48,7 +49,8 @@ public class EmailValidator implements Validator, ClientValidator {
     }
 
     @Override
-    public Map<String, Object> getMetadata() {
+    public Map<String, Object> getMetadata() 
+    {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return null;
     }
