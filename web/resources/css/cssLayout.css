@@ -10,12 +10,12 @@
     margin: 0 auto; /*esto hace que el contenedor se centre verticalmente*/
     padding: 2px;
     text-align: left; /* debemos colocarlo sino todo el texto se centro por la parte derecha*/
-    width:  960px; /*este sera el ancho por defecto, lo heredaran encabezado*/
+    width:  1300px; /*este sera el ancho por defecto, lo heredaran encabezado*/
 }
 
 #top{
-    background-color: #036fab;
-    color: white;
+    background-color: coral;
+    color: coral;
     padding: 0px;
     position: relative;
 }
@@ -27,17 +27,17 @@
 
 #tooplate_header {
     background: url(../images/iglesia_header.jpg) no-repeat;
-    height: 111px;
+    height: 180px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 auto;
 }
 
 #tooplate_middle {
     background: url(../images/iglesia_middle.jpg) no-repeat;
     clear: both;
-    height: 30px;
+    height: 10px;
     margin: 0 auto;
-    padding: 20px 40px;
+    padding: 20px 0px;
 }
 
 #tooplate_main {
@@ -51,7 +51,7 @@
 /*controla la linea punteada*/
 #titulo{ 
     float: left;
-    width: 880px; /*largo*/
+    width: 1300px; /*largo*/
     margin-top: 10%;/*posicion*/
     color: #ffffff;
 }

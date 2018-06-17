@@ -16,25 +16,25 @@
 
     <h:body>
         <div id="contenedor">
-        <div id="top">
-            <ui:insert name="top">
-                <div id="tooplate_header">
-                    <div id="titulo">
-                        <center><h1>IGLESIA SAN FRANCISCO</h1></center>
-                    </div> 
-                </div>
-                <div id="tooplate_middle">
-                        <h:form rendered="true">
-                            <p:menubar>                    
-                                <p:menuitem value="Inicio" url="login.xhtml"/>                             
-                                
+            <div id="top">
+                <ui:insert name="top">
+                    <div id="tooplate_header">
+                        <div id="titulo">
+                            <center><h1>IGLESIA SAN FRANCISCO</h1></center>
+                        </div> 
+                    </div>
+                    <div id="tooplate_middle">
+                        <h:form rendered="true" >
+                            <p:menubar >                    
+                                <p:menuitem value="Inicio" url="login.xhtml" />                             
+
                                 <p:menuitem rendered="#{loginFormBean.esFinal()}" value="Lista de Libros"/>
                                 <p:menuitem rendered="#{loginFormBean.esFinal()}" value="Pedidos"/>
                                 <p:menuitem rendered="#{loginFormBean.esFinal()}" value="Informacion"/>
-                                
+
                                 <p:menuitem rendered="#{loginFormBean.esAdministrativo()}" value="Pedidos Usuarios"/>
                                 <p:menuitem rendered="#{loginFormBean.esAdministrativo()}" value="Lista de Libros"/>
-                               
+
                                 <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Publicaciones" icon="ui-icon-help">
                                     <p:menuitem value="Agregar Publicaciones" url="agregarPublicacion.xhtml"/>   
                                 </p:submenu>
@@ -46,7 +46,7 @@
                                     <p:menuitem value="Agregar Autor" url="agregarAutor.xhtml"/>   
                                     <p:menuitem value="Modificar o Eliminar Autor" url="modificarBorrarAutor.xhtml"/>  
                                 </p:submenu>
-                                
+
                                 <f:facet name="options">
                                     <h:form rendered="#{loginFormBean.verificarSesion()}">                            
                                         <p:outputLabel value="Ahora esta logueado como #{loginFormBean.obtenerSesion().usuNombreUsuario}" />                                
@@ -57,32 +57,32 @@
                                 <f:facet name="options">
                                     <h:form rendered="#{loginFormBean.verificarSesion()eq false}">                            
                                         <p:growl id="mensajes" sticky="true"/>                                        
-                                            <p:outputLabel for="inputNombre" value="Usuario" />
-                                            <p:inputText id="inputNombre" size="10" placeholder="Usuario" required="true" requiredMessage="Debe ingresar un Usuario" value="#{loginFormBean.usuarioLogin.usuNombreUsuario}"/>
-                                            <p:outputLabel for="inputPass" value="Contraseña"/>                        
-                                            <p:password id="inputPass" size="10" placeholder="Contraseña" required="true" requiredMessage="Debe ingresar una Constraseña."  value="#{loginFormBean.usuarioLogin.usuPassword}"/>
-                                            <p:commandButton id="btnValidar" value="Validar Usuario" update="mensajes" action="#{loginFormBean.validarUsuario()}"/>                        
-                                            <p:outputLabel value="¿No tiene cuenta?" /> 
-                                            <p:commandButton id="btnAgregar" immediate="true" value="Registrarse" action="registrarUsuario?faces-redirect=true"/>
+                                        <p:outputLabel for="inputNombre" value="Usuario" />
+                                        <p:inputText id="inputNombre" size="10" placeholder="Usuario" required="true" requiredMessage="Debe ingresar un Usuario" value="#{loginFormBean.usuarioLogin.usuNombreUsuario}"/>
+                                        <p:outputLabel for="inputPass" value="Contraseña"/>                        
+                                        <p:password id="inputPass" size="10" placeholder="Contraseña" required="true" requiredMessage="Debe ingresar una Constraseña."  value="#{loginFormBean.usuarioLogin.usuPassword}"/>
+                                        <p:commandButton id="btnValidar" value="Validar Usuario" update="mensajes" action="#{loginFormBean.validarUsuario()}"/>                        
+                                        <p:outputLabel value="¿No tiene cuenta?" /> 
+                                        <p:commandButton id="btnAgregar" immediate="true" value="Registrarse" action="registrarUsuario?faces-redirect=true"/>
                                     </h:form>
                                 </f:facet>
                             </p:menubar>
                         </h:form>
-                        
+
                     </div>
-            </ui:insert>
-            
-        </div>
+                </ui:insert>
 
-        <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
-        </div>
+            </div>
 
-        <div id="bottom">
-            <ui:insert name="bottom">
-                Univeridad Nacional de Jujuy - Apu - Programacion visual 2018
-            </ui:insert>
-        </div>
+            <div id="content" class="center_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+
+            <div id="bottom">
+                <ui:insert name="bottom">
+                    Univeridad Nacional de Jujuy - Apu - Programacion visual 2018
+                </ui:insert>
+            </div>
         </div>
     </h:body>
 

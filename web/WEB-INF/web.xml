@@ -6,7 +6,7 @@
     </context-param>
     <context-param>
 	<param-name>primefaces.THEME</param-name>
-	<param-value>theme7</param-value>
+	<param-value>theme8</param-value>
     </context-param>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
