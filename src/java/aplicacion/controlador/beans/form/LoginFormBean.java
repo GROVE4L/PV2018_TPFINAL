@@ -112,7 +112,7 @@ public class LoginFormBean implements Serializable{
         return (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioValido");
     }
     
-    public Perfil obtenerPerfilSesion() { //Se usa para obtener los atributos del usuario logeado
+    public Perfil obtenerPerfilSesion() { //Se usa para obtener los atributos del perfil logeado
         PerfilBean pBean = new PerfilBean();
         return pBean.obtenerPerfil(this.obtenerSesion().getUsuCodigo());
     }

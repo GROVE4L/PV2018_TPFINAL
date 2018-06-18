@@ -26,9 +26,16 @@
                     <div id="tooplate_middle">
                         <h:form rendered="true" >
                             <p:menubar >                    
-                                <p:menuitem value="Inicio" url="login.xhtml" />                             
-
-                                <p:menuitem rendered="#{loginFormBean.esFinal()}" value="Lista de Libros"/>
+                                <p:menuitem value="Inicio" url="login.xhtml" />
+                                <p:menuitem rendered="#{loginFormBean.verificarSesion()}" value="Mi Usuario" url="miUsuario.xhtml" />
+                                <p:submenu rendered="#{loginFormBean.verificarSesion()}" label="Consultas">
+                                    <p:submenu rendered="#{loginFormBean.verificarSesion()}" label="Listados">                                    
+                                        <p:menuitem value="Autores" url="consultarAutores.xhtml"/>  
+                                        <p:menuitem value="Editoriales" url="consultarEditoriales.xhtml"/>
+                                        <p:menuitem value="Clasificaciones" url="consultarClasificaciones.xhtml"/>
+                                    </p:submenu>                                    
+                                </p:submenu>                                
+                                
                                 <p:menuitem rendered="#{loginFormBean.esFinal()}" value="Pedidos"/>
                                 <p:menuitem rendered="#{loginFormBean.esFinal()}" value="Informacion"/>
 

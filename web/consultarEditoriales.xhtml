@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./estructura/masterTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form rendered="#{loginFormBean.verificarSesion() eq false}" onsubmit="">
+                    <!-- Redireccion a pagina login -->
+                    <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
+                </h:form>
+                <h:form id="formEdicion" rendered="#{loginFormBean.verificarSesion()}">                    
+                    <div id="tooplate_main">
+                        <p:panel id="panelContenedorModificarBorrar" >
+                            <p:growl id="mensajes" showDetail="false"/>
+                            <br/>
+                            <p:outputLabel value="Listado de Editoriales" style="font-weight: bold" />
+                            <p:dataTable id="tablaEditoriales" var="e" value="#{agregarEditorialFormBean.listadoEditoriales()}"
+                                         widgetVar="listaEditorialesWV" emptyMessage="Nada Encontrado">
+                                
+                                <f:facet name="header">
+                                    <p:outputPanel>
+                                        <h:outputText value="Buscar en todos los campos:"/>
+                                        <p:inputText id="globalFilter"
+                                                     onkeyup="PF('listaEditorialesWV').filter()"
+                                                     style="width:150px" placeholder="Busqueda"/>
+                                    </p:outputPanel>
+                                </f:facet>
+                                <p:column headerText="Nombre Editorial" filterStyle="display:none" 
+                                          filterBy="#{e.editNombre}" filterMatchMode="contains">
+                                    <h:outputText value="#{e.editNombre}"/>
+                                </p:column>
+                            </p:dataTable>                        
+                        </p:panel>
+                    </div>    
+                </h:form>
+            </ui:define>
+            
+        </ui:composition>
+
+    </body>
+</html>
