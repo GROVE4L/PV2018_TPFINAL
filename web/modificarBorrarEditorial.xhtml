@@ -51,16 +51,16 @@
                                     <p:commandButton icon="fa fa-trash" action="#{agregarEditorialFormBean.borrarEditorial(e)}" update=":formEdicion:tablaEditoriales">
                                         <p:confirm header="Confirmación" message="¿Esta seguro de borrar?" icon="ui-icon-alert" />
                                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+                                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="fa fa-trash" />
                                         </p:confirmDialog>
                                     </p:commandButton>
                                     <p:spacer width="5" height="5"/>
                                     <p:commandButton icon="fa fa-refresh" action="#{agregarEditorialFormBean.recuperarEditorial(e)}" update=":formEdicion:tablaEditoriales">
                                         <p:confirm header="Confirmación" message="¿Esta seguro de recuperar esta Editorial?" icon="ui-icon-alert" />
                                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+                                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="fa fa-trash" />
                                         </p:confirmDialog>
                                     </p:commandButton>
 
@@ -81,14 +81,14 @@
                             <h:form id="frmModificar">
                                 <h:panelGrid id="tblModificarEditorial" columns="2" cellpadding="2">
                                     
-                                    <p:outputLabel for="inputNombre" value="Nombre Editorial"/>                                     
+                                    <p:outputLabel for="inputNombre" value="Nombre Editorial"/>
                                     <p:inputText id="inputNombre" value="#{agregarEditorialFormBean.editorialSeleccionada.editNombre}" required="true" size="40" maxlength="20"/>
                                     
                                     <p:commandButton value="GUARDAR DATOS" oncomplete="PF('modificarWV').hide()" update=":msjDlg :frmModificar :formEdicion:panelContenedorModificarBorrar" action="#{agregarEditorialFormBean.modificarEditorial()}">
-                                        <p:confirm header="Confirmación" message="¿Esta seguro de editar?" icon="ui-icon-alert" />
+                                        <p:confirm header="Confirmación" message="¿Esta seguro de editar?" icon="fa fa-bell" />
                                             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+                                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="fa fa-trash" />
                                         </p:confirmDialog>
                                     </p:commandButton>    
                                     <p:commandButton immediate="true" value="SALIR" style=" float: right"
