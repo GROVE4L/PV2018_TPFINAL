@@ -16,45 +16,47 @@
                     <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
                 </h:form>
                 <h:form id="formEdicion" rendered="#{loginFormBean.verificarSesion() and loginFormBean.esSupervisor()}">                    
-                    <p:panel id="panelContenedorModificarBorrar">
-                        <p:growl id="mensajes" showDetail="false"/>
-                        <br/>
-                        Listado de Clasificaciones
-                        <p:dataTable id="tablaClasificaciones" var="c" value="#{agregarClasificacionFormBean.listadoClasificaciones()}"
-                                     widgetVar="listaClasificacionesWV" emptyMessage="Nada Encontrado">
-                            <f:facet name="header">
-                                <p:outputPanel>
-                                    <h:outputText value="Buscar en todos los campos:"/>
-                                    <p:inputText id="globalFilter"
-                                                onkeyup="PF('listaClasificacionesWV').filter()"
-                                                style="width:150px" placeholder="Busqueda"/>
-                                </p:outputPanel>
-                            </f:facet>
+                    <div id="tooplate_main">
+                        <p:panel id="panelContenedorModificarBorrar">
+                            <p:growl id="mensajes" showDetail="false"/>
+                            <br/>
+                            Listado de Clasificaciones
+                            <p:dataTable id="tablaClasificaciones" var="c" value="#{agregarClasificacionFormBean.listadoClasificaciones()}"
+                                         widgetVar="listaClasificacionesWV" emptyMessage="Nada Encontrado">
+                                <f:facet name="header">
+                                    <p:outputPanel>
+                                        <h:outputText value="Buscar en todos los campos:"/>
+                                        <p:inputText id="globalFilter"
+                                                     onkeyup="PF('listaClasificacionesWV').filter()"
+                                                     style="width:150px" placeholder="Busqueda"/>
+                                    </p:outputPanel>
+                                </f:facet>
 
-                            <p:column headerText="Código" filterStyle="display:none" filterBy="#{c.claCodigo}" filterMatchMode="contains">
-                                <h:outputText value="#{c.claCodigo}"/>
-                            </p:column>
+                                <p:column headerText="Código" filterStyle="display:none" filterBy="#{c.claCodigo}" filterMatchMode="contains">
+                                    <h:outputText value="#{c.claCodigo}"/>
+                                </p:column>
 
-                            <p:column headerText="Identificador" filterStyle="display:none" filterBy="#{c.claIdentificador}" filterMatchMode="contains">
-                                <h:outputText value="#{c.claIdentificador}"/>
-                            </p:column>
-                            <p:column headerText="Descripción" filterStyle="display:none" filterBy="#{c.claDescripcion}" filterMatchMode="contains">
-                                <h:outputText value="#{c.claDescripcion}"/>
-                            </p:column>
-                            
-                            <p:column style="width:80px" headerText="Opciones">
-                                <p:commandButton icon="ui-icon-pencil" oncomplete="PF('modificarWV').show()" action="#{agregarClasificacionFormBean.setClasificacionSeleccionada(c)}" update=":dlgModificacion" />
-                                <p:spacer width="5" height="5"/>  
-                                <p:commandButton icon="ui-icon-trash" action="#{agregarClasificacionFormBean.borrarClasificacion(c)}" update=":formEdicion:tablaClasificaciones">                                    
-                                    <p:confirm header="Confirmación" message="¿Esta seguro de borrar?" icon="ui-icon-alert" />
-                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                                    </p:confirmDialog>
-                                </p:commandButton>
-                            </p:column>
-                        </p:dataTable>                        
-                    </p:panel>                    
+                                <p:column headerText="Identificador" filterStyle="display:none" filterBy="#{c.claIdentificador}" filterMatchMode="contains">
+                                    <h:outputText value="#{c.claIdentificador}"/>
+                                </p:column>
+                                <p:column headerText="Descripción" filterStyle="display:none" filterBy="#{c.claDescripcion}" filterMatchMode="contains">
+                                    <h:outputText value="#{c.claDescripcion}"/>
+                                </p:column>
+
+                                <p:column style="width:80px" headerText="Opciones">
+                                    <p:commandButton icon="ui-icon-pencil" oncomplete="PF('modificarWV').show()" action="#{agregarClasificacionFormBean.setClasificacionSeleccionada(c)}" update=":dlgModificacion" />
+                                    <p:spacer width="5" height="5"/>  
+                                    <p:commandButton icon="ui-icon-trash" action="#{agregarClasificacionFormBean.borrarClasificacion(c)}" update=":formEdicion:tablaClasificaciones">                                    
+                                        <p:confirm header="Confirmación" message="¿Esta seguro de borrar?" icon="ui-icon-alert" />
+                                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                        </p:confirmDialog>
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>                        
+                        </p:panel>
+                    </div>    
                 </h:form>
                 
                 

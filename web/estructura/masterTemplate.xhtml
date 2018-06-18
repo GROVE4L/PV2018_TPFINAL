@@ -53,6 +53,10 @@
                                     <p:menuitem value="Agregar Autor" url="agregarAutor.xhtml"/>   
                                     <p:menuitem value="Modificar o Eliminar Autor" url="modificarBorrarAutor.xhtml"/>  
                                 </p:submenu>
+                                <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Clasificacion">
+                                    <p:menuitem value="Agregar Clasificacion" url="agregarClasificacion.xhtml"/>   
+                                    <p:menuitem value="Modificar o Eliminar Clasificacion" url="modificarBorrarClasificacion.xhtml"/>  
+                                </p:submenu>
 
                                 <f:facet name="options">
                                     <h:form rendered="#{loginFormBean.verificarSesion()}">                            

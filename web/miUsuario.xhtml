@@ -15,52 +15,54 @@
                     <!-- Redireccion a pagina login -->
                     <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
                 </h:form>
-                <h:form id="formUsuario" rendered="#{loginFormBean.verificarSesion()}">                    
-                    <p:panel id="panelContenedor">
-                        <p:growl id="mensajes" showDetail="false"/>
-                        <p:panelGrid columns="2" styleClass="ui-noborder">
-                            <p:outputLabel value="Datos de Login" style="font-weight: bold" />
-                            <p:outputLabel/>
-                            
-                            <p:outputLabel value="Nombre:" />
-                            <p:outputLabel value="#{loginFormBean.obtenerSesion().usuNombreUsuario}"/>
-                            
-                            <p:outputLabel value="Contraseña:" />
-                            <p:outputLabel value="#{loginFormBean.obtenerSesion().usuPassword}"/>
-                            
-                            <p:separator/>
-                            <p:outputLabel/>
-                            
-                            <p:outputLabel value="Datos del Usuario" style="font-weight: bold" /> 
-                            <p:outputLabel/>
-                            
-                            <p:outputLabel value="Nombres:" /> 
-                            <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perNombres}"/>
-                            
-                            <p:outputLabel value="Apellidos:"/> 
-                            <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perApellidos}"/>
-                            
-                            <p:outputLabel value="D.N.I." /> 
-                            <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perDni}"/>
-                            
-                            <p:outputLabel value="Fecha de Nacimiento:" /> 
-                            <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perFechaNac}"> 
-                                <f:convertDateTime pattern="dd/MM/yyyy"/>
-                            </p:outputLabel>
-                            <p:outputLabel value="E-Mail:" /> 
-                            <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perEmail}"/>
-                            
-                            <p:outputLabel value="Dirección:" /> 
-                            <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perDireccion}"/>
-                            
-                            <p:outputLabel value="Teléfono:" /> 
-                            <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perTelefono}"/>                         
-                            
-                            <p:commandButton value="Modificar Datos" icon="ui-icon-pencil" 
-                                             action="#{loginFormBean.recibirUsuario(loginFormBean.obtenerSesion())}" 
-                                             oncomplete="PF('modificarWV').show()" update=":formUsuario :dlgModificacion"/>
-                        </p:panelGrid>
-                    </p:panel>                    
+                <h:form id="formUsuario" rendered="#{loginFormBean.verificarSesion()}">
+                    <div id="tooplate_main">
+                        <p:panel id="panelContenedor">
+                            <p:growl id="mensajes" showDetail="false"/>
+                            <p:panelGrid columns="2" styleClass="ui-noborder">
+                                <p:outputLabel value="Datos de Login" style="font-weight: bold" />
+                                <p:outputLabel/>
+
+                                <p:outputLabel value="Nombre:" />
+                                <p:outputLabel value="#{loginFormBean.obtenerSesion().usuNombreUsuario}"/>
+
+                                <p:outputLabel value="Contraseña:" />
+                                <p:outputLabel value="#{loginFormBean.obtenerSesion().usuPassword}"/>
+
+                                <p:separator/>
+                                <p:outputLabel/>
+
+                                <p:outputLabel value="Datos del Usuario" style="font-weight: bold" /> 
+                                <p:outputLabel/>
+
+                                <p:outputLabel value="Nombres:" /> 
+                                <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perNombres}"/>
+
+                                <p:outputLabel value="Apellidos:"/> 
+                                <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perApellidos}"/>
+
+                                <p:outputLabel value="D.N.I." /> 
+                                <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perDni}"/>
+
+                                <p:outputLabel value="Fecha de Nacimiento:" /> 
+                                <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perFechaNac}"> 
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </p:outputLabel>
+                                <p:outputLabel value="E-Mail:" /> 
+                                <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perEmail}"/>
+
+                                <p:outputLabel value="Dirección:" /> 
+                                <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perDireccion}"/>
+
+                                <p:outputLabel value="Teléfono:" /> 
+                                <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perTelefono}"/>                         
+
+                                <p:commandButton value="Modificar Datos" icon="ui-icon-pencil" 
+                                                 action="#{loginFormBean.recibirUsuario(loginFormBean.obtenerSesion())}" 
+                                                 oncomplete="PF('modificarWV').show()" update=":formUsuario :dlgModificacion"/>
+                            </p:panelGrid>
+                        </p:panel>
+                    </div>    
                 </h:form>
                 
                 
