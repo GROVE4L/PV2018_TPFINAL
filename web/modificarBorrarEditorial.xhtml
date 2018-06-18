@@ -46,9 +46,9 @@
                                 </p:column>
 
                                 <p:column style="width:110px" headerText="Opciones">
-                                    <p:commandButton icon="ui-icon-pencil" oncomplete="PF('modificarWV').show()" action="#{agregarEditorialFormBean.setEditorialSeleccionada(e)}" update=":dlgModificacion" />
+                                    <p:commandButton icon="fa fa-pencil-square-o" oncomplete="PF('modificarWV').show()" action="#{agregarEditorialFormBean.setEditorialSeleccionada(e)}" update=":dlgModificacion" />
                                     <p:spacer width="5" height="5"/>  
-                                    <p:commandButton icon="ui-icon-trash" action="#{agregarEditorialFormBean.borrarEditorial(e)}" update=":formEdicion:tablaEditoriales">
+                                    <p:commandButton icon="fa fa-trash" action="#{agregarEditorialFormBean.borrarEditorial(e)}" update=":formEdicion:tablaEditoriales">
                                         <p:confirm header="Confirmación" message="¿Esta seguro de borrar?" icon="ui-icon-alert" />
                                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                                             <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
@@ -56,7 +56,7 @@
                                         </p:confirmDialog>
                                     </p:commandButton>
                                     <p:spacer width="5" height="5"/>
-                                    <p:commandButton icon="ui-icon-refresh" action="#{agregarEditorialFormBean.recuperarEditorial(e)}" update=":formEdicion:tablaEditoriales">
+                                    <p:commandButton icon="fa fa-refresh" action="#{agregarEditorialFormBean.recuperarEditorial(e)}" update=":formEdicion:tablaEditoriales">
                                         <p:confirm header="Confirmación" message="¿Esta seguro de recuperar esta Editorial?" icon="ui-icon-alert" />
                                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                                             <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
