@@ -7,13 +7,10 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
-        <h:outputStylesheet name="./css/usuarios.css"/>
-        <h:outputStylesheet name="./css/fontawesome-all.min.css"/>
-        <h:outputStylesheet library="font-awesome-5.0.13" name="webjars/font-awesome/5.0.13/web-fonts-with-css/font-awesome.css"/>
+        <h:outputStylesheet name="./css/usuarios.css"/>       
         <title>Basílica San Francisco</title>
     </h:head>
 
@@ -38,14 +35,14 @@
                                 <p:menuitem rendered="#{loginFormBean.esAdministrativo()}" value="Pedidos Usuarios"/>
                                 <p:menuitem rendered="#{loginFormBean.esAdministrativo()}" value="Lista de Libros"/>
 
-                                <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Publicaciones" icon="fa fa-plus">
+                                <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Publicaciones">
                                     <p:menuitem value="Agregar Publicaciones" url="agregarPublicacion.xhtml"/>   
                                 </p:submenu>
-                                <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Editorial" icon="fa fa-plus">
+                                <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Editorial">
                                     <p:menuitem value="Agregar Editorial" url="agregarEditorial.xhtml"/>   
                                     <p:menuitem value="Modificar o Eliminar Editorial" url="modificarBorrarEditorial.xhtml"/>  
                                 </p:submenu>
-                                <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Autor" icon="fa fa-plus">
+                                <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Autor">
                                     <p:menuitem value="Agregar Autor" url="agregarAutor.xhtml"/>   
                                     <p:menuitem value="Modificar o Eliminar Autor" url="modificarBorrarAutor.xhtml"/>  
                                 </p:submenu>
@@ -54,7 +51,7 @@
                                     <h:form rendered="#{loginFormBean.verificarSesion()}">                            
                                         <p:outputLabel value="Ahora esta logueado como #{loginFormBean.obtenerSesion().usuNombreUsuario}" />                                
                                         <p:spacer width="15" height="15"/>                                        
-                                        <p:commandButton value="Desloguear" action="#{loginFormBean.deslog()}" icon="fa fa-plus" />
+                                        <p:commandButton value="Desloguear" action="#{loginFormBean.deslog()}"/>
                                     </h:form>
                                 </f:facet>
                                 <f:facet name="options">

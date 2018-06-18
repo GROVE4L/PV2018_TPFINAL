@@ -27,17 +27,7 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${libs.PrimeFaces_Themes.classpath}</file>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.all-themes-1.0.10.jar}</file>
-                </library>
-                <library dirs="200">
                     <file>${file.reference.theme8.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.font-awesome-5.0.13.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
