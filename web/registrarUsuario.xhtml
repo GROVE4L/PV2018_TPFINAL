@@ -49,10 +49,7 @@
                                 <p:inputText id="inputDireccion" placeholder="Dirección" value="#{registroFormBean.usuarioPerfil.perDireccion}" required="true" requiredMessage="Ingrese una Dirección" maxlength="20"/>
                                 
                                 <p:outputLabel for="inputTelefono" value="Teléfono" />
-                                <p:inputNumber id="inputTelefono" placeholder="Teléfono" required="true" value="#{registroFormBean.usuarioPerfil.perTelefono}" requiredMessage="Ingrese un Teléfono" decimalPlaces="0">
-                                    <f:validateLength minimum="8" maximum="8"/>
-                                    <f:validateLongRange maximum="8"/>
-                                </p:inputNumber>                                    
+                                <p:inputNumber id="inputTelefono" placeholder="Teléfono" maxlength="14"  required="true" value="#{registroFormBean.usuarioPerfil.perTelefono}" requiredMessage="Ingrese un Teléfono" decimalPlaces="0"/>                                    
                                 
                                 
                                 <p:commandButton id="btnRegistro" value="Registrarse" update="frmRegistro" action="#{registroFormBean.registrarUsuario()}"/>
