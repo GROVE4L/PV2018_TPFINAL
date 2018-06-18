@@ -28,14 +28,23 @@ public class PerfilBean implements Serializable{
         this.perfil = perfil;
     }
 
+    public Perfil obtenerPerfil(int codigoPerfilBuscado) {
+        PerfilDAOImp perfilDAOImp = new PerfilDAOImp();
+        return perfilDAOImp.obtenerPerfil(codigoPerfilBuscado);
+    }
     
     public void agregarPerfil(Perfil perfil) {
-        PerfilDAOImp usuarioDAOImp = new PerfilDAOImp();
-        usuarioDAOImp.add(perfil);
+        PerfilDAOImp perfilDAOImp = new PerfilDAOImp();
+        perfilDAOImp.add(perfil);
     }
     
     public boolean buscarPerfil(Perfil p){
         PerfilDAOImp perfilDAOImp = new PerfilDAOImp();
         return perfilDAOImp.buscarPerfil(p);
+    }
+    
+    public void actualizarPerfil(Perfil p) {
+        PerfilDAOImp perfilDAOImp = new PerfilDAOImp();
+        perfilDAOImp.update(p);
     }
 }

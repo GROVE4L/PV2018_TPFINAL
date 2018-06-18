@@ -11,4 +11,5 @@ public interface IPerfilDAO {
     public void update(Perfil perfil);
     public void delete(Perfil perfil);
     public boolean buscarPerfil(Perfil perfil);
+    public Perfil obtenerPerfil(int codigoPerfilBuscado);
 }

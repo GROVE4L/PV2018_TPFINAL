@@ -64,14 +64,11 @@ public class RegistroFormBean implements Serializable{
     public void setUsuarioBean(UsuarioBean usuarioBean) {
         this.usuarioBean = usuarioBean;
     }
-        
+          
     public void registrarUsuario() {
         boolean existeUsuario = usuarioBean.buscarUsuario(this.usuarioRegistro);
         boolean existePerfil = perfilBean.buscarPerfil(this.usuarioPerfil);
-        FacesContext facesContext = FacesContext.getCurrentInstance();        
-        System.out.println("El usuario Existe?: "+existeUsuario);
-        System.out.println("El perfil existe?: "+existePerfil);
-        System.out.println("El perfil existe?: "+usuarioPerfil.getPerDni().getClass());
+        FacesContext facesContext = FacesContext.getCurrentInstance();
         if(existeUsuario || existePerfil)
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
                             "Este usuario ya esta registrado.",

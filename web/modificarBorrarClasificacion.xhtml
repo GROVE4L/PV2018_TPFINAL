@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./estructura/masterTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form rendered="#{loginFormBean.verificarSesion() eq false}" onsubmit="">
+                    <!-- Redireccion a pagina login -->
+                    <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
+                </h:form>
+                <h:form id="formEdicion" rendered="#{loginFormBean.verificarSesion() and loginFormBean.esSupervisor()}">                    
+                    <p:panel id="panelContenedorModificarBorrar">
+                        <p:growl id="mensajes" showDetail="false"/>
+                        <br/>
+                        Listado de Clasificaciones
+                        <p:dataTable id="tablaClasificaciones" var="c" value="#{agregarClasificacionFormBean.listadoClasificaciones()}"
+                                     widgetVar="listaClasificacionesWV" emptyMessage="Nada Encontrado">
+                            <f:facet name="header">
+                                <p:outputPanel>
+                                    <h:outputText value="Buscar en todos los campos:"/>
+                                    <p:inputText id="globalFilter"
+                                                onkeyup="PF('listaClasificacionesWV').filter()"
+                                                style="width:150px" placeholder="Busqueda"/>
+                                </p:outputPanel>
+                            </f:facet>
+
+                            <p:column headerText="Código" filterStyle="display:none" filterBy="#{c.claCodigo}" filterMatchMode="contains">
+                                <h:outputText value="#{c.claCodigo}"/>
+                            </p:column>
+
+                            <p:column headerText="Identificador" filterStyle="display:none" filterBy="#{c.claIdentificador}" filterMatchMode="contains">
+                                <h:outputText value="#{c.claIdentificador}"/>
+                            </p:column>
+                            <p:column headerText="Descripción" filterStyle="display:none" filterBy="#{c.claDescripcion}" filterMatchMode="contains">
+                                <h:outputText value="#{c.claDescripcion}"/>
+                            </p:column>
+                            
+                            <p:column style="width:80px" headerText="Opciones">
+                                <p:commandButton icon="ui-icon-pencil" oncomplete="PF('modificarWV').show()" action="#{agregarClasificacionFormBean.setClasificacionSeleccionada(c)}" update=":dlgModificacion" />
+                                <p:spacer width="5" height="5"/>  
+                                <p:commandButton icon="ui-icon-trash" action="#{agregarClasificacionFormBean.borrarClasificacion(c)}" update=":formEdicion:tablaClasificaciones">                                    
+                                    <p:confirm header="Confirmación" message="¿Esta seguro de borrar?" icon="ui-icon-alert" />
+                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                    </p:confirmDialog>
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>                        
+                    </p:panel>                    
+                </h:form>
+                
+                
+                    <p:dialog id="dlgModificacion"
+                      widgetVar="modificarWV"
+                      modal="true" resizable="false"
+                      header="Formulario Para Modificar Clasificaciones"
+                      showEffect="drop" hideEffect="drop">
+                        <p:growl id="msjDlg" showDetail="false"
+                                 showSummary="true" sticky="false"/>
+                            <h:form id="frmModificar">
+                                <h:panelGrid id="tblModificarClasificacion" columns="2" cellpadding="2">
+                                    
+                                    <p:outputLabel value="Identificador"/>
+                                    <p:outputLabel value="#{agregarClasificacionFormBean.clasificacionSeleccionada.claIdentificador}"/>                                    
+                                    
+                                    <p:outputLabel for="inputDesc" value="Descripción"/>
+                                    <p:inputText id="inputDesc" value="#{agregarClasificacionFormBean.clasificacionSeleccionada.claDescripcion}" required="true" size="40" maxlength="100"/>
+                                                                       
+                                    <p:commandButton value="GUARDAR DATOS" oncomplete="PF('modificarWV').hide()" update=":msjDlg :frmModificar :formEdicion:panelContenedorModificarBorrar" action="#{agregarClasificacionFormBean.modificarClasificacion()}">
+                                        <p:confirm header="Confirmación" message="¿Esta seguro de editar?" icon="ui-icon-alert" />                                        
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                        </p:confirmDialog>
+                                    </p:commandButton>    
+                                    <p:commandButton immediate="true" value="SALIR" style=" float: right"
+                                                 oncomplete="PF('modificarWV').hide()"/>                                    
+                                </h:panelGrid>
+                          </h:form>   
+                    </p:dialog>
+                
+                
+                
+                
+            </ui:define>
+            
+        </ui:composition>
+
+    </body>
+</html>

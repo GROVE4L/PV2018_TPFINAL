@@ -46,7 +46,12 @@ public class UsuarioDAOImp implements IUsuarioDAO {
 
     @Override
     public void update(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        s.update(usuario);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override

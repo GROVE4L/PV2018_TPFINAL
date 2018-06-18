@@ -1,6 +1,8 @@
 package aplicacion.controlador.beans.form;
 
+import aplicacion.controlador.beans.PerfilBean;
 import aplicacion.controlador.beans.UsuarioBean;
+import aplicacion.modelo.dominio.Perfil;
 import aplicacion.modelo.dominio.Usuario;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
@@ -20,12 +22,45 @@ public class LoginFormBean implements Serializable{
     @ManagedProperty(value = "#{usuarioBean}")
     private UsuarioBean usuarioBean;
     
-    private Usuario usuarioLogin;
+    @ManagedProperty(value = "#{perfilBean}")
+    private PerfilBean perfilBean;
     
+    private Usuario usuarioLogin;
+    private Usuario usuarioLoginSeleccionado;
+    private Perfil perfilLoginSeleccionado;
+
     public LoginFormBean() {
         this.usuarioLogin = new Usuario();
+        this.usuarioLoginSeleccionado = new Usuario();
+        this.perfilLoginSeleccionado = new Perfil();
     }
 
+    public Perfil getPerfilLoginSeleccionado() {
+        return perfilLoginSeleccionado;
+    }
+
+    public void setPerfilLoginSeleccionado(Perfil perfilLoginSeleccionado) {
+        this.perfilLoginSeleccionado = perfilLoginSeleccionado;
+    }
+
+    
+    public PerfilBean getPerfilBean() {
+        return perfilBean;
+    }
+
+    public void setPerfilBean(PerfilBean perfilBean) {
+        this.perfilBean = perfilBean;
+    }
+    
+    public Usuario getUsuarioLoginSeleccionado() {
+        return usuarioLoginSeleccionado;
+    }
+
+    public void setUsuarioLoginSeleccionado(Usuario usuarioLoginSeleccionado) {
+        this.usuarioLoginSeleccionado = usuarioLoginSeleccionado;
+    }
+
+    
     public Usuario getUsuarioLogin() {
         return usuarioLogin;
     }
@@ -76,7 +111,29 @@ public class LoginFormBean implements Serializable{
     public Usuario obtenerSesion() { //Se usa para obtener los atributos del usuario logeado
         return (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioValido");
     }
-
+    
+    public Perfil obtenerPerfilSesion() { //Se usa para obtener los atributos del usuario logeado
+        PerfilBean pBean = new PerfilBean();
+        return pBean.obtenerPerfil(this.obtenerSesion().getUsuCodigo());
+    }
+    
+    public void recibirUsuario(Usuario u) {
+        int codigoUsuario = usuarioBean.obtenerCodigoUsuario(u);
+        this.usuarioLoginSeleccionado = u;
+        this.perfilLoginSeleccionado = perfilBean.obtenerPerfil(codigoUsuario);
+    }
+    
+    public void actualizarUsuario() {
+        System.out.println("=========================");
+        System.out.println("HOLA?!?!");
+        FacesContext facesContext = FacesContext.getCurrentInstance();        
+        System.out.println("Edicion valida, guardando...");
+        usuarioBean.actualizarUsuario(this.usuarioLoginSeleccionado);            
+        perfilBean.actualizarPerfil(this.perfilLoginSeleccionado);
+        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                        "Usuario Actualizado",""));                
+    }
+    
     public String validarUsuario() {
         
         Usuario usuarioValidado = usuarioBean.validarUsuario(this.usuarioLogin);
@@ -90,7 +147,7 @@ public class LoginFormBean implements Serializable{
         }
         else {
             //VARIABLES DE SESION                        
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioValido", usuarioValidado);            
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioValido", usuarioValidado);
             //System.out.println("Se puso en sessionMap: ");
             //System.out.println("nombre: "+((Usuario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioValido")).getUsuNombreUsuario());
             /////////////////////

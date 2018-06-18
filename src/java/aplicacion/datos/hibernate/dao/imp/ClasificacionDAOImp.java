@@ -26,12 +26,22 @@ public class ClasificacionDAOImp implements IClasificacionDAO {
 
     @Override
     public void update(Clasificacion c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        s.update(c);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override
     public void delete(Clasificacion c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        s.delete(c);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override

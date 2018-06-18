@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./estructura/masterTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form rendered="#{loginFormBean.verificarSesion() eq false}" onsubmit="">
+                    <!-- Redireccion a pagina login -->
+                    <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
+                </h:form>
+                <h:form id="formUsuario" rendered="#{loginFormBean.verificarSesion()}">                    
+                    <p:panel id="panelContenedor">
+                        <p:growl id="mensajes" showDetail="false"/>
+                        <p:panelGrid columns="2" styleClass="ui-noborder">
+                            <p:outputLabel value="Datos de Login" style="font-weight: bold" />
+                            <p:outputLabel/>
+                            
+                            <p:outputLabel value="Nombre:" />
+                            <p:outputLabel value="#{loginFormBean.obtenerSesion().usuNombreUsuario}"/>
+                            
+                            <p:outputLabel value="Contraseña:" />
+                            <p:outputLabel value="#{loginFormBean.obtenerSesion().usuPassword}"/>
+                            
+                            <p:separator/>
+                            <p:outputLabel/>
+                            
+                            <p:outputLabel value="Datos del Usuario" style="font-weight: bold" /> 
+                            <p:outputLabel/>
+                            
+                            <p:outputLabel value="Nombres:" /> 
+                            <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perNombres}"/>
+                            
+                            <p:outputLabel value="Apellidos:"/> 
+                            <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perApellidos}"/>
+                            
+                            <p:outputLabel value="D.N.I." /> 
+                            <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perDni}"/>
+                            
+                            <p:outputLabel value="Fecha de Nacimiento:" /> 
+                            <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perFechaNac}"> 
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </p:outputLabel>
+                            <p:outputLabel value="E-Mail:" /> 
+                            <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perEmail}"/>
+                            
+                            <p:outputLabel value="Dirección:" /> 
+                            <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perDireccion}"/>
+                            
+                            <p:outputLabel value="Teléfono:" /> 
+                            <p:outputLabel value="#{loginFormBean.obtenerPerfilSesion().perTelefono}"/>                         
+                            
+                            <p:commandButton value="Modificar Datos" icon="ui-icon-pencil" 
+                                             action="#{loginFormBean.recibirUsuario(loginFormBean.obtenerSesion())}" 
+                                             oncomplete="PF('modificarWV').show()" update=":formUsuario :dlgModificacion"/>
+                        </p:panelGrid>
+                    </p:panel>                    
+                </h:form>
+                
+                
+                    <p:dialog id="dlgModificacion"
+                      widgetVar="modificarWV"
+                      modal="true" resizable="false"
+                      header="Formulario Para Modificar Usuario"
+                      showEffect="drop" hideEffect="drop">
+                        <p:growl id="msjDlg" showDetail="false"
+                                 showSummary="true" sticky="false"/>
+                            <h:form id="frmModificar">
+                                <h:panelGrid id="tblUsuario" columns="2" cellpadding="2">                               
+                                    
+                                    <p:outputLabel value="Datos de Login" style="font-weight: bold" />
+                                    <p:outputLabel/>
+
+                                    <p:outputLabel value="Nombre:" />
+                                    <p:outputLabel value="#{loginFormBean.usuarioLoginSeleccionado.usuNombreUsuario}"/>
+
+                                    <p:outputLabel for="inpPass" value="Contraseña:" />
+                                    <p:inputText id="inpPass" value="#{loginFormBean.usuarioLoginSeleccionado.usuPassword}" required="true"/>
+
+                                    <p:separator/>
+                                    <p:outputLabel/>
+
+                                    <p:outputLabel value="Datos del Usuario" style="font-weight: bold" /> 
+                                    <p:outputLabel/>
+                                    
+                                    <p:outputLabel value="D.N.I." /> 
+                                    <p:outputLabel value="#{loginFormBean.perfilLoginSeleccionado.perDni}" style="font-weight: bold"/>
+
+                                    <p:outputLabel for="inpNombres" value="Nombres:" /> 
+                                    <p:inputText id="inpNombres" value="#{loginFormBean.perfilLoginSeleccionado.perNombres}" required="true"/>
+
+                                    <p:outputLabel for="inpApellidos" value="Apellidos:"/> 
+                                    <p:inputText id="inpApellidos" value="#{loginFormBean.perfilLoginSeleccionado.perApellidos}" required="true"/>                                   
+
+                                    <p:outputLabel for="inpFecha" value="Fecha de Nacimiento:" /> 
+                                    <p:calendar id="inpFecha" value="#{loginFormBean.perfilLoginSeleccionado.perFechaNac}" pattern="dd/MM/yyyy" required="true"/> 
+                                        
+                                    <p:outputLabel for="inpMail" value="E-Mail:" /> 
+                                    <p:inputText id="inpMail" value="#{loginFormBean.perfilLoginSeleccionado.perEmail}" required="true"/>
+
+                                    <p:outputLabel for="inpDir" value="Dirección:" /> 
+                                    <p:inputText id="inpDir" value="#{loginFormBean.perfilLoginSeleccionado.perDireccion}" required="true"/>
+
+                                    <p:outputLabel for="inpTel" value="Teléfono:" /> 
+                                    <p:inputNumber id="inpTel" value="#{loginFormBean.perfilLoginSeleccionado.perTelefono}" required="true" decimalPlaces="0"/>
+                                                                                                           
+                                    <p:commandButton value="GUARDAR DATOS" oncomplete="PF('modificarWV').hide()" 
+                                                     action="#{loginFormBean.actualizarUsuario()}" update=":msjDlg :frmModificar :formUsuario" />
+                                    
+                                    <p:commandButton immediate="true" value="SALIR" style=" float: right"
+                                                     oncomplete="PF('modificarWV').hide()"/>                                    
+                                </h:panelGrid>
+                          </h:form>   
+                    </p:dialog>
+                
+                
+                
+                
+            </ui:define>
+            
+        </ui:composition>
+
+    </body>
+</html>

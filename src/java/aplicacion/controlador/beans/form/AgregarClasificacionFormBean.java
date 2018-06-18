@@ -59,15 +59,14 @@ public class AgregarClasificacionFormBean implements Serializable{
     public List<Clasificacion> listadoClasificaciones() {        
         return clasificacionBean.listarClasificaciones();
     }
-   /* 
-    public void modificarAutor() {
-        autorBean.modificarAutor(autorSeleccionado);
+    
+    public void modificarClasificacion() {
+        clasificacionBean.modificarClasificacion(clasificacionSeleccionada);
     }
     
-    public void borrarAutor(Autor a) {
-        autorBean.borrarAutor(a);
-    }
-      */  
+    public void borrarClasificacion(Clasificacion c) {
+        clasificacionBean.borrarClasificacion(c);
+    }        
     public void agregarClasificacion() {
         if(this.buscarClasificacion() == null) { //No existe la clasificacion
             

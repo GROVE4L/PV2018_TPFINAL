@@ -29,18 +29,17 @@ public class ClasificacionBean implements Serializable{
         this.clasificacion = clasificacion;
     }
 
-    
-    /*
-    public void borrarAutor(Autor a) {
-        AutorDAOImp autorDAOImp = new AutorDAOImp();
-        autorDAOImp.delete(a);
+        
+    public void borrarClasificacion(Clasificacion c) {
+        ClasificacionDAOImp clasificacionDAOImp = new ClasificacionDAOImp();
+        clasificacionDAOImp.delete(c);
     }
     
-    public void modificarAutor(Autor a) {
-        AutorDAOImp autorDAOImp = new AutorDAOImp();
-        autorDAOImp.update(a);
+    public void modificarClasificacion(Clasificacion c) {
+        ClasificacionDAOImp clasificacionDAOImp = new ClasificacionDAOImp();
+        clasificacionDAOImp.update(c);
     }
-*/
+
     public void agregarClasificacion(Clasificacion c) {
         ClasificacionDAOImp clasificacionDAOImp = new ClasificacionDAOImp();
         clasificacionDAOImp.add(c);

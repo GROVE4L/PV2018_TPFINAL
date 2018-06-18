@@ -27,7 +27,12 @@ public class PerfilDAOImp implements IPerfilDAO {
 
     @Override
     public void update(Perfil perfil) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        s.update(perfil);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override
@@ -37,8 +42,7 @@ public class PerfilDAOImp implements IPerfilDAO {
 
     @Override
     public boolean buscarPerfil(Perfil perfil) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.      
-        
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.              
         boolean encontrado = false;
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
@@ -47,6 +51,19 @@ public class PerfilDAOImp implements IPerfilDAO {
         if(!crit.list().isEmpty())
             encontrado = true;
         return encontrado; 
+    }
+
+    @Override
+    public Perfil obtenerPerfil(int codigoPerfilBuscado) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Perfil pEncontrado = null;
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        Criteria crit = s.createCriteria(Perfil.class);        
+        crit.add(Restrictions.like("perUsuario", codigoPerfilBuscado)); //1) como esta en clase 2)con que comparar
+        if(!crit.list().isEmpty())
+            pEncontrado = (Perfil)crit.list().get(0);
+        return pEncontrado;
     }
 
 
