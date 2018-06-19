@@ -29,6 +29,10 @@ public class ClasificacionBean implements Serializable{
         this.clasificacion = clasificacion;
     }
 
+    public Clasificacion buscarPorCodigo(int codigoBuscado) {
+        ClasificacionDAOImp clasificacionDAOImp = new ClasificacionDAOImp();
+        return clasificacionDAOImp.buscarCodigoClasificacion(codigoBuscado);
+    }
         
     public void borrarClasificacion(Clasificacion c) {
         ClasificacionDAOImp clasificacionDAOImp = new ClasificacionDAOImp();

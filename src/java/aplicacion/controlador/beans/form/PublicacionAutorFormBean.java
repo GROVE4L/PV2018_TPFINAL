@@ -3,7 +3,6 @@ package aplicacion.controlador.beans.form;
 import aplicacion.controlador.beans.AutorBean;
 import aplicacion.controlador.beans.PublicacionAutorBean;
 import aplicacion.controlador.beans.PublicacionBean;
-import aplicacion.controlador.converters.Texto;
 import aplicacion.modelo.dominio.Autor;
 import aplicacion.modelo.dominio.Publicacion;
 import aplicacion.modelo.dominio.PublicacionAutor;
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -56,7 +54,7 @@ public class PublicacionAutorFormBean implements Serializable{
 
     public void setCodigoAutor(int codigoAutor) {
         this.codigoAutor = codigoAutor;
-    }
+    }  
     
     private boolean perteneAutorALista(int codigoAutor, List<Autor> listaDondeBuscarlo) {
         for(Autor i: listaDondeBuscarlo) {

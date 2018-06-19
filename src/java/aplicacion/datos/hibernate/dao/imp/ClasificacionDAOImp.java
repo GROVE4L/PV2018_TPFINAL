@@ -71,6 +71,21 @@ public class ClasificacionDAOImp implements IClasificacionDAO {
         return crit.list();    
     }
 
+    @Override
+    public Clasificacion buscarCodigoClasificacion(int codigoBuscado) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.        
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();        
+        Criteria crit = s.createCriteria(Clasificacion.class);
+        crit.add(Restrictions.like("claCodigo", codigoBuscado)); //1) como esta en clase 2)con que comparar        
+        if(crit.list().isEmpty())
+            return null;
+        else 
+            return (Clasificacion) crit.list().get(0);
+        
+    }
+
     
 
 }

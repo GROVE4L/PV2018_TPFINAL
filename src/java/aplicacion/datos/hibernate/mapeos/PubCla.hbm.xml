@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/06/2018 01:06:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="convento" name="aplicacion.modelo.dominio.PublicacionClasificacion" optimistic-lock="version" table="pub_cla">
+    <id name="pcCodigo" type="java.lang.Integer">
+      <column name="pc_codigo"/>
+      <generator class="identity"/>
+    </id>
+    <property name="pcEstado" type="boolean">
+      <column name="pc_estado" not-null="true"/>
+    </property>
+    <property name="pcPublicacion" type="string">
+      <column length="15" name="pc_publicacion" not-null="true"/>
+    </property>
+    <property name="pcClasificacion" type="int">
+      <column name="pc_clasificacion" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

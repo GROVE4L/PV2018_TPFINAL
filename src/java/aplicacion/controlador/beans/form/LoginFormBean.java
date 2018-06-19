@@ -124,10 +124,7 @@ public class LoginFormBean implements Serializable{
     }
     
     public void actualizarUsuario() {
-        System.out.println("=========================");
-        System.out.println("HOLA?!?!");
         FacesContext facesContext = FacesContext.getCurrentInstance();        
-        System.out.println("Edicion valida, guardando...");
         usuarioBean.actualizarUsuario(this.usuarioLoginSeleccionado);            
         perfilBean.actualizarPerfil(this.perfilLoginSeleccionado);
         facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,

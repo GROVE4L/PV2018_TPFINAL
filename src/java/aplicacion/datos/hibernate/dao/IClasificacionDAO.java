@@ -10,7 +10,8 @@ import java.util.List;
 public interface IClasificacionDAO {
     public void add(Clasificacion c);
     public void update(Clasificacion c);
-    public void delete(Clasificacion c);
+    public void delete(Clasificacion c);    
+    public Clasificacion buscarCodigoClasificacion(int codigoBuscado);  
     public Clasificacion buscarClasificacion(Clasificacion c);
     public int obtenerCodigoClasificacion(Clasificacion c);
     public List<Clasificacion> devolverClasificaciones();

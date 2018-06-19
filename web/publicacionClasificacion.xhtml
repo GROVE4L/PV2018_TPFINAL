@@ -20,26 +20,26 @@
                             <p:growl id="mensajes" showDetail="false"/>
                             <p:panelGrid id="panelRegistro" styleClass="ui-noborder" columns="2">
                                 <p:outputLabel value="Publicacion"/>
-                                <p:selectOneMenu value="#{publicacionAutorFormBean.codigoPublicacion}" required="true" requiredMessage="Debe ingresar alguna publicación.">
-                                    <p:ajax update="listaAutoresDisponibles" />
+                                <p:selectOneMenu value="#{publicacionClasificacionFormBean.codigoPublicacion}" required="true" requiredMessage="Debe ingresar alguna publicación.">
+                                    <p:ajax update="listaClasificacionesDisponibles" />
                                     <f:selectItems value="#{agregarPublicacionFormBean.listadoPublicaciones()}" var="p" itemValue="#{p.pubCodigo}" itemLabel="#{p.pubNombre}"/>
                                 </p:selectOneMenu>
                                 
-                                <p:outputLabel value="Autores"/>
-                                <p:selectOneMenu id="listaAutoresDisponibles" value="#{publicacionAutorFormBean.codigoAutor}" required="true" requiredMessage="Debe ingresar algun autor.">
-                                    <f:selectItems value="#{publicacionAutorFormBean.listaAutoresDisponibles()}" var="a" itemValue="#{a.autCodigo}" itemLabel="#{a.autNombres} #{a.autApellidos}"/>
+                                <p:outputLabel value="Clasificaciones"/>
+                                <p:selectOneMenu id="listaClasificacionesDisponibles" value="#{publicacionClasificacionFormBean.codigoClasificacion}" required="true" requiredMessage="Debe ingresar alguna clasificación.">
+                                    <f:selectItems value="#{publicacionClasificacionFormBean.listaClasificacionesDisponibles()}" var="c" itemValue="#{c.claCodigo}" itemLabel="#{c.claDescripcion}"/>
                                 </p:selectOneMenu>
-                                <p:commandButton id="btnAgregar" action="#{publicacionAutorFormBean.vincularLibro()}" update="panelContenedor tablaPublicaciones" value="Asignar Autor"/>
+                                <p:commandButton id="btnAgregar" action="#{publicacionClasificacionFormBean.vincularLibro()}" update="panelContenedor tablaPublicaciones" value="Asignar Clasificación"/>
                             </p:panelGrid>
                         </p:panel>
                         <p:separator/>
                         <p:dataTable id="tablaPublicaciones" value="#{agregarPublicacionFormBean.listadoPublicaciones()}" var="p">
                             <p:column headerText="Publicaciones">
-                                <h:outputText value="#{p.pubNombre}"/>
+                                <h:outputText value="#{p.pubCodigo}"/>
                             </p:column>                        
-                            <p:column headerText="Autores">
-                                <p:dataList emptyMessage="Sin Autores Registrados." value="#{publicacionAutorFormBean.listarAutoresDePublicacion(p.pubCodigo)}" var="aut" type="ordered">
-                                    #{aut.autNombres}  #{aut.autApellidos}
+                            <p:column headerText="Clasificaciones">
+                                <p:dataList emptyMessage="Sin Clasificaciones Registradas." value="#{publicacionClasificacionFormBean.listarClasificacionesDePublicacion(p.pubCodigo)}" var="c" type="ordered">
+                                    #{c.claDescripcion}
                                 </p:dataList>                                
                             </p:column>                        
                         </p:dataTable>
