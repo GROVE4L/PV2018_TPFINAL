@@ -53,6 +53,11 @@ public class EditorialBean implements Serializable{
         editorialDAOImp.add(ed);
     }
     
+    public String devolverNombreEditorial(int codigoBuscado) {
+        EditorialDAOImp editorialDAOImp = new EditorialDAOImp();
+        return editorialDAOImp.devolverNombreEditorial(codigoBuscado);
+    }
+    
     public List<Editorial> listarEditoriales() {
         EditorialDAOImp editorialDAOImp = new EditorialDAOImp();
         return editorialDAOImp.devolverEditoriales();

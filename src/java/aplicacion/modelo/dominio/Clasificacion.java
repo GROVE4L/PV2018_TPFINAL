@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 14/06/2018 00:50:07 by Hibernate Tools 4.3.1
+// Generated 18/06/2018 18:30:26 by Hibernate Tools 4.3.1
 
 
 

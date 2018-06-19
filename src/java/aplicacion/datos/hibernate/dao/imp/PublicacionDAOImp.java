@@ -18,14 +18,6 @@ public class PublicacionDAOImp implements IPublicacionDAO {
     @Override
     public void add(Publicacion p) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
-        System.out.println("Hasta AQUIIII");
-            System.out.println("Nombre: "+p.getPubNombre());
-            System.out.println("Resumen: "+p.getPubResumen());
-            System.out.println("Tipo: "+p.getPubTipo());
-            System.out.println("Codigo Editorial: "+p.getPubEditorial());
-            System.out.println("Stock: "+p.getPubStock());
-            System.out.println("Estado: "+p.isPubEstado());
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
         s.save(p);

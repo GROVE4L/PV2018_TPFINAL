@@ -72,6 +72,10 @@ public class AgregarEditorialFormBean implements Serializable{
         return editorialBean.buscarEditorial(this.editorial);
     }
     
+    public String devolverNombreEditorial(int codigobuscado) {
+        return editorialBean.devolverNombreEditorial(codigobuscado);
+    }
+    
     public List<Editorial> listadoEditoriales() {        
         return editorialBean.listarEditoriales();
     }

@@ -72,4 +72,17 @@ public class AutorDAOImp implements IAutorDAO {
         return crit.list(); 
     }
 
+    @Override
+    public Autor buscarCodigoAutor(int codigoBuscado) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.        
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();        
+        Criteria crit = s.createCriteria(Autor.class);
+        crit.add(Restrictions.like("autCodigo", codigoBuscado)); //1) como esta en clase 2)con que comparar        
+        if(crit.list().isEmpty())
+            return null;
+        else 
+            return (Autor) crit.list().get(0);
+    }
+
 }

@@ -70,7 +70,7 @@ public class AgregarAutorFormBean implements Serializable{
     public void borrarAutor(Autor a) {
         autorBean.borrarAutor(a);
     }
-        
+           
     public void agregarAutor() {
         if(this.buscarAutor() == null) { //No existe el autor             
             Texto t = new Texto();

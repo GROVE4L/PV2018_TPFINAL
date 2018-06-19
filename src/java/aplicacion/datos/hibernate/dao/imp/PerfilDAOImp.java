@@ -3,8 +3,6 @@ package aplicacion.datos.hibernate.dao.imp;
 import aplicacion.datos.hibernate.dao.IPerfilDAO;
 import aplicacion.datos.hibernate.configuracion.HibernateUtil;
 import aplicacion.modelo.dominio.Perfil;
-import aplicacion.modelo.dominio.Usuario;
-import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -60,7 +58,7 @@ public class PerfilDAOImp implements IPerfilDAO {
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
         Criteria crit = s.createCriteria(Perfil.class);        
-        crit.add(Restrictions.like("perUsuario", codigoPerfilBuscado)); //1) como esta en clase 2)con que comparar
+        crit.add(Restrictions.like("perUsuario", codigoPerfilBuscado)); //1) como esta en clase 2)con que comparar        
         if(!crit.list().isEmpty())
             pEncontrado = (Perfil)crit.list().get(0);
         return pEncontrado;

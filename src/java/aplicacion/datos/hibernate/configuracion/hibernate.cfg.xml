@@ -13,5 +13,6 @@
     <mapping resource="aplicacion/datos/hibernate/mapeos/Autores.hbm.xml"/>
     <mapping resource="aplicacion/datos/hibernate/mapeos/Publicaciones.hbm.xml"/>
     <mapping resource="aplicacion/datos/hibernate/mapeos/Clasificaciones.hbm.xml"/>
+    <mapping resource="aplicacion/datos/hibernate/mapeos/PubAut.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

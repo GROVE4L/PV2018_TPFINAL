@@ -59,13 +59,6 @@ public class AgregarPublicacionFormBean implements Serializable{
             this.publicacion.setPubNombre(t.primeraLetraMayus(this.publicacion.getPubNombre())); //Primer letra del Nombre en Mayusculas
             this.publicacion.setPubTipo(t.primeraLetraMayus(this.publicacion.getPubTipo())); //Primer letra del Apellido en Mayusculas
             this.publicacion.setPubEstado(true);
-            /*System.out.println("Hasta AQUIIII");
-            System.out.println("Nombre: "+this.publicacion.getPubNombre());
-            System.out.println("Resumen: "+this.publicacion.getPubResumen());
-            System.out.println("Tipo: "+this.publicacion.getPubTipo());
-            System.out.println("Codigo Editorial: "+this.publicacion.getPubEditorial());
-            System.out.println("Stock: "+this.publicacion.getPubStock());
-            System.out.println("Estado: "+this.publicacion.isPubEstado());*/
             publicacionBean.agregarPublicacion(this.publicacion);
             
             FacesContext facesContext = FacesContext.getCurrentInstance();

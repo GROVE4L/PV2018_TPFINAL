@@ -25,7 +25,7 @@
                                 <p:outputLabel/>
                                 <p:outputLabel for="inpAutor" value="Apellido Autor"/>
                                 <p:inputText id="inpAutor" maxlength="20" placeholder="Apellido de autor" value="#{agregarAutorFormBean.autor.autApellidos}" requiredMessage="Debe ingresar un apellido de autor." required="true"/>
-                                <p:commandButton id="btnAgregarAutor" update="panelContenedorRegistro" action="#{agregarAutorFormBean.agregarAutor()}" value="Agregar Autor"/>
+                                <p:commandButton id="btnAgregarAutor" update="panelContenedorRegistro tablaAutores" action="#{agregarAutorFormBean.agregarAutor()}" value="Agregar Autor"/>
                             </p:panelGrid>
                         </p:panel>
                         <p:separator/>

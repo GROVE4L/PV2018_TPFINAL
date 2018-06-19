@@ -1,7 +1,7 @@
 package aplicacion.controlador.beans;
 
-import aplicacion.datos.hibernate.dao.imp.AutorDAOImp;
-import aplicacion.modelo.dominio.Autor;
+import aplicacion.datos.hibernate.dao.imp.PublicacionAutorDAOImp;
+import aplicacion.modelo.dominio.PublicacionAutor;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -13,23 +13,22 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class AutorBean implements Serializable{
-
-    private Autor autor;
+public class PublicacionAutorBean implements Serializable{
     
-    public AutorBean() {
-        this.autor = new Autor();        
+    public PublicacionAutorBean() {
+        
     }
-
-    public Autor getAutor() {
-        return autor;
-    }
-
-    public void setAutor(Autor autor) {
-        this.autor = autor;
+    public void agregarPublicacionAutor(PublicacionAutor pb) {
+        PublicacionAutorDAOImp pbDAOImp = new PublicacionAutorDAOImp();
+        pbDAOImp.add(pb);
     }
     
-    public void borrarAutor(Autor a) {
+    public List<PublicacionAutor> listarPublicacionAutor(String codigoPublicacionBuscado) {
+        PublicacionAutorDAOImp pbDAOImp = new PublicacionAutorDAOImp();
+        return pbDAOImp.devolverPublicacionesAutores(codigoPublicacionBuscado);
+    }
+    
+    /*public void borrarAutor(Autor a) {
         AutorDAOImp autorDAOImp = new AutorDAOImp();
         autorDAOImp.delete(a);
     }
@@ -47,13 +46,9 @@ public class AutorBean implements Serializable{
         AutorDAOImp autorDAOImp = new AutorDAOImp();
         autorDAOImp.add(a);
     }
-    public Autor buscarPorCodigo(int codigoBuscado) {
-        AutorDAOImp autorDAOImp = new AutorDAOImp();
-        return autorDAOImp.buscarCodigoAutor(codigoBuscado);
-    }
-            
+    
     public List<Autor> listarAutores() {
         AutorDAOImp autorDAOImp = new AutorDAOImp();
         return autorDAOImp.devolverAutores();
-    }    
+    }*/
 }

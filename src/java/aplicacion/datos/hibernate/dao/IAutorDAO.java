@@ -13,6 +13,7 @@ public interface IAutorDAO{
     public void update(Autor a);
     public void delete(Autor a);
     public Autor buscarAutor(Autor a);
+    public Autor buscarCodigoAutor(int codigoBuscado);
     public int obtenerCodigoAutor(Autor a);
     public List<Autor> devolverAutores();
 }

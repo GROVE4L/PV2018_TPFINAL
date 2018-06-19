@@ -65,7 +65,8 @@ public class EditorialDAOImp implements IEditorialDAO {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();        
-        Criteria crit = s.createCriteria(Editorial.class);        
+        Criteria crit = s.createCriteria(Editorial.class);
+        crit.add(Restrictions.eq("editEstado", true));  
         return crit.list();        
     }
 
@@ -77,6 +78,19 @@ public class EditorialDAOImp implements IEditorialDAO {
         s.update(editorial);
         s.getTransaction().commit();
         s.close();
+    }
+
+    @Override
+    public String devolverNombreEditorial(int codigoBuscado) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();        
+        Criteria crit = s.createCriteria(Editorial.class);
+        crit.add(Restrictions.like("ediCodigo", codigoBuscado)); //1) como esta en clase 2)con que comparar        
+        if(crit.list().isEmpty())
+            return null;
+        else 
+            return ((Editorial) crit.list().get(0)).getEditNombre();
     }
 
 }

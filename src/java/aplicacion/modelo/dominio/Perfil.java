@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 12/06/2018 01:01:15 by Hibernate Tools 4.3.1
+// Generated 18/06/2018 18:30:26 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
