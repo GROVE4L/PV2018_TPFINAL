@@ -26,7 +26,7 @@
                                 <p:inputNumber id="inpId" maxlength="20" value="#{agregarClasificacionFormBean.clasificacion.claIdentificador}" requiredMessage="Debe ingresar un identificador de clasificación." required="true" decimalPlaces="0"/>
 
                                 <p:outputLabel for="inpDesc" value="Descripcion de Clasificacion"/>
-                                <p:inputText id="inpDesc" maxlength="100" value="#{agregarClasificacionFormBean.clasificacion.claDescripcion}" requiredMessage="Debe ingresar una descripcion de clasificacion." required="true"/>
+                                <p:inputTextarea id="inpDesc" maxlength="100" value="#{agregarClasificacionFormBean.clasificacion.claDescripcion}" requiredMessage="Debe ingresar una descripcion de clasificacion." required="true"/>
 
                                 <p:commandButton id="btnAgregarClasificacion" action="#{agregarClasificacionFormBean.agregarClasificacion()}" update="panelContenedorRegistro tablaClasificaciones" value="Agregar Clasificación"/>
                             </p:panelGrid>

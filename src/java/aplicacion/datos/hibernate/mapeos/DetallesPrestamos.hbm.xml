@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2018 20:13:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="convento" name="aplicacion.modelo.dominio.DetallePrestamo" optimistic-lock="version" table="detalles_prestamos">
+    <id name="dpCodigo" type="java.lang.Integer">
+      <column name="dp_codigo"/>
+      <generator class="identity"/>
+    </id>
+    <property name="dpEstado" type="boolean">
+      <column name="dp_estado" not-null="true"/>
+    </property>
+    <property name="dpFechaADevolver" type="date">
+      <column length="10" name="dp_fecha_a_devolver" not-null="true"/>
+    </property>
+    <property name="dpTurno" type="string">
+      <column length="45" name="dp_turno" not-null="true">
+        <comment>indica si se devuelve a la mañana o a la tarde {MAÑANA-TARDE}</comment>
+      </column>
+    </property>
+    <property name="dpFechaDevolucion" type="date">
+      <column length="10" name="dp_fecha_devolucion" not-null="true"/>
+    </property>
+    <property name="dpPrestamo" type="int">
+      <column name="dp_prestamo" not-null="true"/>
+    </property>
+    <property name="dpPublicacion" type="string">
+      <column length="15" name="dp_publicacion" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

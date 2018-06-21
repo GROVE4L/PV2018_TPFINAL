@@ -26,7 +26,7 @@
                             </p:panelGrid>
                         </p:panel>
                         <p:separator/>
-                        <p:dataTable id="tablaEditoriales" value="#{agregarEditorialFormBean.listadoEditoriales()}" var="edit">
+                        <p:dataTable id="tablaEditoriales" value="#{agregarEditorialFormBean.listadoEditoriales()}" var="edit" scrollable="true" scrollHeight="300">
                             <p:column headerText="Nombre">
                                 <h:outputText value="#{edit.editNombre}"/>
                             </p:column>

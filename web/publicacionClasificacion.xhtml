@@ -20,13 +20,13 @@
                             <p:growl id="mensajes" showDetail="false"/>
                             <p:panelGrid id="panelRegistro" styleClass="ui-noborder" columns="2">
                                 <p:outputLabel value="Publicacion"/>
-                                <p:selectOneMenu value="#{publicacionClasificacionFormBean.codigoPublicacion}" required="true" requiredMessage="Debe ingresar alguna publicación.">
+                                <p:selectOneMenu value="#{publicacionClasificacionFormBean.codigoPublicacion}" filter="true" filterMatchMode="contains" required="true" requiredMessage="Debe ingresar alguna publicación.">
                                     <p:ajax update="listaClasificacionesDisponibles" />
                                     <f:selectItems value="#{agregarPublicacionFormBean.listadoPublicaciones()}" var="p" itemValue="#{p.pubCodigo}" itemLabel="#{p.pubNombre}"/>
                                 </p:selectOneMenu>
                                 
                                 <p:outputLabel value="Clasificaciones"/>
-                                <p:selectOneMenu id="listaClasificacionesDisponibles" value="#{publicacionClasificacionFormBean.codigoClasificacion}" required="true" requiredMessage="Debe ingresar alguna clasificación.">
+                                <p:selectOneMenu id="listaClasificacionesDisponibles" value="#{publicacionClasificacionFormBean.codigoClasificacion}" filter="true" filterMatchMode="contains" required="true" requiredMessage="Debe ingresar alguna clasificación.">
                                     <f:selectItems value="#{publicacionClasificacionFormBean.listaClasificacionesDisponibles()}" var="c" itemValue="#{c.claCodigo}" itemLabel="#{c.claDescripcion}"/>
                                 </p:selectOneMenu>
                                 <p:commandButton id="btnAgregar" action="#{publicacionClasificacionFormBean.vincularLibro()}" update="panelContenedor tablaPublicaciones" value="Asignar Clasificación"/>
@@ -34,10 +34,13 @@
                         </p:panel>
                         <p:separator/>
                         <p:dataTable id="tablaPublicaciones" value="#{agregarPublicacionFormBean.listadoPublicaciones()}" var="p">
-                            <p:column headerText="Publicaciones">
+                            <p:column headerText="Código" style="width: 100px">
                                 <h:outputText value="#{p.pubCodigo}"/>
-                            </p:column>                        
-                            <p:column headerText="Clasificaciones">
+                            </p:column>
+                            <p:column headerText="Publicación">
+                                <h:outputText value="#{p.pubNombre}"/>
+                            </p:column>
+                            <p:column headerText="Clasificaciones" style="width: 250px">
                                 <p:dataList emptyMessage="Sin Clasificaciones Registradas." value="#{publicacionClasificacionFormBean.listarClasificacionesDePublicacion(p.pubCodigo)}" var="c" type="ordered">
                                     #{c.claDescripcion}
                                 </p:dataList>                                

@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./estructura/masterTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form rendered="#{loginFormBean.verificarSesion() eq false || loginFormBean.verificarPrestamo() eq false}" onsubmit="">
+                    <!-- Redireccion a pagina login -->
+                    <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
+                </h:form>
+                <h:form id="formPrestamo" rendered="#{loginFormBean.verificarSesion() and loginFormBean.esSupervisor() and loginFormBean.verificarPrestamo()}">
+                    <div id="tooplate_main">
+                        <p:panel id="panelContenedor">
+                            <p:growl id="mensajes" showDetail="true"/>
+                            <p:panelGrid id="panelPrestamo" styleClass="ui-noborder" columns="2">
+                                
+                                <p:outputLabel value="Usuario Encargado: "/>
+                                <p:outputLabel value="#{prestamoFormBean.obtenerObjPrestamo().preAdministrativo}" style="font-weight: bold"/>
+                                
+                                <p:outputLabel value="Fecha de Prestamo: "/>
+                                <p:outputLabel value="#{prestamoFormBean.obtenerObjPrestamo().preFechaPrestamo}" style="font-weight: bold">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </p:outputLabel>
+                                
+                                <p:outputLabel value="Fecha a Devolver: "/>
+                                <p:outputLabel value="#{prestamoFormBean.obtenerObjDetallePrestamo().dpFechaADevolver}" style="font-weight: bold">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </p:outputLabel>
+                                
+                                <p:outputLabel value="Socio solicitante: "/>
+                                <p:outputLabel value="#{prestamoFormBean.obtenerNombrePrestamo()}" style="font-weight: bold"/>
+                                
+                                <p:outputLabel value="Turno: "/>
+                                <p:outputLabel value="#{prestamoFormBean.obtenerObjDetallePrestamo().dpTurno}" style="font-weight: bold"/>
+                                
+                                <p:commandButton value="Agregar libro" icon="fa fa-plus" oncomplete="PF('seleccionWV').show()" update=":dlgLibros"/>
+                                <p:commandButton value="Finalizar" icon="fa fa-check-circle" action="#{prestamoFormBean.finalizarPrestamo()}" update="mensajes"/>
+                            </p:panelGrid>
+                            <h:panelGrid id="tblModificarClasificacion" columns="2">
+                                <p:dataTable emptyMessage="Nada Cargado." value="#{prestamoFormBean.listadoAPrestar}" var="pu">
+                                        <f:facet name="header">
+                                            <p:outputLabel value="Libros que se prestarán"/>
+                                        </f:facet>
+                                        <p:column headerText="Publicaciones">
+                                            <p:outputLabel value="#{pu.pubNombre}"/>
+                                        </p:column>
+                                        <p:column headerText="Editorial">
+                                            <h:outputLabel value="#{agregarEditorialFormBean.devolverNombreEditorial(pu.pubEditorial)}"/>
+                                        </p:column>
+                                        <p:column headerText="Autores">
+                                            <p:dataList emptyMessage="Sin Autores Registrados." value="#{publicacionAutorFormBean.listarAutoresDePublicacion(pu.pubCodigo)}" var="aut" type="ordered">
+                                                #{aut.autNombres}  #{aut.autApellidos}
+                                            </p:dataList>
+                                        </p:column>
+                                        <p:column style="width:70px" headerText="Remover">
+                                            <p:commandButton icon="fa fa-trash" action="#{prestamoFormBean.quitarDeLista(pu)}" update=":formPrestamo:tblModificarClasificacion"/>
+                                        </p:column>
+                                    </p:dataTable>
+                                </h:panelGrid>
+                                     
+                        </p:panel>
+                        <p:separator/>
+                    </div>
+                </h:form>
+                
+                <p:dialog id="dlgLibros"
+                      widgetVar="seleccionWV"
+                      modal="true" resizable="false"
+                      header="Formulario Para Modificar Usuario"
+                      showEffect="drop" hideEffect="drop">
+                        <p:growl id="msjDlg" showDetail="false"
+                                 showSummary="true" sticky="false"/>
+                            <h:form id="frmModificar">
+                                <h:panelGrid id="tblUsuario" columns="2" cellpadding="2">  
+                                    <h:panelGrid columns="2">                                    
+                                        <p:dataTable emptyMessage="Nada Encontrado" value="#{agregarPublicacionFormBean.listadoPublicacionesConStock()}" var="pu" 
+                                                     widgetVar="tablaLibrosWV">
+                                        <f:facet name="header">
+                                            <p:outputPanel>
+                                                <h:outputText value="Buscar en todos los campos:" />
+                                                <p:inputText id="globalFilter" onkeyup="PF('tablaLibrosWV').filter()" style="width:150px" placeholder="Busqueda"/>
+                                            </p:outputPanel>
+                                        </f:facet>
+                                            
+                                        <p:column headerText="Publicaciones" filterStyle="display:none" filterBy="#{pu.pubNombre}" filterMatchMode="contains">
+                                            <p:outputLabel value="#{pu.pubNombre}"/>
+                                        </p:column>
+                                        <p:column headerText="Editorial" filterStyle="display:none" filterBy="#{agregarEditorialFormBean.devolverNombreEditorial(pu.pubEditorial)}" filterMatchMode="contains">
+                                            <h:outputLabel value="#{agregarEditorialFormBean.devolverNombreEditorial(pu.pubEditorial)}"/>
+                                        </p:column>
+                                        <p:column headerText="Autores" >
+                                            <p:dataList emptyMessage="Sin Autores Registrados." value="#{publicacionAutorFormBean.listarAutoresDePublicacion(pu.pubCodigo)}" var="aut" type="ordered">
+                                                #{aut.autNombres}  #{aut.autApellidos}
+                                            </p:dataList>
+                                        </p:column>
+                                        <p:column style="width:70px" headerText="Stock">
+                                            <p:outputLabel value="#{pu.pubStock}"/>
+                                        </p:column>
+                                        <p:column style="width:70px" headerText="Accion">
+                                            <p:commandButton icon="fa fa-plus" action="#{prestamoFormBean.agregarALista(pu)}" oncomplete="PF('seleccionWV').hide()" update=":formPrestamo:tblModificarClasificacion"/>
+                                        </p:column>
+                                    </p:dataTable>
+                                </h:panelGrid>                                
+                                </h:panelGrid>
+                          </h:form>   
+                    </p:dialog>
+                
+            </ui:define>
+            
+        </ui:composition>
+
+    </body>
+</html>

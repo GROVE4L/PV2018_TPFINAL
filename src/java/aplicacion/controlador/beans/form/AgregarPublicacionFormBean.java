@@ -25,7 +25,8 @@ public class AgregarPublicacionFormBean implements Serializable{
     private Publicacion publicacion;
     
     public AgregarPublicacionFormBean() {
-        this.publicacion = new Publicacion();        
+        this.publicacion = new Publicacion();
+        this.publicacion.setPubTipo("Libro");
     }
 
     public PublicacionBean getPublicacionBean() {
@@ -53,6 +54,10 @@ public class AgregarPublicacionFormBean implements Serializable{
         return publicacionBean.listarPublicaciones();
     }
   
+    public List<Publicacion> listadoPublicacionesConStock() {
+        return publicacionBean.listarPublicacionesConStock();
+    }
+    
     public void agregarPublicacion() {
         if(this.buscarPublicacion() == null) { //No existe la publicacion
             Texto t = new Texto();
@@ -65,6 +70,7 @@ public class AgregarPublicacionFormBean implements Serializable{
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Publicación Agregada Exitosamente",
                             ""));
+            this.publicacion = new Publicacion();
         }
         else { //La publicacion ya existe..
             FacesContext facesContext = FacesContext.getCurrentInstance();

@@ -62,4 +62,8 @@ public class EditorialBean implements Serializable{
         EditorialDAOImp editorialDAOImp = new EditorialDAOImp();
         return editorialDAOImp.devolverEditoriales();
     }
+    public List<Editorial> listarEditorialesActivas() {
+        EditorialDAOImp editorialDAOImp = new EditorialDAOImp();
+        return editorialDAOImp.devolverEditorialesActivas();
+    }
 }

@@ -14,5 +14,6 @@ public interface IEditorialDAO {
     public void recover(Editorial editorial);
     public Editorial buscarEditorial(Editorial editorial);
     public List<Editorial> devolverEditoriales();
+    public List<Editorial> devolverEditorialesActivas();
     public String devolverNombreEditorial(int codigoBuscado);
 }

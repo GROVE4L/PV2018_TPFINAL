@@ -31,14 +31,14 @@
                                 <p:menuitem value="Inicio" url="login.xhtml" />
                                 <p:menuitem rendered="#{loginFormBean.verificarSesion()}" value="Mi Usuario" url="miUsuario.xhtml" />
                                 <p:submenu rendered="#{loginFormBean.verificarSesion()}" label="Consultas">
-                                    <p:submenu rendered="#{loginFormBean.verificarSesion()}" label="Listados">                                    
-                                        <p:menuitem value="Autores" url="consultarAutores.xhtml"/>  
+                                    <p:submenu rendered="#{loginFormBean.verificarSesion()}" label="Listados">
+                                        <p:menuitem value="Autores" url="consultarAutores.xhtml"/>
                                         <p:menuitem value="Editoriales" url="consultarEditoriales.xhtml"/>
                                         <p:menuitem value="Clasificaciones" url="consultarClasificaciones.xhtml"/>
                                     </p:submenu>                                    
                                 </p:submenu>                                
-                                
-                                <p:menuitem rendered="#{loginFormBean.esFinal()}" value="Pedidos"/>                                
+                                <p:menuitem rendered="#{loginFormBean.esSupervisor()}" value="Cargar Prestamo" url="cargarPrestamo.xhtml" />
+                                <p:menuitem rendered="#{loginFormBean.esFinal()}" value="Pedidos"/>
 
                                 <p:menuitem rendered="#{loginFormBean.esAdministrativo()}" value="Pedidos Usuarios"/>
                                 <p:menuitem rendered="#{loginFormBean.esAdministrativo()}" value="Lista de Libros"/>

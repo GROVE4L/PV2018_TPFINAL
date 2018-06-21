@@ -81,6 +81,7 @@ public class AgregarAutorFormBean implements Serializable{
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Autor Agregada Exitosamente",
                             ""));
+            this.autor=new Autor();
         }
         else { //La editorial ya existe..
             FacesContext facesContext = FacesContext.getCurrentInstance();

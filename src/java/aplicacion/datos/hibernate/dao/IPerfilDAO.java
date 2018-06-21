@@ -1,6 +1,7 @@
 package aplicacion.datos.hibernate.dao;
 
 import aplicacion.modelo.dominio.Perfil;
+import java.util.List;
 
 /**
  *
@@ -11,5 +12,7 @@ public interface IPerfilDAO {
     public void update(Perfil perfil);
     public void delete(Perfil perfil);
     public boolean buscarPerfil(Perfil perfil);
-    public Perfil obtenerPerfil(int codigoPerfilBuscado);
+    public Perfil obtenerPerfil(int codigoPerfilBuscado); //Obtiene el perfil de un codigo de Usuario
+    public Perfil obtenerPerfilDirecto(int codigoPerfilBuscado); //Obtiene el perfil de un codigo de perfil
+    public List<Perfil> listarPerfiles();
 }

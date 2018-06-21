@@ -38,8 +38,17 @@ public class PublicacionBean implements Serializable{
         publicacionDAOImp.add(p);
     }
     
+    public void modificarPublicacion(Publicacion p) {
+        PublicacionDAOImp publicacionDAOImp = new PublicacionDAOImp();
+        publicacionDAOImp.update(p);
+    }
+    
     public List<Publicacion> listarPublicaciones() {        
         PublicacionDAOImp publicacionDAOImp = new PublicacionDAOImp();        
         return publicacionDAOImp.devolverPublicaciones();        
+    }
+    public List<Publicacion> listarPublicacionesConStock() {
+        PublicacionDAOImp publicacionDAOImp = new PublicacionDAOImp();        
+        return publicacionDAOImp.devolverPublicacionesConStock();        
     }
 }

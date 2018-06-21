@@ -79,17 +79,22 @@ public class AgregarEditorialFormBean implements Serializable{
     public List<Editorial> listadoEditoriales() {        
         return editorialBean.listarEditoriales();
     }
+    
+    public List<Editorial> listadoEditorialesActivas() {        
+        return editorialBean.listarEditorialesActivas();
+    }
         
     public void agregarEditorial() {      
         if(this.buscarEditorial() == null) { //No existe la editorial..            
             this.editorial.setEditEstado(true);
             Texto t = new Texto();
-            this.editorial.setEditNombre(t.primeraLetraMayus(this.editorial.getEditNombre()));           
+            this.editorial.setEditNombre(t.primeraLetraMayus(this.editorial.getEditNombre()));
             editorialBean.agregarEditorial(editorial);
             FacesContext facesContext = FacesContext.getCurrentInstance();
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Editorial Agregada Exitosamente",
                             ""));
+            this.editorial= new Editorial();
         }
         else { //La editorial ya existe..
             FacesContext facesContext = FacesContext.getCurrentInstance();

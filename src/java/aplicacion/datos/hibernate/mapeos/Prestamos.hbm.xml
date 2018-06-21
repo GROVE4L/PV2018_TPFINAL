@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/06/2018 14:57:06 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="convento" name="aplicacion.modelo.dominio.Prestamo" optimistic-lock="version" table="prestamos">
+    <id name="preCodigo" type="java.lang.Integer">
+      <column name="pre_codigo"/>
+      <generator class="identity"/>
+    </id>
+    <property name="preFechaPrestamo" type="date">
+      <column length="10" name="pre_fecha_prestamo" not-null="true"/>
+    </property>
+    <property name="preEstado" type="boolean">
+      <column name="pre_estado" not-null="true"/>
+    </property>
+    <property name="preAdministrativo" type="string">
+      <column length="10" name="pre_administrativo" not-null="true"/>
+    </property>
+    <property name="preSocio" type="int">
+      <column name="pre_socio" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

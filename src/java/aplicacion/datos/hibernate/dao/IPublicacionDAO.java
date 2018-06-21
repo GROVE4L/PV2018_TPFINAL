@@ -14,4 +14,5 @@ public interface IPublicacionDAO {
     public Publicacion buscarPublicacion(Publicacion p);
     public int obtenerCodigoPublicacion(Publicacion p);
     public List<Publicacion> devolverPublicaciones();
+    public List<Publicacion> devolverPublicacionesConStock();
 }

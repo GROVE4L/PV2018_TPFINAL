@@ -84,6 +84,9 @@ public class RegistroFormBean implements Serializable{
             this.usuarioPerfil.setPerUsuario(codigo);
             perfilBean.agregarPerfil(this.usuarioPerfil);
             
+            this.usuarioRegistro = new Usuario();
+            this.usuarioPerfil = new Perfil();
+            
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Usuario Registrado exitosamente!",
                             "Vuelva a la pantalla de inicio para ingresar con su nuevo usuario."));

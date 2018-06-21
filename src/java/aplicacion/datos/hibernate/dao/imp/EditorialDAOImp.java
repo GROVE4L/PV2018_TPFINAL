@@ -59,6 +59,16 @@ public class EditorialDAOImp implements IEditorialDAO {
         else 
             return (Editorial) crit.list().get(0);            
     }
+    
+    @Override
+    public List<Editorial> devolverEditorialesActivas() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();        
+        Criteria crit = s.createCriteria(Editorial.class);
+        crit.add(Restrictions.eq("editEstado", true));  //Para mostrar solo editoriales activas
+        return crit.list();        
+    }
 
     @Override
     public List<Editorial> devolverEditoriales() {
@@ -66,7 +76,7 @@ public class EditorialDAOImp implements IEditorialDAO {
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();        
         Criteria crit = s.createCriteria(Editorial.class);
-        crit.add(Restrictions.eq("editEstado", true));  
+        //crit.add(Restrictions.eq("editEstado", true));  //Para mostrar solo editoriales activas
         return crit.list();        
     }
 

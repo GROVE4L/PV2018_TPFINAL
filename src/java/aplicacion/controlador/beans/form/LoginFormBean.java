@@ -82,6 +82,14 @@ public class LoginFormBean implements Serializable{
         return "login?faces-redirect=true";
     }
     
+    public boolean verificarPrestamo(){
+        boolean sesionValida = false;
+        if(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("prestamo") != null){
+            sesionValida=true;
+        }
+        return sesionValida;
+    }
+    
     public boolean verificarSesion(){ //Verifica si hay alguna sesion activa
         boolean sesionValida = false;
         if(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioValido") != null){

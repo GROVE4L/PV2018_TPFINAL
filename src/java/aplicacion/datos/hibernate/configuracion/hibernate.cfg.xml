@@ -11,6 +11,8 @@
     <mapping resource="aplicacion/datos/hibernate/mapeos/Editoriales.hbm.xml"/>
     <mapping resource="aplicacion/datos/hibernate/mapeos/PubCla.hbm.xml"/>
     <mapping resource="aplicacion/datos/hibernate/mapeos/Publicaciones.hbm.xml"/>
+    <mapping resource="aplicacion/datos/hibernate/mapeos/DetallesPrestamos.hbm.xml"/>
+    <mapping resource="aplicacion/datos/hibernate/mapeos/Prestamos.hbm.xml"/>
     <mapping resource="aplicacion/datos/hibernate/mapeos/Autores.hbm.xml"/>
     <mapping resource="aplicacion/datos/hibernate/mapeos/Clasificaciones.hbm.xml"/>
     <mapping resource="aplicacion/datos/hibernate/mapeos/PubAut.hbm.xml"/>

@@ -3,6 +3,7 @@ package aplicacion.datos.hibernate.dao.imp;
 import aplicacion.datos.hibernate.dao.IPerfilDAO;
 import aplicacion.datos.hibernate.configuracion.HibernateUtil;
 import aplicacion.modelo.dominio.Perfil;
+import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -63,6 +64,27 @@ public class PerfilDAOImp implements IPerfilDAO {
             pEncontrado = (Perfil)crit.list().get(0);
         return pEncontrado;
     }
+    
+    @Override
+    public Perfil obtenerPerfilDirecto(int codigoPerfilBuscado) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Perfil pEncontrado = null;
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        Criteria crit = s.createCriteria(Perfil.class);        
+        crit.add(Restrictions.like("perCodigo", codigoPerfilBuscado)); //1) como esta en clase 2)con que comparar        
+        if(!crit.list().isEmpty())
+            pEncontrado = (Perfil)crit.list().get(0);
+        return pEncontrado;
+    }
 
+    @Override
+    public List<Perfil> listarPerfiles() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        Criteria crit = s.createCriteria(Perfil.class);        
+        return crit.list();
+    }
 
 }

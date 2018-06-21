@@ -1,6 +1,7 @@
 package aplicacion.controlador.beans.form;
 
 import aplicacion.controlador.beans.ClasificacionBean;
+import aplicacion.controlador.converters.Texto;
 import aplicacion.modelo.dominio.Clasificacion;
 import java.io.Serializable;
 import java.util.List;
@@ -69,12 +70,15 @@ public class AgregarClasificacionFormBean implements Serializable{
     }        
     public void agregarClasificacion() {
         if(this.buscarClasificacion() == null) { //No existe la clasificacion
+            Texto t = new Texto();
+            this.clasificacion.setClaDescripcion(t.primeraLetraMayus(this.clasificacion.getClaDescripcion()));
             
             clasificacionBean.agregarClasificacion(this.clasificacion);
             FacesContext facesContext = FacesContext.getCurrentInstance();
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                             "Clasificacion Agregada Exitosamente",
                             ""));
+            this.clasificacion = new Clasificacion();
         }
         else { //La clasificacion ya existe..
             FacesContext facesContext = FacesContext.getCurrentInstance();

@@ -3,6 +3,7 @@ package aplicacion.controlador.beans;
 import aplicacion.datos.hibernate.dao.imp.UsuarioDAOImp;
 import aplicacion.modelo.dominio.Usuario;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -43,10 +44,14 @@ public class UsuarioBean implements Serializable{
     public void agregarUsuario(Usuario us) {
         UsuarioDAOImp usuarioDAOImp = new UsuarioDAOImp();
         usuarioDAOImp.add(us);
-    }
-    
+    }    
     public void actualizarUsuario(Usuario us) {
         UsuarioDAOImp usuarioDAOImp = new UsuarioDAOImp();
         usuarioDAOImp.update(us);
+    }
+    
+    public List<Usuario> obtenerUsuarios() {
+        UsuarioDAOImp usuarioDAOImp = new UsuarioDAOImp();
+        return usuarioDAOImp.devolverUsuarios();
     }
 }

@@ -31,13 +31,16 @@
                                 <p:inputTextarea id="inpResumen" maxlength="150" value="#{agregarPublicacionFormBean.publicacion.pubResumen}" requiredMessage="Debe ingresar un resumen para la publicacion." required="true"/>
 
                                 <p:outputLabel for="inpTipo" value="Tipo"/>
-                                <p:inputText id="inpTipo" maxlength="20" value="#{agregarPublicacionFormBean.publicacion.pubTipo}" requiredMessage="Debe ingresar un tipo a la publicacion." required="true"/>
+                                <p:selectOneRadio id="inpTipo" value="#{agregarPublicacionFormBean.publicacion.pubTipo}" required="true" requiredMessage="Seleccione un tipo de publicación.">
+                                    <f:selectItem itemLabel="Libro" itemValue="Libro" />
+                                    <f:selectItem itemLabel="Revista" itemValue="Revista" />
+                                </p:selectOneRadio>
 
                                 <p:outputLabel for="inpStock" value="Cantidad Existente"/>
                                 <p:inputNumber id="inpStock" maxlength="20" decimalPlaces="0" value="#{agregarPublicacionFormBean.publicacion.pubStock}" requiredMessage="Debe ingresar la cantidad actual existente." required="true"/>
 
                                 <p:outputLabel value="Editorial"/>
-                                <p:selectOneMenu value="#{agregarPublicacionFormBean.publicacion.pubEditorial}" required="true" requiredMessage="Debe ingresar alguna editorial.">
+                                <p:selectOneMenu value="#{agregarPublicacionFormBean.publicacion.pubEditorial}" filter="true" filterMatchMode="contains" required="true" requiredMessage="Debe ingresar alguna editorial.">
                                     <f:selectItems value="#{agregarEditorialFormBean.listadoEditoriales()}" var="editorial" itemValue="#{editorial.ediCodigo}" itemLabel="#{editorial.editNombre}"/>
                                 </p:selectOneMenu>
 

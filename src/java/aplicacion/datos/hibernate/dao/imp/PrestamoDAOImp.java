@@ -1,9 +1,8 @@
 package aplicacion.datos.hibernate.dao.imp;
 
 import aplicacion.datos.hibernate.configuracion.HibernateUtil;
-import aplicacion.datos.hibernate.dao.IPublicacionDAO;
-import aplicacion.modelo.dominio.Publicacion;
-import java.util.ArrayList;
+import aplicacion.datos.hibernate.dao.IPrestamoDAO;
+import aplicacion.modelo.dominio.Prestamo;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -13,78 +12,53 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author Rojas, Guido G.
  */
-public class PublicacionDAOImp implements IPublicacionDAO {
+public class PrestamoDAOImp implements IPrestamoDAO {
 
     @Override
-    public void add(Publicacion p) {
+    public void add(Prestamo pre) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
-        s.save(p);
+        s.save(pre);
         s.getTransaction().commit();
         s.close();
     }
 
     @Override
-    public void update(Publicacion p) {
+    public void update(Prestamo pre) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
-        s.update(p);
+        s.update(pre);
         s.getTransaction().commit();
         s.close();
     }
 
     @Override
-    public void delete(Publicacion p) {
+    public void delete(Prestamo pre) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
-        s.delete(p);
+        s.delete(pre);
         s.getTransaction().commit();
         s.close();
     }
-
     @Override
-    public Publicacion buscarPublicacion(Publicacion p) {
+    public List<Prestamo> devolverPrestamos() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();        
-        Criteria crit = s.createCriteria(Publicacion.class);
-        crit.add(Restrictions.like("pubCodigo", p.getPubCodigo())); //1) como esta en clase 2)con que comparar        
-        if(crit.list().isEmpty())
-            return null;
-        else 
-            return (Publicacion) crit.list().get(0);
+        Criteria crit = s.createCriteria(Prestamo.class);
+        return crit.list(); 
     }
 
     @Override
-    public int obtenerCodigoPublicacion(Publicacion p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Publicacion> devolverPublicaciones() {
+    public Prestamo obtenerUltimoPrestamo() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();        
-        Criteria crit = s.createCriteria(Publicacion.class);
-        return crit.list();
-        
-    }
-    @Override
-    public List<Publicacion> devolverPublicacionesConStock() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.        
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
-        Criteria crit = s.createCriteria(Publicacion.class);
-        
-        crit.add(Restrictions.gt("pubStock",0)); //1) como esta en clase 2)con que comparar        
-        if(crit.list().isEmpty())
-            return null;
-        else 
-            return crit.list();   
+        Criteria crit = s.createCriteria(Prestamo.class);
+        return (Prestamo) crit.list().get(crit.list().size()-1);
     }
 
 }
