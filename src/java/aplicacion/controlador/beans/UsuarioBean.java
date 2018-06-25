@@ -29,6 +29,11 @@ public class UsuarioBean implements Serializable{
         this.usuario = usuario;
     }
     
+    public Usuario obtenerUsuario(int codigoBuscado) {
+        UsuarioDAOImp usuarioDAOImp = new UsuarioDAOImp();
+        return usuarioDAOImp.obtenerUsuario(codigoBuscado);
+    }
+    
     public Usuario validarUsuario(Usuario us) {
         UsuarioDAOImp usuarioDAOImp = new UsuarioDAOImp();
         return usuarioDAOImp.login(us);

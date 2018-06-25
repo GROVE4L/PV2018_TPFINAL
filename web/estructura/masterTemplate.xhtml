@@ -36,18 +36,21 @@
                                         <p:menuitem value="Editoriales" url="consultarEditoriales.xhtml"/>
                                         <p:menuitem value="Clasificaciones" url="consultarClasificaciones.xhtml"/>
                                     </p:submenu>                                    
-                                </p:submenu>                                
+                                </p:submenu>
                                 <p:menuitem rendered="#{loginFormBean.esSupervisor()}" value="Cargar Prestamo" url="cargarPrestamo.xhtml" />
-                                <p:menuitem rendered="#{loginFormBean.esFinal()}" value="Pedidos"/>
+                                <p:menuitem rendered="#{loginFormBean.verificarSesion()}" value="Reservar Libros" url="#"/> 
 
                                 <p:menuitem rendered="#{loginFormBean.esAdministrativo()}" value="Pedidos Usuarios"/>
                                 <p:menuitem rendered="#{loginFormBean.esAdministrativo()}" value="Lista de Libros"/>
+                                
+                                <p:menuitem rendered="#{loginFormBean.esSupervisor()}" value="Hacer Supervisor" url="modificarUsuario.xhtml"/>   
 
                                 <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Publicaciones">
                                     <p:menuitem value="Agregar Publicaciones" url="agregarPublicacion.xhtml"/>
                                     <p:menuitem value="Agregar Autor a Publicación" url="publicacionAutor.xhtml"/>
                                     <p:menuitem value="Agregar Clasificación a Publicación" url="publicacionClasificacion.xhtml"/>
-                                </p:submenu>
+                                </p:submenu>                                
+                                
                                 <p:submenu rendered="#{loginFormBean.esSupervisor()}" label="Editorial">
                                     <p:menuitem value="Agregar Editorial" url="agregarEditorial.xhtml"/>   
                                     <p:menuitem value="Modificar o Eliminar Editorial" url="modificarBorrarEditorial.xhtml"/>  

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/06/2018 14:09:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="convento" name="aplicacion.modelo.dominio.Reserva" table="reservas">
+    <id name="revCodigo" type="java.lang.Integer">
+      <column name="rev_codigo"/>
+      <generator class="identity"/>
+    </id>
+    <property name="revFechaEmision" type="date">
+      <column length="10" name="rev_fecha_emision" not-null="true"/>
+    </property>
+    <property name="revFechaTurno" type="date">
+      <column length="10" name="rev_fecha_turno" not-null="true"/>
+    </property>
+    <property name="revEstado" type="boolean">
+      <column name="rev_estado" not-null="true"/>
+    </property>
+    <property name="revPerfil" type="int">
+      <column name="rev_perfil" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

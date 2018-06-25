@@ -36,8 +36,7 @@ public class PublicacionAutorDAOImp implements IPublicacionAutorDAO {
 
     @Override
     public List<PublicacionAutor> devolverPublicacionesAutores(String codigoPublicacion) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.        
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
         Criteria crit = s.createCriteria(PublicacionAutor.class);

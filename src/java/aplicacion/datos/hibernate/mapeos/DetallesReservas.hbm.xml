@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/06/2018 14:09:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="convento" name="aplicacion.modelo.dominio.DetalleReserva" optimistic-lock="version" table="detalles_reservas">
+    <id name="drevCodigo" type="java.lang.Integer">
+      <column name="drev_codigo"/>
+      <generator class="identity"/>
+    </id>
+    <property name="drevCantidad" type="int">
+      <column name="drev_cantidad" not-null="true"/>
+    </property>
+    <property name="drevEstado" type="boolean">
+      <column name="drev_estado" not-null="true"/>
+    </property>
+    <property name="drevReserva" type="int">
+      <column name="drev_reserva" not-null="true"/>
+    </property>
+    <property name="drevPublicacion" type="string">
+      <column length="15" name="drev_publicacion" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

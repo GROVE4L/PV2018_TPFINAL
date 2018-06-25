@@ -5,6 +5,7 @@ import aplicacion.controlador.beans.UsuarioBean;
 import aplicacion.modelo.dominio.Perfil;
 import aplicacion.modelo.dominio.Usuario;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -82,6 +83,19 @@ public class LoginFormBean implements Serializable{
         return "login?faces-redirect=true";
     }
     
+    public List<Perfil> obtenerPerfiles() {
+        return perfilBean.obtenerPerfiles();
+    }
+    
+    
+    public boolean verificarReserva(){
+        boolean sesionValida = false;
+        if(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("reserva") != null){
+            sesionValida=true;
+        }
+        return sesionValida;
+    }
+    
     public boolean verificarPrestamo(){
         boolean sesionValida = false;
         if(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("prestamo") != null){
@@ -131,12 +145,30 @@ public class LoginFormBean implements Serializable{
         this.perfilLoginSeleccionado = perfilBean.obtenerPerfil(codigoUsuario);
     }
     
+    public String actualizarRangoUsuario() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();        
+        usuarioBean.actualizarUsuario(this.usuarioLoginSeleccionado);            
+        perfilBean.actualizarPerfil(this.perfilLoginSeleccionado);
+        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                        "Usuario Actualizado",""));
+        if(this.usuarioLoginSeleccionado.getUsuCodigo().equals(this.obtenerSesion().getUsuCodigo())) { //Si se suicida xD
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioValido", null);
+            return "login?faces-redirect=true";
+        }
+        else
+            return null;
+    }
+    
     public void actualizarUsuario() {
         FacesContext facesContext = FacesContext.getCurrentInstance();        
         usuarioBean.actualizarUsuario(this.usuarioLoginSeleccionado);            
         perfilBean.actualizarPerfil(this.perfilLoginSeleccionado);
         facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                         "Usuario Actualizado",""));                
+    }
+    
+    public Usuario obtenerUsuarioDePerfil(int idUsuarioBuscado) {        
+        return usuarioBean.obtenerUsuario(idUsuarioBuscado);
     }
     
     public String validarUsuario() {

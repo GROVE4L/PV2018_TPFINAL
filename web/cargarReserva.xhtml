@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./estructura/masterTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form rendered="#{loginFormBean.verificarSesion() eq false}" onsubmit="">
+                    <!-- Redireccion a pagina login -->
+                    <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
+                </h:form>
+                <h:form rendered="#{loginFormBean.verificarSesion()}">
+                    <div id="tooplate_main">
+                        <p:panel id="panelContenedor">
+                            <p:growl id="mensajes" showDetail="false"/>
+                            <p:panelGrid id="panelPrestamo" styleClass="ui-noborder" columns="3">                                
+                                <p:outputLabel value="Ucuario Solicitante: "/>
+                                <p:outputLabel value="#{loginFormBean.obtenerSesion().usuNombreUsuario}"/>
+                                <p:outputLabel/>
+                                
+                                <p:outputLabel for="fechaCal" value="Fecha de Turno: "/>
+                                <p:calendar id="fechaCal" required="true" placeholder="dd/mm/aaaa" requiredMessage="Elija una fecha." 
+                                            pattern="dd/MM/yyyy" value="#{reservaFormBean.reserva.revFechaTurno}"/>
+                                <p:outputLabel/>
+                                
+                                <p:commandButton icon="fa fa-plus" update="panelContenedor"
+                                                 value="Cargar Libros" action="#{reservaFormBean.cargarLibros()}"/>
+                            </p:panelGrid>
+                        </p:panel>
+                        <p:separator/>
+                    </div>
+                </h:form>                
+            </ui:define>
+            
+        </ui:composition>
+
+    </body>
+</html>

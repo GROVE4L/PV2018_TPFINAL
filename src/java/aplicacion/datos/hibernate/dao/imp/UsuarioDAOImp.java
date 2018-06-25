@@ -94,4 +94,17 @@ public class UsuarioDAOImp implements IUsuarioDAO {
             encontrado = ((Usuario) crit.list().get(0)).getUsuCodigo();
         return encontrado;
     }
+
+    @Override
+    public Usuario obtenerUsuario(int codigoBuscado) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Usuario encontrado = null;
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        Criteria crit = s.createCriteria(Usuario.class);
+        crit.add(Restrictions.like("usuCodigo", codigoBuscado)); //1) como esta en clase 2)con que comparar
+        if(!crit.list().isEmpty())
+            encontrado = ((Usuario) crit.list().get(0));
+        return encontrado;
+    }
 }

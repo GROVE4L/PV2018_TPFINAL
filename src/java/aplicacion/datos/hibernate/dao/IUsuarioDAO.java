@@ -16,4 +16,5 @@ public interface IUsuarioDAO{
     public boolean buscarUsuario(Usuario usuario);
     public int obtenerCodigoUsuario(Usuario usuario);
     public List<Usuario> devolverUsuarios();
+    public Usuario obtenerUsuario(int codigoBuscado);    
 }
