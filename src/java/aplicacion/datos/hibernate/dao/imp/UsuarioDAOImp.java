@@ -3,6 +3,7 @@ package aplicacion.datos.hibernate.dao.imp;
 import aplicacion.datos.hibernate.dao.IUsuarioDAO;
 import aplicacion.datos.hibernate.configuracion.HibernateUtil;
 import aplicacion.modelo.dominio.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -15,28 +16,21 @@ import org.hibernate.criterion.Restrictions;
 public class UsuarioDAOImp implements IUsuarioDAO {
 
     @Override
-    public Usuario login(Usuario usuario) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Usuario login(Usuario usuario) {        
         Usuario u = null;        
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
+        Session s = HibernateUtil.getSessionFactory().openSession();        
         Criteria crit = s.createCriteria(Usuario.class);
         crit.add(Restrictions.like("usuNombreUsuario", usuario.getUsuNombreUsuario())); //1) como esta en clase 2)con que comparar
         crit.add(Restrictions.like("usuPassword", usuario.getUsuPassword()));
         if(!crit.list().isEmpty()) {
             u = (Usuario) crit.list().get(0);
         }
+        s.close();
         return u;
     }
 
     @Override
-    public void add(Usuario usuario) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        /*System.out.println("Usuario Recibido:");
-        System.out.println("Nombre: "+usuario.getUsuNombreUsuario());
-        System.out.println("Password: "+usuario.getUsuPassword());
-        System.out.println("Tipo: "+usuario.getUsuTipoUsuario());
-        System.out.println("Estado: "+usuario.isUsuEstado());*/
+    public void add(Usuario usuario) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();        
         s.save(usuario);
@@ -45,8 +39,7 @@ public class UsuarioDAOImp implements IUsuarioDAO {
     }
 
     @Override
-    public void update(Usuario usuario) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(Usuario usuario) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
         s.update(usuario);
@@ -56,42 +49,45 @@ public class UsuarioDAOImp implements IUsuarioDAO {
 
     @Override
     public void delete(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        s.delete(usuario);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override
     public List<Usuario> devolverUsuarios() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
+        List<Usuario> listaAux = new ArrayList<>();
+        Session s = HibernateUtil.getSessionFactory().openSession();        
         Criteria crit = s.createCriteria(Usuario.class);
         crit.add(Restrictions.like("usuEstado", true)); 
-        return crit.list();        
+        listaAux= crit.list();        
+        s.close();
+        return listaAux;
     }    
 
     @Override
-    public boolean buscarUsuario(Usuario usuario) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.        
+    public boolean buscarUsuario(Usuario usuario) {        
         boolean encontrado = false;
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
+        Session s = HibernateUtil.getSessionFactory().openSession();        
         Criteria crit = s.createCriteria(Usuario.class);
         crit.add(Restrictions.like("usuNombreUsuario", usuario.getUsuNombreUsuario())); //1) como esta en clase 2)con que comparar
         if(!crit.list().isEmpty())
             encontrado = true;
+        s.close();
         return encontrado;        
     }
 
     @Override
-    public int obtenerCodigoUsuario(Usuario usuario) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int obtenerCodigoUsuario(Usuario usuario) {        
         int encontrado = -1;
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
+        Session s = HibernateUtil.getSessionFactory().openSession();        
         Criteria crit = s.createCriteria(Usuario.class);
         crit.add(Restrictions.like("usuNombreUsuario", usuario.getUsuNombreUsuario())); //1) como esta en clase 2)con que comparar
         if(!crit.list().isEmpty())
             encontrado = ((Usuario) crit.list().get(0)).getUsuCodigo();
+        s.close();
         return encontrado;
     }
 
@@ -99,12 +95,12 @@ public class UsuarioDAOImp implements IUsuarioDAO {
     public Usuario obtenerUsuario(int codigoBuscado) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Usuario encontrado = null;
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
+        Session s = HibernateUtil.getSessionFactory().openSession();        
         Criteria crit = s.createCriteria(Usuario.class);
         crit.add(Restrictions.like("usuCodigo", codigoBuscado)); //1) como esta en clase 2)con que comparar
         if(!crit.list().isEmpty())
             encontrado = ((Usuario) crit.list().get(0));
+        s.close();
         return encontrado;
     }
 }

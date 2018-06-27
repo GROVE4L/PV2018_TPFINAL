@@ -3,6 +3,7 @@ package aplicacion.datos.hibernate.dao.imp;
 import aplicacion.datos.hibernate.configuracion.HibernateUtil;
 import aplicacion.datos.hibernate.dao.IPublicacionAutorDAO;
 import aplicacion.modelo.dominio.PublicacionAutor;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -26,22 +27,32 @@ public class PublicacionAutorDAOImp implements IPublicacionAutorDAO {
 
     @Override
     public void delete(PublicacionAutor pb) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        s.delete(pb);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override
     public void update(PublicacionAutor pb) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        s.update(pb);
+        s.getTransaction().commit();
+        s.close();
     }
 
     @Override
-    public List<PublicacionAutor> devolverPublicacionesAutores(String codigoPublicacion) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.        
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
+    public List<PublicacionAutor> devolverPublicacionesAutores(String codigoPublicacion) {        
+        List<PublicacionAutor> listaAux = new ArrayList<>();
+        Session s = HibernateUtil.getSessionFactory().openSession();        
         Criteria crit = s.createCriteria(PublicacionAutor.class);
         crit.add(Restrictions.like("paUblicacion", codigoPublicacion));
-        return crit.list();  
+        listaAux = crit.list();  
+        s.close();
+        return listaAux;
     }
 
 

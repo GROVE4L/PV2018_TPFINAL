@@ -3,6 +3,7 @@ package aplicacion.datos.hibernate.dao.imp;
 import aplicacion.datos.hibernate.configuracion.HibernateUtil;
 import aplicacion.datos.hibernate.dao.IDetalleReservaDAO;
 import aplicacion.modelo.dominio.DetalleReserva;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -45,12 +46,13 @@ public class DetalleReservaDAOImp implements IDetalleReservaDAO {
     }
 
     @Override
-    public List<DetalleReserva> devolverDetalleReservas() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();        
+    public List<DetalleReserva> devolverDetalleReservas() {        
+        List<DetalleReserva> listaAux = new ArrayList<>();
+        Session s = HibernateUtil.getSessionFactory().openSession();        
         Criteria crit = s.createCriteria(DetalleReserva.class);        
-        return crit.list();
+        listaAux=crit.list();
+        s.close();
+        return listaAux;
     }
  
 

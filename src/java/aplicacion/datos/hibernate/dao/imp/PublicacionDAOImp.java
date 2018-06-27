@@ -47,15 +47,16 @@ public class PublicacionDAOImp implements IPublicacionDAO {
 
     @Override
     public Publicacion buscarPublicacion(Publicacion p) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();        
+        Publicacion objAux = new Publicacion();
+        Session s = HibernateUtil.getSessionFactory().openSession();        
         Criteria crit = s.createCriteria(Publicacion.class);
         crit.add(Restrictions.like("pubCodigo", p.getPubCodigo())); //1) como esta en clase 2)con que comparar        
         if(crit.list().isEmpty())
-            return null;
+            objAux = null;
         else 
-            return (Publicacion) crit.list().get(0);
+            objAux = (Publicacion) crit.list().get(0);
+        s.close();
+        return objAux;
     }
 
     @Override
@@ -64,27 +65,26 @@ public class PublicacionDAOImp implements IPublicacionDAO {
     }
 
     @Override
-    public List<Publicacion> devolverPublicaciones() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();        
+    public List<Publicacion> devolverPublicaciones() {        
+        List<Publicacion> listaAux = new ArrayList<>();
+        Session s = HibernateUtil.getSessionFactory().openSession();        
         Criteria crit = s.createCriteria(Publicacion.class);
-        return crit.list();
-        
+        listaAux= crit.list();
+        s.close();
+        return listaAux;
     }
     @Override
     public List<Publicacion> devolverPublicacionesConStock() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.        
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
-        Criteria crit = s.createCriteria(Publicacion.class);
-        
+        List<Publicacion> listaAux = new ArrayList<>();
+        Session s = HibernateUtil.getSessionFactory().openSession();        
+        Criteria crit = s.createCriteria(Publicacion.class);        
         crit.add(Restrictions.gt("pubStock",0)); //1) como esta en clase 2)con que comparar        
         if(crit.list().isEmpty())
-            return null;
+            listaAux= null;
         else 
-            return crit.list();   
+            listaAux= crit.list();   
+        s.close();
+        return listaAux;
     }
 
 }

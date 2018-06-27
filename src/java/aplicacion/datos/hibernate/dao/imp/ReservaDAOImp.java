@@ -3,6 +3,7 @@ package aplicacion.datos.hibernate.dao.imp;
 import aplicacion.datos.hibernate.configuracion.HibernateUtil;
 import aplicacion.datos.hibernate.dao.IReservaDAO;
 import aplicacion.modelo.dominio.Reserva;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -46,20 +47,22 @@ public class ReservaDAOImp implements IReservaDAO {
 
     @Override
     public List<Reserva> devolverReservas() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();        
+        List<Reserva> listaAux=new ArrayList<>();
+        Session s = HibernateUtil.getSessionFactory().openSession();        
         Criteria crit = s.createCriteria(Reserva.class);
-        return crit.list();
+        listaAux = crit.list();
+        s.close();
+        return listaAux;
     }
 
     @Override
     public Reserva obtenerUltimaReserva() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();        
+        Reserva objAux = new Reserva();
+        Session s = HibernateUtil.getSessionFactory().openSession();        
         Criteria crit = s.createCriteria(Reserva.class);
-        return (Reserva) crit.list().get(crit.list().size()-1);
+        objAux= (Reserva) crit.list().get(crit.list().size()-1);
+        s.close();
+        return objAux;
     }
 
 }

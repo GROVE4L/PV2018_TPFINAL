@@ -48,7 +48,8 @@
                             </p:panelGrid>
                         </p:panel>
                         <p:separator/>
-                        <p:dataTable id="tablaPublicaciones" value="#{agregarPublicacionFormBean.listadoPublicaciones()}" var="p">                        
+                        <p:dataTable id="tablaPublicaciones" value="#{agregarPublicacionFormBean.listadoPublicaciones()}" var="p"
+                                     scrollable="true" scrollHeight="100">                        
                             <p:column headerText="Código">
                                 <h:outputText value="#{p.pubCodigo}"/>
                             </p:column>

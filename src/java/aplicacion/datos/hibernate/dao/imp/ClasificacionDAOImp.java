@@ -3,6 +3,7 @@ package aplicacion.datos.hibernate.dao.imp;
 import aplicacion.datos.hibernate.configuracion.HibernateUtil;
 import aplicacion.datos.hibernate.dao.IClasificacionDAO;
 import aplicacion.modelo.dominio.Clasificacion;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -45,16 +46,17 @@ public class ClasificacionDAOImp implements IClasificacionDAO {
     }
 
     @Override
-    public Clasificacion buscarClasificacion(Clasificacion c) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Clasificacion buscarClasificacion(Clasificacion c) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();        
+        Clasificacion clasAux = new Clasificacion();
         Criteria crit = s.createCriteria(Clasificacion.class);
         crit.add(Restrictions.like("claIdentificador", c.getClaIdentificador())); //1) como esta en clase 2)con que comparar                
         if(crit.list().isEmpty())
-            return null;
+            clasAux = null;
         else 
-            return (Clasificacion) crit.list().get(0);
+            clasAux = (Clasificacion) crit.list().get(0);
+        s.close();
+        return clasAux;
     }
 
     @Override
@@ -64,28 +66,26 @@ public class ClasificacionDAOImp implements IClasificacionDAO {
 
     @Override
     public List<Clasificacion> devolverClasificaciones() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();        
+        List<Clasificacion> listaAux = new ArrayList<>();
+        Session s = HibernateUtil.getSessionFactory().openSession();        
         Criteria crit = s.createCriteria(Clasificacion.class);        
-        return crit.list();    
+        listaAux = crit.list();
+        s.close();
+        return listaAux;
     }
 
     @Override
-    public Clasificacion buscarCodigoClasificacion(int codigoBuscado) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.        
+    public Clasificacion buscarCodigoClasificacion(int codigoBuscado) {        
+        Clasificacion objAux = new Clasificacion();
         Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();        
         Criteria crit = s.createCriteria(Clasificacion.class);
         crit.add(Restrictions.like("claCodigo", codigoBuscado)); //1) como esta en clase 2)con que comparar        
         if(crit.list().isEmpty())
-            return null;
+            objAux=null;
         else 
-            return (Clasificacion) crit.list().get(0);
-        
-    }
-
-    
+            objAux= (Clasificacion) crit.list().get(0);
+        s.close();
+        return objAux;
+    }    
 
 }
