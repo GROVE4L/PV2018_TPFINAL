@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./estructura/masterTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form rendered="#{loginFormBean.verificarSesion() eq false}" onsubmit="">
+                    <!-- Redireccion a pagina login -->
+                    <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
+                </h:form>
+                <h:form id="formEdicion" rendered="#{loginFormBean.verificarSesion()}">                    
+                    <div id="tooplate_main">
+                        <p:panel id="panelContenedorModificarBorrar">
+                            <p:growl id="mensajes" showDetail="false"/>
+                            <br/>
+                            <p:outputLabel value="Listado de Publicaciones" style="font-weight: bold" />
+                            <p:dataTable id="tablaPublicaciones" value="#{agregarPublicacionFormBean.listadoPublicacionesConStock()}" var="p"
+                                     scrollable="true" scrollHeight="300"
+                                     widgetVar="listaWV" emptyMessage="Nada Encontrado">
+                                <f:facet name="header">
+                                    <p:outputPanel>
+                                        <h:outputText value="Buscar en todos los campos:"/>
+                                        <p:inputText id="globalFilter"
+                                                     onkeyup="PF('listaWV').filter()"
+                                                     style="width:150px" placeholder="Busqueda"/>
+                                    </p:outputPanel>
+                                </f:facet>
+                                
+                            <p:column headerText="Código" filterStyle="display:none" filterBy="#{p.pubCodigo}">
+                                <h:outputText value="#{p.pubCodigo}"/>
+                            </p:column>
+                            <p:column headerText="Publicación" filterStyle="display:none" filterBy="#{p.pubNombre}">
+                                <h:outputText value="#{p.pubNombre}"/>
+                            </p:column>
+                            <p:column headerText="Editorial" filterStyle="display:none" filterBy="#{agregarEditorialFormBean.devolverNombreEditorial(p.pubEditorial)}">
+                                <h:outputText value="#{agregarEditorialFormBean.devolverNombreEditorial(p.pubEditorial)}"/>
+                            </p:column>
+                            <p:column headerText="Resumen" filterStyle="display:none" filterBy="#{p.pubResumen}">
+                                <h:outputText value="#{p.pubResumen}"/>
+                            </p:column>
+                            <p:column headerText="Tipo" filterStyle="display:none" filterBy="#{p.pubTipo}">
+                                <h:outputText value="#{p.pubTipo}"/>
+                            </p:column>
+                            <p:column headerText="Cantidad">
+                                <h:outputText value="#{p.pubStock}"/>
+                            </p:column>
+                        </p:dataTable>                        
+                        </p:panel>  
+                    </div>    
+                </h:form>
+            </ui:define>
+            
+        </ui:composition>
+
+    </body>
+</html>
