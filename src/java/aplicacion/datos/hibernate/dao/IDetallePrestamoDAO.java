@@ -13,4 +13,5 @@ public interface IDetallePrestamoDAO{
     public void delete(DetallePrestamo dp);
     public void update(DetallePrestamo dp);    
     public List<DetallePrestamo> devolverDetallePrestamos();
+    public List<DetallePrestamo> devolverDetallePrestamosCodigo(int codigoPrestamoBuscado);
 }

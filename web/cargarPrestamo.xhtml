@@ -15,7 +15,7 @@
                     <!-- Redireccion a pagina login -->
                     <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
                 </h:form>
-                <h:form rendered="#{loginFormBean.verificarSesion() and loginFormBean.esSupervisor()}">
+                <h:form rendered="#{loginFormBean.verificarSesion() and (loginFormBean.esSupervisor() or loginFormBean.esAdministrativo())}">
                     <div id="tooplate_main">
                         <p:panel id="panelContenedor">
                             <p:growl id="mensajes" showDetail="false"/>

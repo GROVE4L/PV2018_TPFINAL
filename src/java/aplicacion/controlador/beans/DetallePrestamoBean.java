@@ -46,33 +46,8 @@ public class DetallePrestamoBean implements Serializable{
         DetallePrestamoDAOImp dpDAOImp = new DetallePrestamoDAOImp();
         return dpDAOImp.devolverDetallePrestamos();
     }
-    
-    /*
-    public void borrarAutor(Autor a) {
-        AutorDAOImp autorDAOImp = new AutorDAOImp();
-        autorDAOImp.delete(a);
-    }
-    
-    public void modificarAutor(Autor a) {
-        AutorDAOImp autorDAOImp = new AutorDAOImp();
-        autorDAOImp.update(a);
-    }
-
-    public Autor buscarAutor(Autor a) {
-        AutorDAOImp autorDAOImp = new AutorDAOImp();
-        return autorDAOImp.buscarAutor(a);
-    }
-    public void agregarAutor(Autor a) {
-        AutorDAOImp autorDAOImp = new AutorDAOImp();
-        autorDAOImp.add(a);
-    }
-    public Autor buscarPorCodigo(int codigoBuscado) {
-        AutorDAOImp autorDAOImp = new AutorDAOImp();
-        return autorDAOImp.buscarCodigoAutor(codigoBuscado);
-    }
-            
-    public List<Autor> listarAutores() {
-        AutorDAOImp autorDAOImp = new AutorDAOImp();
-        return autorDAOImp.devolverAutores();
-    }    */
+    public List<DetallePrestamo> devolverDetallePrestamosCodigo(int codigoPrestamoBuscado) {
+        DetallePrestamoDAOImp dpDAOImp = new DetallePrestamoDAOImp();
+        return dpDAOImp.devolverDetallePrestamosCodigo(codigoPrestamoBuscado);
+    }    
 }

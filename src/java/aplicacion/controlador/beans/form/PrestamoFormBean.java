@@ -75,6 +75,23 @@ public class PrestamoFormBean implements Serializable{
         this.dp = dp;
     }
     
+    public void borrarPrestamo(Prestamo objPrestamo) {        
+        List<DetallePrestamo> listaLibros = this.devolverDetallePrestamosCodigo(objPrestamo.getPreCodigo());
+        PublicacionBean pBean = new PublicacionBean();
+        Publicacion objPubAux = new Publicacion();
+        for(DetallePrestamo i: listaLibros) {
+            objPubAux.setPubCodigo(i.getDpPublicacion());
+            objPubAux = pBean.buscarPublicacion(objPubAux);
+            objPubAux.setPubStock(objPubAux.getPubStock()+1);
+            pBean.modificarPublicacion(objPubAux);
+            detallePrestamoBean.borrarDetallePrestamo(i);
+        }        
+        prestamoBean.borrarPrestamo(objPrestamo);
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                            "Prestamo eliminado!",
+                            ""));
+    }
     
     public Prestamo getPrestamo() {
         return prestamo;
@@ -98,6 +115,20 @@ public class PrestamoFormBean implements Serializable{
     
     public void agregarALista(Publicacion pu) {
         this.listadoAPrestar.add(pu);        
+    }
+    
+    public List<Prestamo> listarPrestamos() {
+        return prestamoBean.listarPrestamos();
+    }
+    
+    public List<DetallePrestamo> devolverDetallePrestamosCodigo(int codigoBuscado) {
+        return detallePrestamoBean.devolverDetallePrestamosCodigo(codigoBuscado);        
+    }
+    
+    public String obtenerNombrePrestamoDirecto(int codigoPerfilBuscado){        
+        PerfilBean pb = new PerfilBean();
+        Perfil pf = pb.obtenerPerfilDirecto(codigoPerfilBuscado);
+        return pf.getPerNombres()+" "+pf.getPerApellidos();
     }
     
     public String obtenerNombrePrestamo(){        
@@ -127,7 +158,7 @@ public class PrestamoFormBean implements Serializable{
                 objDetallePrestamo.setDpPublicacion(i.getPubCodigo());
                 detallePrestamoBean.agregarDetallePrestamo(objDetallePrestamo);
                 i.setPubStock(i.getPubStock()-1);
-                pb.modificarPublicacion(i);
+                pb.modificarPublicacion(i);                
             }
             
             FacesContext facesContext = FacesContext.getCurrentInstance();

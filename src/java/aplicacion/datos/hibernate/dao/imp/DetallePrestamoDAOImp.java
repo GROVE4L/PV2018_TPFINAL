@@ -26,11 +26,12 @@ public class DetallePrestamoDAOImp implements IDetallePrestamoDAO {
     }
 
     @Override
-    public void delete(DetallePrestamo dp) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void delete(DetallePrestamo dp) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
-        s.delete(dp);
+        dp.setDpEstado(false);
+        s.update(dp);
+        //s.delete(dp);
         s.getTransaction().commit();
         s.close();
     }
@@ -51,6 +52,18 @@ public class DetallePrestamoDAOImp implements IDetallePrestamoDAO {
         Session s = HibernateUtil.getSessionFactory().openSession();
         Criteria crit = s.createCriteria(DetallePrestamo.class);        
         listaAux = crit.list();
+        s.close();
+        return listaAux;
+    }
+
+    @Override
+    public List<DetallePrestamo> devolverDetallePrestamosCodigo(int codigoPrestamoBuscado) {
+        List<DetallePrestamo> listaAux = null;
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        Criteria crit = s.createCriteria(DetallePrestamo.class);
+        crit.add(Restrictions.like("dpPrestamo", codigoPrestamoBuscado)); //1) como esta en clase 2)con que comparar
+        if(!crit.list().isEmpty())
+            listaAux = crit.list();
         s.close();
         return listaAux;
     }

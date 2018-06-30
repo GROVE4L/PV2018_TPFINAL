@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./estructura/masterTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form rendered="#{loginFormBean.verificarSesion() eq false}" onsubmit="">
+                    <!-- Redireccion a pagina login -->
+                    <META HTTP-EQUIV="Refresh" CONTENT="1;URL=login.xhtml"/>                    
+                </h:form>
+                <h:form id="formularioDevolucion" rendered="#{loginFormBean.verificarSesion() and (loginFormBean.esSupervisor() or loginFormBean.esAdministrativo())}">
+                    <div id="tooplate_main">
+                        <p:panel id="panelContenedor" header="Listado de Prestamos Activos">
+                            <p:growl id="mensajes" showDetail="false"/>
+                            <h:panelGrid id="panelPrestamo" columns="3">                                
+                                <p:dataTable emptyMessage="Nada Cargado." value="#{prestamoFormBean.listarPrestamos()}" var="p"
+                                             widgetVar="listaWV" scrollable="true" scrollHeight="350">
+                                        <f:facet name="header">
+                                            <p:outputPanel>
+                                                <h:outputText value="Buscar en todos los campos:"/>
+                                                <p:inputText id="globalFilter"
+                                                             onkeyup="PF('listaWV').filter()"
+                                                             style="width:150px" placeholder="Búsqueda"/>
+                                            </p:outputPanel>
+                                        </f:facet>
+                                        <p:column headerText="Administrativo" filterStyle="display:none" filterBy="#{p.preAdministrativo}" style="width:180px">
+                                            <p:outputLabel value="#{p.preAdministrativo}"/>
+                                        </p:column>
+                                        <p:column headerText="Fecha del Prestamo" filterStyle="display:none" filterBy="#{p.preFechaPrestamo}" style="width:150px">
+                                            <h:outputLabel value="#{p.preFechaPrestamo}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                            </h:outputLabel>
+                                        </p:column>
+                                        <p:column headerText="Socio del Prestamo" filterStyle="display:none" filterBy="#{prestamoFormBean.obtenerNombrePrestamoDirecto(p.preSocio)}" style="width:200px">
+                                            <h:outputLabel value="#{prestamoFormBean.obtenerNombrePrestamoDirecto(p.preSocio)}"/>
+                                        </p:column>
+                                        <p:column headerText="Listado de Libros Prestados" style="width:250px">
+                                            <p:dataList emptyMessage="Sin Libros" value="#{prestamoFormBean.devolverDetallePrestamosCodigo(p.preCodigo)}" var="dp" type="ordered">
+                                                (#{dp.dpPublicacion}) #{agregarPublicacionFormBean.devolverPublicacion(dp.dpPublicacion).pubNombre}
+                                            </p:dataList>
+                                        </p:column>
+                                        <p:column headerText="Acciones" style="width:80px">                                            
+                                            <p:commandButton icon="fa fa-trash" title="Borrar Prestamo" action="#{prestamoFormBean.borrarPrestamo(p)}" update=":formularioDevolucion:panelContenedor"/>
+                                        </p:column>
+                                    </p:dataTable>
+                            </h:panelGrid>
+                        </p:panel>                        
+                    </div>
+                </h:form>                
+            </ui:define>
+            
+        </ui:composition>
+
+    </body>
+</html>

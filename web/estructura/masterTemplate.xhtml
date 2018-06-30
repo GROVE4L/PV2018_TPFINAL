@@ -38,7 +38,12 @@
                                         <p:menuitem value="Publicaciones" url="consultarPublicaciones.xhtml"/>
                                     </p:submenu>                                    
                                 </p:submenu>
-                                <p:menuitem rendered="#{loginFormBean.esSupervisor()}" value="Cargar Prestamo" url="cargarPrestamo.xhtml" />
+                                
+                                <p:submenu rendered="#{loginFormBean.esSupervisor() or loginFormBean.esAdministrativo()}" label="Prestamos">
+                                    <p:menuitem value="Cargar Prestamo" url="cargarPrestamo.xhtml" />
+                                    <p:menuitem value="Devolver Prestamo" url="devolverPrestamo.xhtml" />
+                                </p:submenu>
+                                
                                 <p:menuitem rendered="#{loginFormBean.verificarSesion()}" value="Reservar Libros" url="#"/> 
 
                                 <p:menuitem rendered="#{loginFormBean.esAdministrativo()}" value="Pedidos Usuarios"/>

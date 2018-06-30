@@ -45,6 +45,11 @@ public class AgregarPublicacionFormBean implements Serializable{
         this.publicacion = publicacion;
     }
 
+    public Publicacion devolverPublicacion(String codPub){
+        Publicacion aux = new Publicacion();
+        aux.setPubCodigo(codPub);
+        return publicacionBean.buscarPublicacion(aux);
+    }
         
     public Publicacion buscarPublicacion() {        
         return publicacionBean.buscarPublicacion(this.publicacion);

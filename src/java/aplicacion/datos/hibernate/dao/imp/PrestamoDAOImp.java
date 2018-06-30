@@ -37,16 +37,22 @@ public class PrestamoDAOImp implements IPrestamoDAO {
     public void delete(Prestamo pre) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
-        s.delete(pre);
+        pre.setPreEstado(false);
+        s.update(pre);
+//        s.delete(pre);
         s.getTransaction().commit();
         s.close();
     }
     @Override
-    public List<Prestamo> devolverPrestamos() {
-        List<Prestamo> listaAux = new ArrayList<>();
+    public List<Prestamo> devolverPrestamos() { //Devuelve prestamos activos
+        List<Prestamo> listaAux;
         Session s = HibernateUtil.getSessionFactory().openSession();        
-        Criteria crit = s.createCriteria(Prestamo.class);
-        listaAux=crit.list();
+        Criteria crit = s.createCriteria(Prestamo.class);        
+        crit.add(Restrictions.eq("preEstado", true)); //1) como esta en clase 2)con que comparar                
+        if(crit.list().isEmpty())
+            listaAux = null;
+        else 
+            listaAux = crit.list();
         s.close();
         return listaAux; 
     }
