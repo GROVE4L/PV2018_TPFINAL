@@ -34,11 +34,11 @@ public class ReservaBean implements Serializable{
         reservaDAOImp.delete(re);
     }
     
-    public void modificarPrestamo(Reserva re) {
+    public void modificarReserva(Reserva re) {
         ReservaDAOImp reservaDAOImp = new ReservaDAOImp();
         reservaDAOImp.update(re);
     }
-    public void agregarPrestamo(Reserva re) {
+    public void agregarReserva(Reserva re) {
         ReservaDAOImp reservaDAOImp = new ReservaDAOImp();
         reservaDAOImp.add(re);
     }

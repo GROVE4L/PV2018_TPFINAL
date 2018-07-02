@@ -108,17 +108,49 @@ public class ReservaFormBean implements Serializable{
         Perfil pf = lfm.obtenerPerfilSesion();
         return pf.getPerNombres()+" "+pf.getPerApellidos();
     }
+    /**
+     * Funcion  que finaliza y guarda la reserva.
+     * @return Devuelve nada
+     */
+    public String finalizarReserva(){
+        if(!this.listadoAPrestar.isEmpty()){
+            Reserva objReserva = this.obtenerObjReserva();
+            DetalleReserva objDetalleReserva = this.obtenerObjDetalleReserva();
+            reservaBean.agregarReserva(objReserva);
+            
+            objDetalleReserva.setDrevEstado(true);            
+            objDetalleReserva.setDrevCantidad(1);
+            objDetalleReserva.setDrevReserva(reservaBean.obtenerUltimaReserva().getRevCodigo());
+
+            PublicacionBean pb = new PublicacionBean();
+            for(Publicacion i: this.listadoAPrestar) {
+                objDetalleReserva.setDrevPublicacion(i.getPubCodigo());
+                detalleReservaBean.agregarDetalleReserva(objDetalleReserva);                
+            }
+            
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                            "Reserva Cargada en el sistema cargado en el Sistema!",
+                            ""));
+            
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("detalleReserva", null);
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("reserva", null);
+            return "login?faces-redirect=true";
+        }
+        else {
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                            "La lista esta vacía",
+                            "Debe prestar al menos un libro!"));
+            return null;
+        }
+    }
     
     public String cargarLibros(){
         LoginFormBean lfm = new LoginFormBean();
         this.reserva.setRevEstado(true);
         this.reserva.setRevFechaEmision(new Date());
-        this.reserva.setRevPerfil(lfm.obtenerPerfilSesion().getPerCodigo());
-        /*System.out.println("Objeto Reserva");
-        System.out.println("Fecha Emision "+reserva.getRevFechaEmision());
-        System.out.println("Estado "+reserva.isRevEstado());
-        System.out.println("Fecha de turno: "+reserva.getRevFechaTurno());
-        System.out.println("Usuario Solicitante: "+reserva.getRevPerfil());*/
+        this.reserva.setRevPerfil(lfm.obtenerPerfilSesion().getPerCodigo());        
         
         this.listadoAPrestar=null;
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("detalleReserva", this.dr);

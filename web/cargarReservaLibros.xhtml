@@ -35,7 +35,7 @@
                                 </p:outputLabel>                                
                                 
                                 <p:commandButton value="Agregar libro" icon="fa fa-plus" oncomplete="PF('seleccionWV').show()" update=":dlgLibros"/>
-                                <p:commandButton value="Finalizar" icon="fa fa-check-circle" update="mensajes"/>
+                                <p:commandButton value="Finalizar" icon="fa fa-check-circle" action="#{reservaFormBean.finalizarReserva()}" update="mensajes"/>
                             </p:panelGrid>
                             <h:panelGrid id="tblModificarClasificacion" columns="2">
                                 <p:dataTable emptyMessage="Nada Cargado." value="#{reservaFormBean.listadoAPrestar}" var="pu">
