@@ -13,6 +13,9 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
+/**
+ *la clase ClasificacinBean
+ */
 public class ClasificacionBean implements Serializable{
 
     private Clasificacion clasificacion;
@@ -20,7 +23,10 @@ public class ClasificacionBean implements Serializable{
     public ClasificacionBean() {
         this.clasificacion = new Clasificacion();        
     }
-
+    /**
+     * se crea el constructor de Clasificicacion con su Get y Set
+     * @return 
+     */
     public Clasificacion getClasificacion() {
         return clasificacion;
     }
@@ -33,21 +39,37 @@ public class ClasificacionBean implements Serializable{
         ClasificacionDAOImp clasificacionDAOImp = new ClasificacionDAOImp();
         return clasificacionDAOImp.buscarCodigoClasificacion(codigoBuscado);
     }
-        
+    /**
+       * se crea un procedimiento llamado borrarClasificacion 
+       * en el cual se podra borrar la Clasificacion
+       * @param c 
+       */     
     public void borrarClasificacion(Clasificacion c) {
         ClasificacionDAOImp clasificacionDAOImp = new ClasificacionDAOImp();
         clasificacionDAOImp.delete(c);
     }
-    
+    /**
+      * se crea un procedimiento llamado modificarClasificacion
+      * en el cual se podra modificar la Clasificacion
+      * @param c 
+      */
     public void modificarClasificacion(Clasificacion c) {
         ClasificacionDAOImp clasificacionDAOImp = new ClasificacionDAOImp();
         clasificacionDAOImp.update(c);
     }
-
+    /**
+      * se crea un procedimiento llamado agregarClasificacion
+      * @param c 
+      */
     public void agregarClasificacion(Clasificacion c) {
         ClasificacionDAOImp clasificacionDAOImp = new ClasificacionDAOImp();
         clasificacionDAOImp.add(c);
     }
+    /**
+     * buscar la Clasificacion 
+     * @param c
+     * @return 
+     */
     public Clasificacion buscarClasificacion(Clasificacion c) {
         ClasificacionDAOImp clasificacionDAOImp = new ClasificacionDAOImp();
         return clasificacionDAOImp.buscarClasificacion(c);
