@@ -13,6 +13,9 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
+/**
+ * se crea una clase AutorBean
+ */
 public class AutorBean implements Serializable{
 
     private Autor autor;
@@ -20,7 +23,10 @@ public class AutorBean implements Serializable{
     public AutorBean() {
         this.autor = new Autor();        
     }
-
+    /**
+     * se crea el constructor de Autos con su Get y Set
+     * @return autor
+     */
     public Autor getAutor() {
         return autor;
     }
@@ -28,21 +34,35 @@ public class AutorBean implements Serializable{
     public void setAutor(Autor autor) {
         this.autor = autor;
     }
-    
+     /**
+     * procedimiento llamado borrarAutor en el cual se podra borrar un Autor
+     * @param a 
+     */
     public void borrarAutor(Autor a) {
         AutorDAOImp autorDAOImp = new AutorDAOImp();
         autorDAOImp.delete(a);
     }
-    
+     /**
+      * procedimiento llamado modificarAutor en el cual se podra modificar el Autor
+      * @param a 
+      */
     public void modificarAutor(Autor a) {
         AutorDAOImp autorDAOImp = new AutorDAOImp();
         autorDAOImp.update(a);
     }
-
+    /**
+     * busqueda de Autor
+     * @param a
+     * @return 
+     */
     public Autor buscarAutor(Autor a) {
         AutorDAOImp autorDAOImp = new AutorDAOImp();
         return autorDAOImp.buscarAutor(a);
     }
+     /**
+      * se crea un procedimiento llamado agregarAutor en el cual se podra agregar el Autor
+      * @param a 
+      */
     public void agregarAutor(Autor a) {
         AutorDAOImp autorDAOImp = new AutorDAOImp();
         autorDAOImp.add(a);
