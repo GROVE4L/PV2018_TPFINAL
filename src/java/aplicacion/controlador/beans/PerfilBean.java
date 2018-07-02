@@ -15,6 +15,9 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
+/**
+ * se crea la clase llamada PerfilBean
+ */
 public class PerfilBean implements Serializable{
 
     private Perfil perfil;
@@ -22,7 +25,10 @@ public class PerfilBean implements Serializable{
     public PerfilBean() {
         this.perfil = new Perfil();        
     }
-
+    /**
+     * se crean los constructor Perfil co su Get y Set
+     * @return 
+     */
     public Perfil getPerfil() {
         return perfil;
     }
@@ -30,37 +36,62 @@ public class PerfilBean implements Serializable{
     public void setPerfil(Perfil perfil) {
         this.perfil = perfil;
     }
-    
+    /**
+     * obtener Perfil Directo
+     * @param codigoPerfilBuscado
+     * @return 
+     */
     public Perfil obtenerPerfilDirecto(int codigoPerfilBuscado) { //Busca un perfil dado un ID de PERFIL
         PerfilDAOImp perfilDAOImp = new PerfilDAOImp();
         return perfilDAOImp.obtenerPerfilDirecto(codigoPerfilBuscado);
     }
-
+    /**
+     * obtencion de Perfil
+     * @param codigoPerfilBuscado
+     * @return 
+     */
     public Perfil obtenerPerfil(int codigoPerfilBuscado) { //Busca un perfil dado un ID de USSARIO
         PerfilDAOImp perfilDAOImp = new PerfilDAOImp();
         return perfilDAOImp.obtenerPerfil(codigoPerfilBuscado);
     }    
-    
+    /**
+      * procedimiento llamado agregarPerfil
+      * @param perfil 
+      */
     public void agregarPerfil(Perfil perfil) {
         PerfilDAOImp perfilDAOImp = new PerfilDAOImp();
         perfilDAOImp.add(perfil);
     }
-    
+    /**
+     * busqueda de Perfil
+     * @param p
+     * @return 
+     */
     public boolean buscarPerfil(Perfil p){
         PerfilDAOImp perfilDAOImp = new PerfilDAOImp();
         return perfilDAOImp.buscarPerfil(p);
     }
-    
+    /**
+      * procedimiento llamado actualizarPerfil
+      * @param p 
+      */
     public void actualizarPerfil(Perfil p) {
         PerfilDAOImp perfilDAOImp = new PerfilDAOImp();
         perfilDAOImp.update(p);
     }
-    
+    /**
+     * lista de Perfil
+     * @return 
+     */
     public List<Perfil> obtenerPerfiles() {
         PerfilDAOImp perfilDAOImp = new PerfilDAOImp();
         return perfilDAOImp.listarPerfiles();
     }
-    
+    /**
+     * 
+     * @param tipoPerfil
+     * @return 
+     */
     public List<Perfil> obtenerPerfilesEspecificos(String tipoPerfil) {
         UsuarioBean ub = new UsuarioBean();
         List<Perfil> listaFinal = new ArrayList<Perfil>();

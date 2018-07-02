@@ -13,6 +13,9 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
+/**
+ * clase llamada DetalleReservaBean 
+ */
 public class DetalleReservaBean implements Serializable{
 
     private DetalleReserva dr;
@@ -20,7 +23,10 @@ public class DetalleReservaBean implements Serializable{
     public DetalleReservaBean() {
         this.dr = new DetalleReserva();        
     }
-
+    /**
+     * constructor de DetalleReserva con su get y set
+     * @return 
+     */
     public DetalleReserva getDr() {
         return dr;
     }
@@ -28,20 +34,35 @@ public class DetalleReservaBean implements Serializable{
     public void setDr(DetalleReserva dr) {
         this.dr = dr;
     }
-    
+    /**
+     * procedimiento llamado agregarDetalleReserva 
+     * @param dr 
+     */
     public void agregarDetalleReserva(DetalleReserva dr) {
         DetalleReservaDAOImp drDAOImp = new DetalleReservaDAOImp();
         drDAOImp.add(dr);
     }
+    /**
+     * procedimiento llamado borrarDetalleReserva 
+     * @param dr 
+     */
     public void borrarDetalleReserva(DetalleReserva dr) {
         DetalleReservaDAOImp drDAOImp = new DetalleReservaDAOImp();
         drDAOImp.delete(dr);
     }
+    /**
+     * procedimiento llamado modificarDetalleReserva
+     * @param dr 
+     */
     public void modificarDetalleReserva(DetalleReserva dr) {
         DetalleReservaDAOImp drDAOImp = new DetalleReservaDAOImp();
         drDAOImp.update(dr);
     }
-    
+    /**
+     * lista de DetalleReserva
+     * @param dr
+     * @return 
+     */
     public List<DetalleReserva> devolverDetalleReserva(DetalleReserva dr) {
         DetalleReservaDAOImp drDAOImp = new DetalleReservaDAOImp();
         return drDAOImp.devolverDetalleReservas();
