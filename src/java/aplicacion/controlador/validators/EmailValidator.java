@@ -34,7 +34,13 @@ public class EmailValidator implements Validator, ClientValidator {
     {
         pattern = Pattern.compile(EMAIL_PATTERN);
     }
-
+    /**
+     * valida que el email debe ser correcto y en caso contrario mostrara un mensaje "no es u email valido"
+     * @param context
+     * @param component
+     * @param value
+     * @throws ValidatorException 
+     */
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
