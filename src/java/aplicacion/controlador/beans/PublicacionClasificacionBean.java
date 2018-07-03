@@ -13,16 +13,27 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
+/**
+ * clase llamada PublicacionClasificacionBean
+ */
 public class PublicacionClasificacionBean implements Serializable{
     
     public PublicacionClasificacionBean() {
         
     }
+    /**
+     * procedimiento llamado agregarPublicacionClasificacion
+     * @param pc 
+     */
     public void agregarPublicacionClasificacion(PublicacionClasificacion pc) {
         PublicacionClasificacionDAOImp pcDAOImp = new PublicacionClasificacionDAOImp();
         pcDAOImp.add(pc);
     }
-    
+    /**
+     * lista de publicacion clasificacion
+     * @param codigoPublicacionBuscado
+     * @return 
+     */
     public List<PublicacionClasificacion> listarPublicacionClasificacion(String codigoPublicacionBuscado) {
         PublicacionClasificacionDAOImp pcDAOImp = new PublicacionClasificacionDAOImp();
         return pcDAOImp.devolverPublicacionesClasificaciones(codigoPublicacionBuscado);
