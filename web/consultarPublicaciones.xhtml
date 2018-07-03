@@ -33,22 +33,27 @@
                                     </p:outputPanel>
                                 </f:facet>
                                 
-                            <p:column headerText="Código" filterStyle="display:none" filterBy="#{p.pubCodigo}">
+                            <p:column headerText="Código" filterStyle="display:none" filterBy="#{p.pubCodigo}" style="width:80px">
                                 <h:outputText value="#{p.pubCodigo}"/>
                             </p:column>
-                            <p:column headerText="Publicación" filterStyle="display:none" filterBy="#{p.pubNombre}">
+                            <p:column headerText="Publicación" filterStyle="display:none" filterBy="#{p.pubNombre}" style="width:200px">
                                 <h:outputText value="#{p.pubNombre}"/>
                             </p:column>
-                            <p:column headerText="Editorial" filterStyle="display:none" filterBy="#{agregarEditorialFormBean.devolverNombreEditorial(p.pubEditorial)}">
+                            <p:column headerText="Editorial" filterStyle="display:none" filterBy="#{agregarEditorialFormBean.devolverNombreEditorial(p.pubEditorial)}" style="width:150px">
                                 <h:outputText value="#{agregarEditorialFormBean.devolverNombreEditorial(p.pubEditorial)}"/>
                             </p:column>
                             <p:column headerText="Resumen" filterStyle="display:none" filterBy="#{p.pubResumen}">
                                 <h:outputText value="#{p.pubResumen}"/>
                             </p:column>
-                            <p:column headerText="Tipo" filterStyle="display:none" filterBy="#{p.pubTipo}">
+                            <p:column headerText="Tipo" filterStyle="display:none" filterBy="#{p.pubTipo}" style="width:100px">
                                 <h:outputText value="#{p.pubTipo}"/>
                             </p:column>
-                            <p:column headerText="Cantidad">
+                            <p:column headerText="Autores" style="width:150px">
+                                <p:dataList emptyMessage="Sin Autores Registrados." value="#{publicacionAutorFormBean.listarAutoresDePublicacion(p.pubCodigo)}" var="aut" type="ordered">
+                                    #{aut.autNombres}  #{aut.autApellidos}
+                                </p:dataList>
+                            </p:column>
+                            <p:column headerText="Cant." style="width:50px">
                                 <h:outputText value="#{p.pubStock}"/>
                             </p:column>
                         </p:dataTable>                        
