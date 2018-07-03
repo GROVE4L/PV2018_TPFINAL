@@ -20,6 +20,9 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
+/**
+ * clase  PublicacionAutorFormBean
+ */
 public class PublicacionAutorFormBean implements Serializable{
 
     private String codigoPublicacion;
@@ -31,39 +34,65 @@ public class PublicacionAutorFormBean implements Serializable{
        public PublicacionAutorFormBean() {
         this.publicacionAutorBean = new PublicacionAutorBean();        
     }
-
+     /**
+      * constructor de PublicacionAutorBean con su get
+      * @return 
+      */  
     public PublicacionAutorBean getPublicacionAutorBean() {
         return publicacionAutorBean;
     }
-
+    /**
+     * constructor de PublicacionAutorBean con su set
+     * @param publicacionAutorBean 
+     */
     public void setPublicacionAutorBean(PublicacionAutorBean publicacionAutorBean) {
         this.publicacionAutorBean = publicacionAutorBean;
     }
-       
+     /**
+      * constructor de CodigoPublicacion con su get
+      * @return 
+      */  
     public String getCodigoPublicacion() {
         return codigoPublicacion;
     }
-
+    /**
+     * constructor de CodigoPublicacion con su set
+     * @param codigoPublicacion 
+     */
     public void setCodigoPublicacion(String codigoPublicacion) {
         this.codigoPublicacion = codigoPublicacion;
     }
-
+    /**
+     * constructor de CodigoAutor con su get
+     * @return 
+     */
     public int getCodigoAutor() {
         return codigoAutor;
     }
-
+    /**
+     * constructor de CodigoAutor con su set
+     * @param codigoAutor 
+     */
     public void setCodigoAutor(int codigoAutor) {
         this.codigoAutor = codigoAutor;
     }  
-    
+    /**
+     * pregunta si pertenece autor a lista
+     * @param codigoAutor
+     * @param listaDondeBuscarlo
+     * @return 
+     */
     private boolean perteneAutorALista(int codigoAutor, List<Autor> listaDondeBuscarlo) {
         for(Autor i: listaDondeBuscarlo) {
             if(i.getAutCodigo() == codigoAutor)
                 return true;
         }
-        return false;
+        return false; //returna falso
     }
-    
+    /**
+     * lista de autores disponibles
+     * @return 
+     */
     public List<Autor> listaAutoresDisponibles() {
         AutorBean autorBean = new AutorBean();
         PublicacionBean publicacionBean = new PublicacionBean();
@@ -79,7 +108,11 @@ public class PublicacionAutorFormBean implements Serializable{
         }  
         return listaFinal;
     }
-    
+    /**
+     * lista de autores de publicacion
+     * @param codigoPublicacionBuscado
+     * @return 
+     */
     public List<Autor> listarAutoresDePublicacion(String codigoPublicacionBuscado) {        
         List<PublicacionAutor> listaCodigosAutores = publicacionAutorBean.listarPublicacionAutor(codigoPublicacionBuscado);        
         List<Autor> listaAutores = new ArrayList<Autor>();
@@ -89,7 +122,9 @@ public class PublicacionAutorFormBean implements Serializable{
         }        
         return listaAutores;
     }
-    
+    /**
+     * procedimiento llamado vincularLibro
+     */
     public void vincularLibro(){
         FacesContext facesContext = FacesContext.getCurrentInstance();
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,

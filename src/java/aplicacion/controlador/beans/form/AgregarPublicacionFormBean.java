@@ -17,6 +17,9 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
+/**
+ * clase AgregarPublicacionFormBean
+ */
 public class AgregarPublicacionFormBean implements Serializable{
 
     @ManagedProperty(value = "#{publicacionBean}")
@@ -28,41 +31,68 @@ public class AgregarPublicacionFormBean implements Serializable{
         this.publicacion = new Publicacion();
         this.publicacion.setPubTipo("Libro");
     }
-
+    /**
+     * constructor de PublicacionBean con su get
+     * @return 
+     */
     public PublicacionBean getPublicacionBean() {
         return publicacionBean;
     }
-
+    /**
+     * constructor de PublicacionBean con su set
+     * @param publicacionBean 
+     */
     public void setPublicacionBean(PublicacionBean publicacionBean) {
         this.publicacionBean = publicacionBean;
     }
-
+    /**
+     * constructor de Publicacion con su get
+     * @return 
+     */
     public Publicacion getPublicacion() {
         return publicacion;
     }
-
+    /**
+     * constructor de Publicacion con su set
+     * @param publicacion 
+     */
     public void setPublicacion(Publicacion publicacion) {
         this.publicacion = publicacion;
     }
-
+    /**
+     * devuelve publicacion
+     * @param codPub
+     * @return 
+     */
     public Publicacion devolverPublicacion(String codPub){
         Publicacion aux = new Publicacion();
         aux.setPubCodigo(codPub);
         return publicacionBean.buscarPublicacion(aux);
     }
-        
+    /**
+     * busqueda de publicacion
+     * @return 
+     */   
     public Publicacion buscarPublicacion() {        
         return publicacionBean.buscarPublicacion(this.publicacion);
     }
-    
+    /**
+     * listado de publicaciones
+     * @return 
+     */
     public List<Publicacion> listadoPublicaciones() {        
         return publicacionBean.listarPublicaciones();
     }
-  
+    /**
+     * listado de publicaciones con stock
+     * @return 
+     */
     public List<Publicacion> listadoPublicacionesConStock() {
         return publicacionBean.listarPublicacionesConStock();
     }
-    
+    /**
+     * agregado de publicacion
+     */
     public void agregarPublicacion() {
         if(this.buscarPublicacion() == null) { //No existe la publicacion
             Texto t = new Texto();

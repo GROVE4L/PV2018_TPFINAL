@@ -24,6 +24,9 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
+/**
+ * clase PrestamoFormBean
+ */
 public class PrestamoFormBean implements Serializable{
 
     @ManagedProperty(value = "#{prestamoBean}")
@@ -42,39 +45,67 @@ public class PrestamoFormBean implements Serializable{
         dp.setDpTurno("Mañana");
         this.listadoAPrestar = new ArrayList<Publicacion>();
     }
-
+    /**
+     * constructor de ListadoAPrestar con su get
+     * @return 
+     */
     public List<Publicacion> getListadoAPrestar() {
         return listadoAPrestar;
     }
-
+    /**
+     * constructor de ListadoAPrestrarcon su set
+     * @param listadoAPrestar 
+     */
     public void setListadoAPrestar(List<Publicacion> listadoAPrestar) {
         this.listadoAPrestar = listadoAPrestar;
     }    
-    
+    /**
+     * constructor de PrestamoBean con su get
+     * @return 
+     */
     public PrestamoBean getPrestamoBean() {
         return prestamoBean;
     }
-
+    /**
+     * constructor de PrestamoBean con su set
+     * @param prestamoBean 
+     */
     public void setPrestamoBean(PrestamoBean prestamoBean) {
         this.prestamoBean = prestamoBean;
     }
-
+    /**
+     * constructor de DetallePrestamoBean con su get
+     * @return 
+     */
     public DetallePrestamoBean getDetallePrestamoBean() {
         return detallePrestamoBean;
     }
-
+    /**
+     * constructor de DetallePrestamoBean con su set
+     * @param detallePrestamoBean 
+     */
     public void setDetallePrestamoBean(DetallePrestamoBean detallePrestamoBean) {
         this.detallePrestamoBean = detallePrestamoBean;
     }
-
+    /**
+     * constructor de Dp con su get
+     * @return 
+     */
     public DetallePrestamo getDp() {
         return dp;
     }
-
+    /**
+     * constructor de Dp con su set
+     * @param dp 
+     */
     public void setDp(DetallePrestamo dp) {
         this.dp = dp;
     }
-    
+    /**
+     * procedimiento llamado borrarPrestamo
+     * 
+     * @param objPrestamo 
+     */
     public void borrarPrestamo(Prestamo objPrestamo) {        
         List<DetallePrestamo> listaLibros = this.devolverDetallePrestamosCodigo(objPrestamo.getPreCodigo());
         PublicacionBean pBean = new PublicacionBean();
@@ -92,57 +123,95 @@ public class PrestamoFormBean implements Serializable{
                             "Prestamo eliminado!",
                             ""));
     }
-    
+    /**
+     * constructor de Prestamo con su get
+     * @return 
+     */
     public Prestamo getPrestamo() {
         return prestamo;
     }
-
+    /**
+     * constructor de Prestamo con su set
+     * @param prestamo 
+     */
     public void setPrestamo(Prestamo prestamo) {        
         this.prestamo = prestamo;
     }
-    
+    /**
+     * obtiene el obj de prestamo
+     * @return 
+     */
     public Prestamo obtenerObjPrestamo() {
         return (Prestamo) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("prestamo");
     }
-    
+    /**
+     * obtiene el obj de detalle prestamo
+     * @return 
+     */
     public DetallePrestamo obtenerObjDetallePrestamo() {
         return (DetallePrestamo) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("detallePrestamo");
     }
-    
+    /**
+     * procedimiento llamado quitarDeLista
+     * @param pu 
+     */
     public void quitarDeLista(Publicacion pu) {
         this.listadoAPrestar.remove(pu);
     }
-    
+    /**
+     * procedimiento llamado agregarALista
+     * @param pu 
+     */
     public void agregarALista(Publicacion pu) {
         this.listadoAPrestar.add(pu);        
     }
-    
+    /**
+     * lista de prestamos
+     * @return 
+     */
     public List<Prestamo> listarPrestamos() {
         return prestamoBean.listarPrestamos();
     }
-    
+    /**
+     * lista de detalle de prestamo
+     * @param codigoBuscado
+     * @return 
+     */
     public List<DetallePrestamo> devolverDetallePrestamosCodigo(int codigoBuscado) {
         return detallePrestamoBean.devolverDetallePrestamosCodigo(codigoBuscado);        
     }
-    
+    /**
+     * obtiene el nombre de prestamo directo
+     * @param codigoPerfilBuscado
+     * @return 
+     */
     public String obtenerNombrePrestamoDirecto(int codigoPerfilBuscado){        
         PerfilBean pb = new PerfilBean();
         Perfil pf = pb.obtenerPerfilDirecto(codigoPerfilBuscado);
         return pf.getPerNombres()+" "+pf.getPerApellidos();
     }
-    
+    /**
+     * obtiene nombre prestamo
+     * @return 
+     */
     public String obtenerNombrePrestamo(){        
         PerfilBean pb = new PerfilBean();
         Perfil pf = pb.obtenerPerfilDirecto(((Prestamo) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("prestamo")).getPreSocio());
         return pf.getPerNombres()+" "+pf.getPerApellidos();
     }
     
-    
+    /**
+     * obtiene perfiles finales
+     * @return 
+     */
     public List<Perfil> obtenerPerfilesFinales() {
         PerfilBean perfilBean = new PerfilBean();        
         return perfilBean.obtenerPerfilesEspecificos("final");
     }
-    
+    /**
+     * finalizacion de prestamo
+     * @return 
+     */
     public String finalizarPrestamo() {
         if(!this.listadoAPrestar.isEmpty()){
             Prestamo objPrestamo = this.obtenerObjPrestamo();
@@ -178,7 +247,10 @@ public class PrestamoFormBean implements Serializable{
             return null;
         }
     }
-    
+    /**
+     * carga de libros
+     * @return 
+     */
     public String cargarLibros(){
         this.prestamo.setPreEstado(true);        
         /*System.out.println("Objeto Prestamo");
