@@ -17,6 +17,9 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
+/**
+ * clase AgregarAutorFormBean
+ */
 public class AgregarAutorFormBean implements Serializable{
 
     @ManagedProperty(value = "#{autorBean}")
@@ -24,53 +27,87 @@ public class AgregarAutorFormBean implements Serializable{
     
     private Autor autor;
     private Autor autorSeleccionado;
-    
+    /**
+     * 
+     */
     public AgregarAutorFormBean() {
         this.autor = new Autor();
         this.autorSeleccionado = new Autor();
     }
-
+    /**
+     * constructor de AutorSeleccionado con su get
+     * @return 
+     */
     public Autor getAutorSeleccionado() {
         return autorSeleccionado;
     }
-
+    /**
+     * constructor de AutorSeleccionado con su set
+     * @param autorSeleccionado 
+     */
     public void setAutorSeleccionado(Autor autorSeleccionado) {
         this.autorSeleccionado = autorSeleccionado;
     }
     
-    
+    /**
+     * constructor de AutorBean con su get
+     * @return 
+     */
     
     public AutorBean getAutorBean() {
         return autorBean;
     }
-
+    /**
+     * constructor de AutorBean con su set
+     * @param autorBean 
+     */
     public void setAutorBean(AutorBean autorBean) {
         this.autorBean = autorBean;
     }
-
+    /**
+     * constructor de Autor con su get
+     * @return 
+     */
     public Autor getAutor() {
         return autor;
     }
-
+    /**
+     * constructor de Autor con su set
+     * @param autor 
+     */
     public void setAutor(Autor autor) {
         this.autor = autor;
     }  
-    
+    /**
+     * busqueda de Autor
+     * @return 
+     */
     public Autor buscarAutor() {        
         return autorBean.buscarAutor(this.autor);
     }
+    /**
+     * listado de autores
+     * @return 
+     */
     public List<Autor> listadoAutores() {        
         return autorBean.listarAutores();
     }
-    
+    /**
+     * modificacion de autor
+     */
     public void modificarAutor() {
         autorBean.modificarAutor(autorSeleccionado);
     }
-    
+    /**
+     * borrado de autor
+     * @param a 
+     */
     public void borrarAutor(Autor a) {
         autorBean.borrarAutor(a);
     }
-           
+     /**
+      * agregado de autor
+      */      
     public void agregarAutor() {
         if(this.buscarAutor() == null) { //No existe el autor             
             Texto t = new Texto();
