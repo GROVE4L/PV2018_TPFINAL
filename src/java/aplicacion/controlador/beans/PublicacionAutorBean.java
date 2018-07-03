@@ -13,16 +13,28 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
+/**
+ * clase PublicacionAutorBean
+ */
 public class PublicacionAutorBean implements Serializable{
     
     public PublicacionAutorBean() {
         
     }
+    /**
+     * procedimiento agregarPublicacionAutor
+     * en el cual se podra agregar una publicacion autor
+     * @param pb 
+     */
     public void agregarPublicacionAutor(PublicacionAutor pb) {
         PublicacionAutorDAOImp pbDAOImp = new PublicacionAutorDAOImp();
         pbDAOImp.add(pb);
     }
-    
+    /**
+     * lista de publicacion autor
+     * @param codigoPublicacionBuscado
+     * @return 
+     */
     public List<PublicacionAutor> listarPublicacionAutor(String codigoPublicacionBuscado) {
         PublicacionAutorDAOImp pbDAOImp = new PublicacionAutorDAOImp();
         return pbDAOImp.devolverPublicacionesAutores(codigoPublicacionBuscado);
