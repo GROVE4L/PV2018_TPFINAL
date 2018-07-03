@@ -24,6 +24,9 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
+/**
+ * clase llamada PublicacionClasificacionFormBean
+ */
 public class PublicacionClasificacionFormBean implements Serializable{
 
     private String codigoPublicacion;
@@ -35,31 +38,54 @@ public class PublicacionClasificacionFormBean implements Serializable{
        public PublicacionClasificacionFormBean() {
         this.publicacionClasificacionBean = new PublicacionClasificacionBean();        
     }
-
+    /**
+     * constructor de PublicacionClasificacionBean con su get
+     * @return 
+     */
     public PublicacionClasificacionBean getPublicacionClasificacionBean() {
         return publicacionClasificacionBean;
     }
-
+    /**
+     * constructor de PublicacionClasificacionBean con su set
+     * @param publicacionClasificacionBean 
+     */
     public void setPublicacionClasificacionBean(PublicacionClasificacionBean publicacionClasificacionBean) {
         this.publicacionClasificacionBean = publicacionClasificacionBean;
     }
-       
+    /**
+     * constructor de CodigoPublicacion con su get
+     * @return 
+     */  
     public String getCodigoPublicacion() {
         return codigoPublicacion;
     }
-
+    /**
+     * constructor de CodigoPublicacion con su set
+     * @param codigoPublicacion 
+     */
     public void setCodigoPublicacion(String codigoPublicacion) {
         this.codigoPublicacion = codigoPublicacion;
     }
-
+    /**
+     * constructor de CodigoClasificacion con su get
+     * @return 
+     */
     public int getCodigoClasificacion() {
         return codigoClasificacion;
     }
-
+    /**
+     * constructor de CodigoClasificacion con su set
+     * @param codigoClasificacion 
+     */
     public void setCodigoClasificacion(int codigoClasificacion) {
         this.codigoClasificacion = codigoClasificacion;
     }   
-    
+    /**
+     * pregunta si pertenece a clasificacion a lista
+     * @param codigoClasificacionBuscado
+     * @param listaDondeBuscarlo
+     * @return 
+     */
     private boolean perteneClasificacionALista(int codigoClasificacionBuscado, List<Clasificacion> listaDondeBuscarlo) {
         for(Clasificacion i: listaDondeBuscarlo) {
             if(i.getClaCodigo() == codigoClasificacionBuscado)
@@ -67,7 +93,9 @@ public class PublicacionClasificacionFormBean implements Serializable{
         }
         return false;
     }
-    
+    /**
+     * procedimiento vincularLibro
+     */
     public void vincularLibro(){
         FacesContext facesContext = FacesContext.getCurrentInstance();
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
@@ -80,7 +108,11 @@ public class PublicacionClasificacionFormBean implements Serializable{
         objetoCargado.setPcPublicacion(this.codigoPublicacion);        
         publicacionClasificacionBean.agregarPublicacionClasificacion(objetoCargado);
     }
-    
+    /**
+     * lista de clasificaciones de publicacion
+     * @param codigoPublicacionBuscado
+     * @return 
+     */
     public List<Clasificacion> listarClasificacionesDePublicacion(String codigoPublicacionBuscado) {        
         List<PublicacionClasificacion> listaCodigosClasificaciones = publicacionClasificacionBean.listarPublicacionClasificacion(codigoPublicacionBuscado);
         
@@ -91,7 +123,10 @@ public class PublicacionClasificacionFormBean implements Serializable{
         }        
         return listaClasificaciones;
     }
-    
+    /**
+     * lista de clasificaciones disponibles
+     * @return 
+     */
     public List<Clasificacion> listaClasificacionesDisponibles() {
         ClasificacionBean clasificacionBean = new ClasificacionBean();
         PublicacionBean publicacionBean = new PublicacionBean();

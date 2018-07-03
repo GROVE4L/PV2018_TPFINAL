@@ -28,6 +28,9 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
+/**
+ * clase ReservaFormBean
+ */
 public class ReservaFormBean implements Serializable{
 
     @ManagedProperty(value = "#{reservaBean}")
@@ -45,64 +48,110 @@ public class ReservaFormBean implements Serializable{
         this.dr = new DetalleReserva();        
         this.listadoAPrestar = new ArrayList<Publicacion>();
     }
-
+    /**
+     * constructor de ListadoAPrestar con su get
+     * @return 
+     */
     public List<Publicacion> getListadoAPrestar() {
         return listadoAPrestar;
     }
-
+    /**
+     * constructor de ListadoAPrestar con su set
+     * @param listadoAPrestar 
+     */
     public void setListadoAPrestar(List<Publicacion> listadoAPrestar) {
         this.listadoAPrestar = listadoAPrestar;
     }    
-
+    /**
+     * constructor de ReservaBean con su get
+     * @return 
+     */
     public ReservaBean getReservaBean() {
         return reservaBean;
     }
-
+    /**
+     * constructor de ReservaBean con su set
+     * @param reservaBean 
+     */
     public void setReservaBean(ReservaBean reservaBean) {
         this.reservaBean = reservaBean;
     }
-
+    /**
+     * constructor de DetalleReservaBean con su get
+     * @return 
+     */
     public DetalleReservaBean getDetalleReservaBean() {
         return detalleReservaBean;
     }
-
+    /**
+     * constructor de DetalleReservaBean con su set
+     * @param detalleReservaBean 
+     */
     public void setDetalleReservaBean(DetalleReservaBean detalleReservaBean) {
         this.detalleReservaBean = detalleReservaBean;
     }   
-
+    /**
+     * constructor de Reserva con su get
+     * @return 
+     */
     public Reserva getReserva() {
         return reserva;
     }
-
+    /**
+     * constructor de Reserva con su set
+     * @param reserva 
+     */
     public void setReserva(Reserva reserva) {
         this.reserva = reserva;
     }
-
+    /**
+     * constructor de Dr con su get
+     * @return 
+     */
     public DetalleReserva getDr() {
         return dr;
     }
-
+    /**
+     * constructor de Dr con su set
+     * @param dr 
+     */
     public void setDr(DetalleReserva dr) {
         this.dr = dr;
     }
-    
+    /**
+     * procedimiento llamado quitarDeLista
+     * 
+     * @param pu 
+     */
     public void quitarDeLista(Publicacion pu) {
         System.out.println("Quitado (?");
         this.listadoAPrestar.remove(pu);
     }
-    
+    /**
+     * procedimiento llamado agregarALista
+     * @param pu 
+     */
     public void agregarALista(Publicacion pu) {
         this.listadoAPrestar.add(pu);        
     }
-    
+    /**
+     * obtiene el obj reserva
+     * @return 
+     */
     public Reserva obtenerObjReserva() {
         return (Reserva) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("reserva");
     }
-    
+    /**
+     * obtiene el obj detalle de reserva
+     * @return 
+     */
     public DetalleReserva obtenerObjDetalleReserva() {
         return (DetalleReserva) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("detalleReserva");
     }
-    
+    /**
+     * funcion que obtiene nombres de sesion
+     * @return 
+     */
     public String obtenerNombreSesion(){        
         LoginFormBean lfm = new LoginFormBean();
         Perfil pf = lfm.obtenerPerfilSesion();
@@ -145,7 +194,10 @@ public class ReservaFormBean implements Serializable{
             return null;
         }
     }
-    
+    /**
+     * funcion que carga los libros
+     * @return 
+     */
     public String cargarLibros(){
         LoginFormBean lfm = new LoginFormBean();
         this.reserva.setRevEstado(true);

@@ -17,6 +17,9 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
+/**
+ * clase RegistroFormBean
+ */
 public class RegistroFormBean implements Serializable{
 
     @ManagedProperty(value = "#{usuarioBean}")
@@ -32,39 +35,66 @@ public class RegistroFormBean implements Serializable{
         this.usuarioRegistro = new Usuario();
         this.usuarioPerfil = new Perfil();
     }
-
+    /**
+     * constructor de  PerfilBean con su get
+     * @return 
+     */
     public PerfilBean getPerfilBean() {
         return perfilBean;
     }
-
+    /**
+     * constructor de PerfilBean con su set
+     * @param perfilBean 
+     */
     public void setPerfilBean(PerfilBean perfilBean) {
         this.perfilBean = perfilBean;
     }
-
+    /**
+     * constructor de UsuarioPerfil con su get
+     * @return 
+     */
     public Perfil getUsuarioPerfil() {
         return usuarioPerfil;
     }
-
+    /**
+     * constructor de UsuarioPerfil con su set
+     * @param usuarioPerfil 
+     */
     public void setUsuarioPerfil(Perfil usuarioPerfil) {
         this.usuarioPerfil = usuarioPerfil;
     }
-
+    /**
+     * constructor de UsuarioRegistro con su get
+     * @return 
+     */
     public Usuario getUsuarioRegistro() {
         return usuarioRegistro;
     }
-
+    /**
+     * constructor de UsuarioRegistro con su set
+     * @param usuarioRegistro 
+     */
     public void setUsuarioRegistro(Usuario usuarioRegistro) {
         this.usuarioRegistro = usuarioRegistro;
     }   
-
+    /**
+     * constructor de UsuarioBean con su get
+     * @return 
+     */
     public UsuarioBean getUsuarioBean() {
         return usuarioBean;
     }
-
+    /**
+     * constructor de UsuarioBean con su set
+     * @param usuarioBean 
+     */
     public void setUsuarioBean(UsuarioBean usuarioBean) {
         this.usuarioBean = usuarioBean;
     }
-          
+     /**
+      * procedimiento llamado registrarUsuario
+      * en el cual se prodra registrar el usuario y comprovar que el usuario no este registrado anteriormente
+      */     
     public void registrarUsuario() {
         boolean existeUsuario = usuarioBean.buscarUsuario(this.usuarioRegistro);
         boolean existePerfil = perfilBean.buscarPerfil(this.usuarioPerfil);
