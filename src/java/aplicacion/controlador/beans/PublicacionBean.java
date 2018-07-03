@@ -25,6 +25,7 @@ public class PublicacionBean implements Serializable{
     }
     /***
      * constructor de publicacion con su get y set
+     * 
      * @return 
      */
     public Publicacion getPublicacion() {

@@ -71,6 +71,7 @@ public class PrestamoBean implements Serializable{
     }
      /**
      * obtener ultimo prestamo
+     * 
      * @return 
      */
     public Prestamo obtenerUltimoPrestamo() {

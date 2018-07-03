@@ -24,6 +24,7 @@ public class PublicacionAutorBean implements Serializable{
     /**
      * procedimiento agregarPublicacionAutor
      * en el cual se podra agregar una publicacion autor
+     * 
      * @param pb 
      */
     public void agregarPublicacionAutor(PublicacionAutor pb) {
