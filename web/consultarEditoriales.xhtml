@@ -21,7 +21,10 @@
                             <p:growl id="mensajes" showDetail="false"/>
                             <br/>
                             <p:outputLabel value="Listado de Editoriales" style="font-weight: bold" />
+                            <p:spacer width="10" height="10"/>
+                            <p:commandButton value="Descargar PDF" action="#{agregarEditorialFormBean.verPdf()}" ajax="false"/>
                             <p:dataTable id="tablaEditoriales" var="e" value="#{agregarEditorialFormBean.listadoEditorialesActivas()}"
+                                         filteredValue="#{agregarEditorialFormBean.listaFiltrada}"
                                          widgetVar="listaEditorialesWV" emptyMessage="Nada Encontrado" scrollable="true" scrollHeight="300">
                                 
                                 <f:facet name="header">
