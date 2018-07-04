@@ -16,38 +16,70 @@ public class PublicacionAutor  implements java.io.Serializable {
 
     public PublicacionAutor() {
     }
-
+    /**
+     * 
+     * @param paEstado
+     * @param paUblicacion
+     * @param paAutor 
+     */
     public PublicacionAutor(boolean paEstado, String paUblicacion, int paAutor) {
        this.paEstado = paEstado;
        this.paUblicacion = paUblicacion;
        this.paAutor = paAutor;
     }
-   
+   /**
+    *  constructor de PaCodigo con su get
+    * @return 
+    */
     public Integer getPaCodigo() {
         return this.paCodigo;
     }
-    
+    /**
+     *  constructor de PaCodigo con su set
+     * @param paCodigo 
+     */
     public void setPaCodigo(Integer paCodigo) {
         this.paCodigo = paCodigo;
     }
+    /**
+     *  constructor de PaEstado
+     * @return 
+     */
     public boolean isPaEstado() {
         return this.paEstado;
     }
-    
+    /**
+     *  constructor de PaEstado con su get
+     * @param paEstado 
+     */
     public void setPaEstado(boolean paEstado) {
         this.paEstado = paEstado;
     }
+    /**
+     *  constructor de PaUblicacion con su set
+     * @return 
+     */
     public String getPaUblicacion() {
         return this.paUblicacion;
     }
-    
+    /**
+     *  constructor de PaUbicacion con su get
+     * @param paUblicacion 
+     */
     public void setPaUblicacion(String paUblicacion) {
         this.paUblicacion = paUblicacion;
     }
+    /**
+     *  constructor de PaAutor con su get
+     * @return 
+     */
     public int getPaAutor() {
         return this.paAutor;
     }
-    
+    /**
+     *  constructor de PaAutor con su set
+     * @param paAutor 
+     */
     public void setPaAutor(int paAutor) {
         this.paAutor = paAutor;
     }

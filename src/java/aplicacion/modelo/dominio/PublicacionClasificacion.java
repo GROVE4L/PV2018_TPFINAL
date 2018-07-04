@@ -16,38 +16,69 @@ public class PublicacionClasificacion  implements java.io.Serializable {
 
     public PublicacionClasificacion() {
     }
-
+    /**
+     * 
+     * @param pcEstado
+     * @param pcPublicacion
+     * @param pcClasificacion 
+     */
     public PublicacionClasificacion(boolean pcEstado, String pcPublicacion, int pcClasificacion) {
        this.pcEstado = pcEstado;
        this.pcPublicacion = pcPublicacion;
        this.pcClasificacion = pcClasificacion;
     }
-   
+    /**
+     *  constructor de PcCodigo con su get
+     * @return 
+     */
     public Integer getPcCodigo() {
         return this.pcCodigo;
     }
-    
+     /**
+      *  constructor de PcCodigo con su set
+      * @param pcCodigo 
+      */
     public void setPcCodigo(Integer pcCodigo) {
         this.pcCodigo = pcCodigo;
     }
+    /**
+     *  constructor de PcEstado
+     * @return 
+     */
     public boolean isPcEstado() {
         return this.pcEstado;
     }
-    
+    /**
+     *  constructor de PcEstado con su set
+     * @param pcEstado 
+     */
     public void setPcEstado(boolean pcEstado) {
         this.pcEstado = pcEstado;
     }
+    /**
+     *  constructor de PcPublicacion con su get
+     * @return 
+     */
     public String getPcPublicacion() {
         return this.pcPublicacion;
     }
-    
+    /**
+     *  constructor de PcPublicacion con su set
+     * @param pcPublicacion 
+     */
     public void setPcPublicacion(String pcPublicacion) {
         this.pcPublicacion = pcPublicacion;
     }
+    /**
+     *  constructor de PcClasificacion con su get
+     * @return 
+     */
     public int getPcClasificacion() {
         return this.pcClasificacion;
     }
-    
+    /**
+     *  constructor de PcClasificacion con su set
+     */
     public void setPcClasificacion(int pcClasificacion) {
         this.pcClasificacion = pcClasificacion;
     }

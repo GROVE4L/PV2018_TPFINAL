@@ -17,46 +17,86 @@ public class Usuario  implements java.io.Serializable {
 
     public Usuario() {
     }
-
+    /**
+     * 
+     * @param usuNombreUsuario
+     * @param usuPassword
+     * @param usuTipoUsuario
+     * @param usuEstado 
+     */
     public Usuario(String usuNombreUsuario, String usuPassword, String usuTipoUsuario, boolean usuEstado) {
        this.usuNombreUsuario = usuNombreUsuario;
        this.usuPassword = usuPassword;
        this.usuTipoUsuario = usuTipoUsuario;
        this.usuEstado = usuEstado;
     }
-   
+    /**
+     * constructor de UsuCodigo con su get
+     * @return 
+     */
     public Integer getUsuCodigo() {
         return this.usuCodigo;
     }
-    
+    /**
+     * constructor de UsuCodigo con su set
+     * @param usuCodigo 
+     */
     public void setUsuCodigo(Integer usuCodigo) {
         this.usuCodigo = usuCodigo;
     }
+    /**
+     * constructor de UsuNombreUsuario con su get
+     * @return 
+     */
     public String getUsuNombreUsuario() {
         return this.usuNombreUsuario;
     }
-    
+    /**
+     * constructor de UsuNombreUsuario con su set
+     * @param usuNombreUsuario 
+     */
     public void setUsuNombreUsuario(String usuNombreUsuario) {
         this.usuNombreUsuario = usuNombreUsuario;
     }
+    /**
+     * constructor de UsuPassword con su get
+     * @return 
+     */
     public String getUsuPassword() {
         return this.usuPassword;
     }
-    
+    /**
+     * constructor de UsuPassword con su set
+     * @param usuPassword 
+     */
     public void setUsuPassword(String usuPassword) {
         this.usuPassword = usuPassword;
     }
+    /**
+     * constructor de UsuTipoUsuario con su get
+     * @return 
+     */
     public String getUsuTipoUsuario() {
         return this.usuTipoUsuario;
     }
-    
+    /**
+     * constructor de UsuTipoUsuario con su set
+     * @param usuTipoUsuario 
+     */
     public void setUsuTipoUsuario(String usuTipoUsuario) {
         this.usuTipoUsuario = usuTipoUsuario;
     }
+    /**
+     * constructor de UsuEstado
+     * @return 
+     */
     public boolean isUsuEstado() {
         return this.usuEstado;
     }
-    
+    /**
+     * constructor de UsuEstado con su set
+     * @param usuEstado 
+     */
     public void setUsuEstado(boolean usuEstado) {
         this.usuEstado = usuEstado;
     }
