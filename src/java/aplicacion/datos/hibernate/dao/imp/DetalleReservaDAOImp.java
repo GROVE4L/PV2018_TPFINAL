@@ -14,7 +14,10 @@ import org.hibernate.criterion.Restrictions;
  * @author Rojas, Guido G.
  */
 public class DetalleReservaDAOImp implements IDetalleReservaDAO {
-
+    /**
+     * agregado detalle reserva
+     * @param dr 
+     */
     @Override
     public void add(DetalleReserva dr) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -24,7 +27,10 @@ public class DetalleReservaDAOImp implements IDetalleReservaDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * borrado de detalle reserva
+     * @param dr 
+     */
     @Override
     public void delete(DetalleReserva dr) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -34,7 +40,10 @@ public class DetalleReservaDAOImp implements IDetalleReservaDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * actualiza detalle reserva
+     * @param dr 
+     */
     @Override
     public void update(DetalleReserva dr) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -44,7 +53,11 @@ public class DetalleReservaDAOImp implements IDetalleReservaDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * lista detalle reserva 
+     * devuelve detalle reservas
+     * @return 
+     */
     @Override
     public List<DetalleReserva> devolverDetalleReservas() {        
         List<DetalleReserva> listaAux = new ArrayList<>();

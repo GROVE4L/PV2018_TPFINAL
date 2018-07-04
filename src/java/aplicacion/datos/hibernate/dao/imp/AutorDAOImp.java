@@ -14,8 +14,12 @@ import org.hibernate.criterion.Restrictions;
  * @author Rojas, Guido G.
  */
 public class AutorDAOImp implements IAutorDAO {
-
+    /**
+     * agregado de autor
+     * @param a 
+     */
     @Override
+    
     public void add(Autor a) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -24,7 +28,10 @@ public class AutorDAOImp implements IAutorDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * actualiza autor
+     * @param a 
+     */
     @Override
     public void update(Autor a) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -34,8 +41,12 @@ public class AutorDAOImp implements IAutorDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * es para borrar autor
+     * @param a 
+     */
     @Override
+    
     public void delete(Autor a) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -44,8 +55,13 @@ public class AutorDAOImp implements IAutorDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * busqueda de autor
+     * @param a
+     * @return 
+     */
     @Override
+    
     public Autor buscarAutor(Autor a) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -60,13 +76,22 @@ public class AutorDAOImp implements IAutorDAO {
         s.close();
         return autorAux;
     }
-
+    /**
+     * obtiene el codigo de autor
+     * @param a
+     * @return 
+     */
     @Override
+    
     public int obtenerCodigoAutor(Autor a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    /**
+     * lista de autor que devuelve autores
+     * @return 
+     */
     @Override
+   
     public List<Autor> devolverAutores() {
         List<Autor> listaAux = new ArrayList<Autor>();
         Session s = HibernateUtil.getSessionFactory().openSession();        
@@ -75,8 +100,13 @@ public class AutorDAOImp implements IAutorDAO {
         s.close();
         return listaAux; 
     }
-
+    /**
+     *  busqueda de codigo por autor
+     * @param codigoBuscado
+     * @return 
+     */
     @Override
+    
     public Autor buscarCodigoAutor(int codigoBuscado) {
         Autor autorAux = new Autor();
         Session s = HibernateUtil.getSessionFactory().openSession();        

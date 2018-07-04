@@ -14,7 +14,10 @@ import org.hibernate.criterion.Restrictions;
  * @author Rojas, Guido G.
  */
 public class PublicacionDAOImp implements IPublicacionDAO {
-
+    /**
+     * agregado publicacion
+     * @param p 
+     */
     @Override
     public void add(Publicacion p) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -24,7 +27,10 @@ public class PublicacionDAOImp implements IPublicacionDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * actualiza publicacion
+     * @param p 
+     */
     @Override
     public void update(Publicacion p) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -34,7 +40,10 @@ public class PublicacionDAOImp implements IPublicacionDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * borrado publicacion
+     * @param p 
+     */
     @Override
     public void delete(Publicacion p) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -44,7 +53,11 @@ public class PublicacionDAOImp implements IPublicacionDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * busqueda publicacion
+     * @param p
+     * @return 
+     */
     @Override
     public Publicacion buscarPublicacion(Publicacion p) {
         Publicacion objAux = new Publicacion();
@@ -58,12 +71,20 @@ public class PublicacionDAOImp implements IPublicacionDAO {
         s.close();
         return objAux;
     }
-
+    /**
+     * obtiene codigo publicacion
+     * @param p
+     * @return 
+     */
     @Override
     public int obtenerCodigoPublicacion(Publicacion p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    /**
+     * lista publicacion
+     * devuelve publicaciones
+     * @return 
+     */
     @Override
     public List<Publicacion> devolverPublicaciones() {        
         List<Publicacion> listaAux = new ArrayList<>();
@@ -73,6 +94,11 @@ public class PublicacionDAOImp implements IPublicacionDAO {
         s.close();
         return listaAux;
     }
+    /**
+     * lista publicacion
+     * devuelve publicaciones con stock
+     * @return 
+     */
     @Override
     public List<Publicacion> devolverPublicacionesConStock() {
         List<Publicacion> listaAux = new ArrayList<>();

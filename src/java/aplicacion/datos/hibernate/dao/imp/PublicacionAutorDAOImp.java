@@ -14,7 +14,10 @@ import org.hibernate.criterion.Restrictions;
  * @author Rojas, Guido G.
  */
 public class PublicacionAutorDAOImp implements IPublicacionAutorDAO {
-
+    /**
+     * agregado publicacion autor
+     * @param pb 
+     */
     @Override
     public void add(PublicacionAutor pb) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -24,7 +27,10 @@ public class PublicacionAutorDAOImp implements IPublicacionAutorDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * borrado publicacion autor
+     * @param pb 
+     */
     @Override
     public void delete(PublicacionAutor pb) {
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -33,7 +39,10 @@ public class PublicacionAutorDAOImp implements IPublicacionAutorDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * actualiza pulicacion autor
+     * @param pb 
+     */
     @Override
     public void update(PublicacionAutor pb) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -43,7 +52,12 @@ public class PublicacionAutorDAOImp implements IPublicacionAutorDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * lista publicacion autor
+     * devuelve publicaciones autores
+     * @param codigoPublicacion
+     * @return 
+     */
     @Override
     public List<PublicacionAutor> devolverPublicacionesAutores(String codigoPublicacion) {        
         List<PublicacionAutor> listaAux = new ArrayList<>();

@@ -14,7 +14,10 @@ import org.hibernate.criterion.Restrictions;
  * @author Rojas, Guido G.
  */
 public class PrestamoDAOImp implements IPrestamoDAO {
-
+    /**
+     * agregado prestamo
+     * @param pre 
+     */
     @Override
     public void add(Prestamo pre) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -23,7 +26,10 @@ public class PrestamoDAOImp implements IPrestamoDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * actualiza prestamo
+     * @param pre 
+     */
     @Override
     public void update(Prestamo pre) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -32,7 +38,10 @@ public class PrestamoDAOImp implements IPrestamoDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * borrado de perfil
+     * @param pre 
+     */
     @Override
     public void delete(Prestamo pre) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -43,6 +52,11 @@ public class PrestamoDAOImp implements IPrestamoDAO {
         s.getTransaction().commit();
         s.close();
     }
+    /**
+     * lista prestamo
+     * devuelve prestamos
+     * @return 
+     */
     @Override
     public List<Prestamo> devolverPrestamos() { //Devuelve prestamos activos
         List<Prestamo> listaAux;
@@ -56,7 +70,10 @@ public class PrestamoDAOImp implements IPrestamoDAO {
         s.close();
         return listaAux; 
     }
-
+    /**
+     * obtiene ultimo prestamo
+     * @return 
+     */
     @Override
     public Prestamo obtenerUltimoPrestamo() {
         Prestamo objAux = new Prestamo();

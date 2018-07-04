@@ -14,7 +14,10 @@ import org.hibernate.criterion.Restrictions;
  * @author Rojas, Guido G.
  */
 public class PublicacionClasificacionDAOImp implements IPublicacionClasificacionDAO {
-
+    /**
+     * agregado publicacion clasificacion
+     * @param pc 
+     */
     @Override
     public void add(PublicacionClasificacion pc) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -23,7 +26,10 @@ public class PublicacionClasificacionDAOImp implements IPublicacionClasificacion
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * borrado publicacion clasificacion
+     * @param pc 
+     */
     @Override
     public void delete(PublicacionClasificacion pc) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -33,7 +39,10 @@ public class PublicacionClasificacionDAOImp implements IPublicacionClasificacion
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * actualiza publicacion clasificacion
+     * @param pc 
+     */
     @Override
     public void update(PublicacionClasificacion pc) {
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -42,7 +51,12 @@ public class PublicacionClasificacionDAOImp implements IPublicacionClasificacion
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * lista publicacion clasificacion
+     * devuelve publicaciones clasificaciones
+     * @param codigoPublicacion
+     * @return 
+     */
     @Override
     public List<PublicacionClasificacion> devolverPublicacionesClasificaciones(String codigoPublicacion) {
         List<PublicacionClasificacion> listaAux = new ArrayList<>();

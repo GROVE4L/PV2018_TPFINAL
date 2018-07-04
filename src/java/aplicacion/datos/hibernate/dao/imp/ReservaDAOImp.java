@@ -14,7 +14,10 @@ import org.hibernate.criterion.Restrictions;
  * @author Rojas, Guido G.
  */
 public class ReservaDAOImp implements IReservaDAO {
-
+    /**
+     * agregado reserva
+     * @param re 
+     */
     @Override
     public void add(Reserva re) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -24,7 +27,10 @@ public class ReservaDAOImp implements IReservaDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * actualiza reserva
+     * @param re 
+     */
     @Override
     public void update(Reserva re) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -34,7 +40,10 @@ public class ReservaDAOImp implements IReservaDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * borrado reserva
+     * @param re 
+     */
     @Override
     public void delete(Reserva re) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -44,7 +53,11 @@ public class ReservaDAOImp implements IReservaDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * lista reserva
+     * devuelve reservas
+     * @return 
+     */
     @Override
     public List<Reserva> devolverReservas() {
         List<Reserva> listaAux=new ArrayList<>();
@@ -54,7 +67,10 @@ public class ReservaDAOImp implements IReservaDAO {
         s.close();
         return listaAux;
     }
-
+    /**
+     * obtiene ultima reserva
+     * @return 
+     */
     @Override
     public Reserva obtenerUltimaReserva() {
         Reserva objAux = new Reserva();

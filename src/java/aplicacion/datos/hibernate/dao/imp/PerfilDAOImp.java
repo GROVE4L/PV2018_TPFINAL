@@ -14,7 +14,10 @@ import org.hibernate.criterion.Restrictions;
  * @author Rojas, Guido G.
  */
 public class PerfilDAOImp implements IPerfilDAO {
-
+    /**
+     * agregado perfil
+     * @param perfil 
+     */
     @Override
     public void add(Perfil perfil) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -23,7 +26,10 @@ public class PerfilDAOImp implements IPerfilDAO {
         s.getTransaction().commit();
         s.close(); 
     }
-
+    /**
+     * actualiza perfil
+     * @param perfil 
+     */
     @Override
     public void update(Perfil perfil) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -32,7 +38,10 @@ public class PerfilDAOImp implements IPerfilDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * borrado perfil
+     * @param perfil 
+     */
     @Override
     public void delete(Perfil perfil) {
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -41,7 +50,11 @@ public class PerfilDAOImp implements IPerfilDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * busqueda perfil
+     * @param perfil
+     * @return 
+     */
     @Override
     public boolean buscarPerfil(Perfil perfil) {        
         boolean encontrado = false;
@@ -53,7 +66,11 @@ public class PerfilDAOImp implements IPerfilDAO {
         s.close();
         return encontrado;
     }
-
+    /**
+     * obtiene perfil
+     * @param codigoPerfilBuscado
+     * @return 
+     */
     @Override
     public Perfil obtenerPerfil(int codigoPerfilBuscado) {        
         Perfil pEncontrado = null;
@@ -65,7 +82,11 @@ public class PerfilDAOImp implements IPerfilDAO {
         s.close();
         return pEncontrado;
     }
-    
+    /**
+     * obtiene perfil directo
+     * @param codigoPerfilBuscado
+     * @return 
+     */
     @Override
     public Perfil obtenerPerfilDirecto(int codigoPerfilBuscado) {        
         Perfil pEncontrado = null;
@@ -77,7 +98,10 @@ public class PerfilDAOImp implements IPerfilDAO {
         s.close();
         return pEncontrado;
     }
-
+    /**
+     * lista de perfiles
+     * @return 
+     */
     @Override
     public List<Perfil> listarPerfiles() {        
         List<Perfil> listaAux = new ArrayList<>();

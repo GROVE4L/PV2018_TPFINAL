@@ -15,7 +15,10 @@ import org.hibernate.criterion.Restrictions;
  * @author Rojas, Guido G.
  */
 public class EditorialDAOImp implements IEditorialDAO {
-
+    /**
+     * agregado editorial
+     * @param editorial 
+     */
     @Override
     public void add(Editorial editorial) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.        
@@ -25,7 +28,10 @@ public class EditorialDAOImp implements IEditorialDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * actualiza editorial
+     * @param editorial 
+     */
     @Override
     public void update(Editorial editorial) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -35,7 +41,10 @@ public class EditorialDAOImp implements IEditorialDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * borrado editorial
+     * @param editorial 
+     */
     @Override
     public void delete(Editorial editorial) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -47,7 +56,11 @@ public class EditorialDAOImp implements IEditorialDAO {
         s.close();
         
     }
-
+    /**
+     * busqueda editorial
+     * @param editorial
+     * @return 
+     */
     @Override
     public Editorial buscarEditorial(Editorial editorial) {
         Editorial objAux = new Editorial();
@@ -60,7 +73,11 @@ public class EditorialDAOImp implements IEditorialDAO {
             objAux = (Editorial) crit.list().get(0);            
         return objAux;
     }
-    
+    /**
+     * lista editorial
+     * devuelve editoriales activas
+     * @return 
+     */
     @Override
     public List<Editorial> devolverEditorialesActivas() {        
         List<Editorial> listaAux = new ArrayList<>();
@@ -71,7 +88,11 @@ public class EditorialDAOImp implements IEditorialDAO {
         s.close();
         return listaAux;
     }
-
+    /**
+     * lista editorial
+     * devuelve editoriales
+     * @return 
+     */
     @Override
     public List<Editorial> devolverEditoriales() {        
         List<Editorial> listaAux = new ArrayList<>();
@@ -82,7 +103,10 @@ public class EditorialDAOImp implements IEditorialDAO {
         s.close();
         return listaAux;
     }
-
+    /**
+     * procedimiento recover
+     * @param editorial 
+     */
     @Override
     public void recover(Editorial editorial) {        
         Session s = HibernateUtil.getSessionFactory().openSession();        
@@ -91,7 +115,11 @@ public class EditorialDAOImp implements IEditorialDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * funcion devuelve nombre editorial
+     * @param codigoBuscado
+     * @return 
+     */
     @Override
     public String devolverNombreEditorial(int codigoBuscado) {        
         String strAux;

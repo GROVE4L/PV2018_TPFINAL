@@ -14,7 +14,10 @@ import org.hibernate.criterion.Restrictions;
  * @author Rojas, Guido G.
  */
 public class DetallePrestamoDAOImp implements IDetallePrestamoDAO {
-
+    /**
+     * agregado detalle prestamo
+     * @param dp 
+     */
     @Override
     public void add(DetallePrestamo dp) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -24,7 +27,10 @@ public class DetallePrestamoDAOImp implements IDetallePrestamoDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * borrado detalle prestamos
+     * @param dp 
+     */
     @Override
     public void delete(DetallePrestamo dp) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -35,7 +41,10 @@ public class DetallePrestamoDAOImp implements IDetallePrestamoDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * actualiza detalle prestamo
+     * @param dp 
+     */
     @Override
     public void update(DetallePrestamo dp) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -45,7 +54,10 @@ public class DetallePrestamoDAOImp implements IDetallePrestamoDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * lista de detalle prestamos
+     * @return 
+     */
     @Override
     public List<DetallePrestamo> devolverDetallePrestamos() {
         List<DetallePrestamo> listaAux = new ArrayList<>();
@@ -55,7 +67,12 @@ public class DetallePrestamoDAOImp implements IDetallePrestamoDAO {
         s.close();
         return listaAux;
     }
-
+    /**
+     * lista detalle prestamo
+     * que devuelve detalle prestamos codigo
+     * @param codigoPrestamoBuscado
+     * @return 
+     */
     @Override
     public List<DetallePrestamo> devolverDetallePrestamosCodigo(int codigoPrestamoBuscado) {
         List<DetallePrestamo> listaAux = null;

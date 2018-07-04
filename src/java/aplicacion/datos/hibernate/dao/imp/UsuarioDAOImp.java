@@ -14,7 +14,11 @@ import org.hibernate.criterion.Restrictions;
  * @author Rojas, Guido G.
  */
 public class UsuarioDAOImp implements IUsuarioDAO {
-
+    /**
+     * carga de usuario
+     * @param usuario
+     * @return 
+     */
     @Override
     public Usuario login(Usuario usuario) {        
         Usuario u = null;        
@@ -28,7 +32,10 @@ public class UsuarioDAOImp implements IUsuarioDAO {
         s.close();
         return u;
     }
-
+    /**
+     * agregado usuario
+     * @param usuario 
+     */
     @Override
     public void add(Usuario usuario) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -37,7 +44,10 @@ public class UsuarioDAOImp implements IUsuarioDAO {
         s.getTransaction().commit();
         s.close();       
     }
-
+    /**
+     * actualiza usuario
+     * @param usuario 
+     */
     @Override
     public void update(Usuario usuario) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -46,7 +56,10 @@ public class UsuarioDAOImp implements IUsuarioDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * borrado usuario
+     * @param usuario 
+     */
     @Override
     public void delete(Usuario usuario) {
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -55,7 +68,11 @@ public class UsuarioDAOImp implements IUsuarioDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * lista usuario
+     * devuelve usuarios
+     * @return 
+     */
     @Override
     public List<Usuario> devolverUsuarios() {
         List<Usuario> listaAux = new ArrayList<>();
@@ -66,7 +83,11 @@ public class UsuarioDAOImp implements IUsuarioDAO {
         s.close();
         return listaAux;
     }    
-
+    /**
+     * busqueda usuario
+     * @param usuario
+     * @return 
+     */
     @Override
     public boolean buscarUsuario(Usuario usuario) {        
         boolean encontrado = false;
@@ -78,7 +99,11 @@ public class UsuarioDAOImp implements IUsuarioDAO {
         s.close();
         return encontrado;        
     }
-
+    /**
+     * obtiene codigo usuario
+     * @param usuario
+     * @return 
+     */
     @Override
     public int obtenerCodigoUsuario(Usuario usuario) {        
         int encontrado = -1;
@@ -90,7 +115,11 @@ public class UsuarioDAOImp implements IUsuarioDAO {
         s.close();
         return encontrado;
     }
-
+    /**
+     * obtiene usuario
+     * @param codigoBuscado
+     * @return 
+     */
     @Override
     public Usuario obtenerUsuario(int codigoBuscado) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

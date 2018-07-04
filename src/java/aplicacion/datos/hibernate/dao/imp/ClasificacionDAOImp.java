@@ -14,7 +14,10 @@ import org.hibernate.criterion.Restrictions;
  * @author Rojas, Guido G.
  */
 public class ClasificacionDAOImp implements IClasificacionDAO {
-
+    /**
+     * agregado clasificacion
+     * @param c 
+     */
     @Override
     public void add(Clasificacion c) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -24,7 +27,10 @@ public class ClasificacionDAOImp implements IClasificacionDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * actualiza clasificacion
+     * @param c 
+     */
     @Override
     public void update(Clasificacion c) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -34,7 +40,10 @@ public class ClasificacionDAOImp implements IClasificacionDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * borrado clasificacion
+     * @param c 
+     */
     @Override
     public void delete(Clasificacion c) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -44,8 +53,13 @@ public class ClasificacionDAOImp implements IClasificacionDAO {
         s.getTransaction().commit();
         s.close();
     }
-
+    /**
+     * busqueda de clasificacion
+     * @param c
+     * @return 
+     */
     @Override
+    
     public Clasificacion buscarClasificacion(Clasificacion c) {        
         Session s = HibernateUtil.getSessionFactory().openSession();
         Clasificacion clasAux = new Clasificacion();
@@ -58,13 +72,22 @@ public class ClasificacionDAOImp implements IClasificacionDAO {
         s.close();
         return clasAux;
     }
-
+    /**
+     * obtiene codigo clasificacion
+     * @param c
+     * @return 
+     */
     @Override
+    
     public int obtenerCodigoClasificacion(Clasificacion c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    /**
+     * lista de clasificacion
+     * @return 
+     */
     @Override
+    
     public List<Clasificacion> devolverClasificaciones() {
         List<Clasificacion> listaAux = new ArrayList<>();
         Session s = HibernateUtil.getSessionFactory().openSession();        
@@ -73,8 +96,13 @@ public class ClasificacionDAOImp implements IClasificacionDAO {
         s.close();
         return listaAux;
     }
-
+    /**
+     * busqueda de codigo clasificacion
+     * @param codigoBuscado
+     * @return 
+     */
     @Override
+    
     public Clasificacion buscarCodigoClasificacion(int codigoBuscado) {        
         Clasificacion objAux = new Clasificacion();
         Session s = HibernateUtil.getSessionFactory().openSession();
