@@ -20,25 +20,45 @@ public class Editorial  implements java.io.Serializable {
        this.editNombre = editNombre;
        this.editEstado = editEstado;
     }
-   
+    /**
+     * constructor de EdiCodigo con su get
+     * @return 
+     */
     public Integer getEdiCodigo() {
         return this.ediCodigo;
     }
-    
+    /**
+     * constructor de EdiCodigo con su set
+     * @param ediCodigo 
+     */
     public void setEdiCodigo(Integer ediCodigo) {
         this.ediCodigo = ediCodigo;
     }
+    /**
+     * constructor de EditNombre con su get
+     * @return 
+     */
     public String getEditNombre() {
         return this.editNombre;
     }
-    
+    /**
+     * constructor de EditNombre con su set
+     * @param editNombre 
+     */
     public void setEditNombre(String editNombre) {
         this.editNombre = editNombre;
     }
+    /**
+     * constructor de EditEstado
+     * @return 
+     */
     public boolean isEditEstado() {
         return this.editEstado;
     }
-    
+    /**
+     * constructor de EditEstado con su set
+     * @param editEstado 
+     */
     public void setEditEstado(boolean editEstado) {
         this.editEstado = editEstado;
     }

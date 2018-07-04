@@ -24,39 +24,73 @@ public class DetalleReserva  implements java.io.Serializable {
        this.drevReserva = drevReserva;
        this.drevPublicacion = drevPublicacion;
     }
-   
+    /**
+     * constructor de DrevCodigo con su get
+     * @return 
+     */
     public Integer getDrevCodigo() {
         return this.drevCodigo;
     }
-    
+    /**
+     * constructor de DrevCodigo con su set
+     * @param drevCodigo 
+     */
     public void setDrevCodigo(Integer drevCodigo) {
         this.drevCodigo = drevCodigo;
     }
+    /**
+     * constructor de DrevCantidad con su get
+     * @return 
+     */
     public int getDrevCantidad() {
         return this.drevCantidad;
     }
-    
+    /**
+     * constructor de DrevCantidad con su set
+     * @param drevCantidad 
+     */
     public void setDrevCantidad(int drevCantidad) {
         this.drevCantidad = drevCantidad;
     }
+    /**
+     * constructor de DrevEstado
+     * @return 
+     */
     public boolean isDrevEstado() {
         return this.drevEstado;
     }
-    
+    /**
+     * constructor de DrevEstado con su set
+     * @param drevEstado 
+     */
     public void setDrevEstado(boolean drevEstado) {
         this.drevEstado = drevEstado;
     }
+    /**
+     * constructor de DrevReserva con su get
+     * @return 
+     */
     public int getDrevReserva() {
         return this.drevReserva;
     }
-    
+    /**
+     * constructor de DrevReserva con su set
+     * @param drevReserva 
+     */
     public void setDrevReserva(int drevReserva) {
         this.drevReserva = drevReserva;
     }
+    /**
+     * constructor de DrevPublicacion con su get
+     * @return 
+     */
     public String getDrevPublicacion() {
         return this.drevPublicacion;
     }
-    
+    /**
+     * constructor de DrevPublicacion con su set
+     * @param drevPublicacion 
+     */
     public void setDrevPublicacion(String drevPublicacion) {
         this.drevPublicacion = drevPublicacion;
     }

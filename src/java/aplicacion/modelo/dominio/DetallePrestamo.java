@@ -29,53 +29,101 @@ public class DetallePrestamo  implements java.io.Serializable {
        this.dpPrestamo = dpPrestamo;
        this.dpPublicacion = dpPublicacion;
     }
-   
+    /**
+     * constructor de DpCodigo con su get
+     * @return 
+     */
     public Integer getDpCodigo() {
         return this.dpCodigo;
     }
-    
+    /**
+     * constructor de DpCodigo con su set
+     * @param dpCodigo 
+     */
     public void setDpCodigo(Integer dpCodigo) {
         this.dpCodigo = dpCodigo;
     }
+    /**
+     * constructor de isDpEstado 
+     * @return 
+     */
     public boolean isDpEstado() {
         return this.dpEstado;
     }
-    
+    /**
+     * constructor de DpEstado con su set
+     * @param dpEstado 
+     */
     public void setDpEstado(boolean dpEstado) {
         this.dpEstado = dpEstado;
     }
+    /**
+     * constructor de DpFechaADevolver con su get
+     * @return 
+     */
     public Date getDpFechaADevolver() {
         return this.dpFechaADevolver;
     }
-    
+    /**
+     * constructor de DpFechaADevolver con su set
+     * @param dpFechaADevolver 
+     */
     public void setDpFechaADevolver(Date dpFechaADevolver) {
         this.dpFechaADevolver = dpFechaADevolver;
     }
+    /**
+     * constructor de DpTurno con su get
+     * @return 
+     */
     public String getDpTurno() {
         return this.dpTurno;
     }
-    
+    /**
+     * constructor de DpTurno con su set
+     * @param dpTurno 
+     */
     public void setDpTurno(String dpTurno) {
         this.dpTurno = dpTurno;
     }
+    /**
+     * constructor de DpFechaDevolucion con su get
+     * @return 
+     */
     public Date getDpFechaDevolucion() {
         return this.dpFechaDevolucion;
     }
-    
+    /**
+     * constructor de DpFechaDevolucion con su set
+     * @param dpFechaDevolucion 
+     */
     public void setDpFechaDevolucion(Date dpFechaDevolucion) {
         this.dpFechaDevolucion = dpFechaDevolucion;
     }
+    /**
+     * constructor de DpPrestamo con su get
+     * @return 
+     */
     public int getDpPrestamo() {
         return this.dpPrestamo;
     }
-    
+    /**
+     * constructor de DpPrestamo su set
+     * @param dpPrestamo 
+     */
     public void setDpPrestamo(int dpPrestamo) {
         this.dpPrestamo = dpPrestamo;
     }
+    /**
+     * constructor de DpPublicacion con su get
+     * @return 
+     */
     public String getDpPublicacion() {
         return this.dpPublicacion;
     }
-    
+    /**
+     * constructor de DpPublicacion con su set
+     * @param dpPublicacion 
+     */
     public void setDpPublicacion(String dpPublicacion) {
         this.dpPublicacion = dpPublicacion;
     }

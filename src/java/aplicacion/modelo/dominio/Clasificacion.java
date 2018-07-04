@@ -20,25 +20,45 @@ public class Clasificacion  implements java.io.Serializable {
        this.claIdentificador = claIdentificador;
        this.claDescripcion = claDescripcion;
     }
-   
+    /**
+     * constructor de ClaCodigo con su get
+     * @return 
+     */
     public Integer getClaCodigo() {
         return this.claCodigo;
     }
-    
+    /**
+     * constructor de ClaCodigo con su set
+     * @param claCodigo 
+     */
     public void setClaCodigo(Integer claCodigo) {
         this.claCodigo = claCodigo;
     }
+    /**
+     * constructor de ClaIdentificado con su get
+     * @return 
+     */
     public int getClaIdentificador() {
         return this.claIdentificador;
     }
-    
+    /**
+     * constructor de ClaIdentificador con su set
+     * @param claIdentificador 
+     */
     public void setClaIdentificador(int claIdentificador) {
         this.claIdentificador = claIdentificador;
     }
+    /**
+     * constructor de ClaDescripcion con su get
+     * @return 
+     */
     public String getClaDescripcion() {
         return this.claDescripcion;
     }
-    
+    /**
+     * constructor de ClaDescripcion con su set
+     * @param claDescripcion 
+     */
     public void setClaDescripcion(String claDescripcion) {
         this.claDescripcion = claDescripcion;
     }

@@ -20,25 +20,45 @@ public class Autor  implements java.io.Serializable {
        this.autApellidos = autApellidos;
        this.autNombres = autNombres;
     }
-   
+    /**
+     * constructor de AutCodigo con su get
+     * @return 
+     */
     public Integer getAutCodigo() {
         return this.autCodigo;
     }
-    
+    /**
+     * constructor de AutCodigo con su set
+     * @param autCodigo 
+     */
     public void setAutCodigo(Integer autCodigo) {
         this.autCodigo = autCodigo;
     }
+    /**
+     * constructor de AutApellidos con su get
+     * @return 
+     */
     public String getAutApellidos() {
         return this.autApellidos;
     }
-    
+    /**
+     * constructor de AutApellidos con su set
+     * @param autApellidos 
+     */
     public void setAutApellidos(String autApellidos) {
         this.autApellidos = autApellidos;
     }
+    /**
+     * constructor de AutNombres con su get
+     * @return 
+     */
     public String getAutNombres() {
         return this.autNombres;
     }
-    
+    /**
+     * constructor de AutNombres con su set
+     * @param autNombres 
+     */
     public void setAutNombres(String autNombres) {
         this.autNombres = autNombres;
     }
