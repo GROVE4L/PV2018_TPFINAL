@@ -17,7 +17,13 @@ public class DetalleReserva  implements java.io.Serializable {
 
     public DetalleReserva() {
     }
-
+    /**
+     * 
+     * @param drevCantidad
+     * @param drevEstado
+     * @param drevReserva
+     * @param drevPublicacion 
+     */
     public DetalleReserva(int drevCantidad, boolean drevEstado, int drevReserva, String drevPublicacion) {
        this.drevCantidad = drevCantidad;
        this.drevEstado = drevEstado;

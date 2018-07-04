@@ -22,7 +22,17 @@ public class Perfil  implements java.io.Serializable {
 
     public Perfil() {
     }
-
+    /**
+     * 
+     * @param perApellidos
+     * @param perNombres
+     * @param perDni
+     * @param perFechaNac
+     * @param perEmail
+     * @param perDireccion
+     * @param perTelefono
+     * @param perUsuario 
+     */
     public Perfil(String perApellidos, String perNombres, String perDni, Date perFechaNac, String perEmail, String perDireccion, String perTelefono, int perUsuario) {
        this.perApellidos = perApellidos;
        this.perNombres = perNombres;
@@ -33,67 +43,129 @@ public class Perfil  implements java.io.Serializable {
        this.perTelefono = perTelefono;
        this.perUsuario = perUsuario;
     }
-   
+    /**
+     * constructor de PerCodigo con su get
+     * @return 
+     */
     public Integer getPerCodigo() {
         return this.perCodigo;
     }
-    
+    /**
+     * constructor de PerCodigo con su set
+     * @param perCodigo 
+     */
     public void setPerCodigo(Integer perCodigo) {
         this.perCodigo = perCodigo;
     }
+    /**
+     * constructor de PerApellidos con su get
+     * @return 
+     */
     public String getPerApellidos() {
         return this.perApellidos;
     }
-    
+    /**
+     * constructor de PerApellidos con su set
+     * @param perApellidos 
+     */
     public void setPerApellidos(String perApellidos) {
         this.perApellidos = perApellidos;
     }
+    /**
+     * constructor de PerNombres con su get
+     * @return 
+     */
     public String getPerNombres() {
         return this.perNombres;
     }
-    
+    /**
+     * constructor de PerNombres con su set
+     * @param perNombres 
+     */
     public void setPerNombres(String perNombres) {
         this.perNombres = perNombres;
     }
+    /**
+     * constructor de PerDni con su get
+     * @return 
+     */
     public String getPerDni() {
         return this.perDni;
     }
-    
+    /**
+     * constructor de PerDni con su set
+     * @param perDni 
+     */
     public void setPerDni(String perDni) {
         this.perDni = perDni;
     }
+    /**
+     * constructor de PerFechaNac con su get
+     * @return 
+     */
     public Date getPerFechaNac() {
         return this.perFechaNac;
     }
-    
+    /**
+     * constructor de PerFechaNac con su set
+     * @param perFechaNac 
+     */
     public void setPerFechaNac(Date perFechaNac) {
         this.perFechaNac = perFechaNac;
     }
+    /**
+     * constructor de PerEmail con su get
+     * @return 
+     */
     public String getPerEmail() {
         return this.perEmail;
     }
-    
+    /**
+     * constructor de PerEmail con su set
+     * @param perEmail 
+     */
     public void setPerEmail(String perEmail) {
         this.perEmail = perEmail;
     }
+    /**
+     * constructor de PerDireccion con su get
+     * @return 
+     */
     public String getPerDireccion() {
         return this.perDireccion;
     }
-    
+    /**
+     * constructor de PerDireccion con su set
+     * @param perDireccion 
+     */
     public void setPerDireccion(String perDireccion) {
         this.perDireccion = perDireccion;
     }
+    /**
+     * constructor de PerTelefono con su get
+     * @return 
+     */
     public String getPerTelefono() {
         return this.perTelefono;
     }
-    
+    /**
+     * constructor de PerTelefono con su set
+     * @param perTelefono 
+     */
     public void setPerTelefono(String perTelefono) {
         this.perTelefono = perTelefono;
     }
+    /**
+     * constructor de PerUsuario con su get
+     * @return 
+     */
     public int getPerUsuario() {
         return this.perUsuario;
     }
-    
+    /**
+     * constructor de PerUsuario con su set
+     * @param perUsuario 
+     */
     public void setPerUsuario(int perUsuario) {
         this.perUsuario = perUsuario;
     }

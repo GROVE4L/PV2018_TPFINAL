@@ -15,7 +15,11 @@ public class Clasificacion  implements java.io.Serializable {
 
     public Clasificacion() {
     }
-
+    /**
+     * 
+     * @param claIdentificador
+     * @param claDescripcion 
+     */
     public Clasificacion(int claIdentificador, String claDescripcion) {
        this.claIdentificador = claIdentificador;
        this.claDescripcion = claDescripcion;

@@ -20,7 +20,15 @@ public class DetallePrestamo  implements java.io.Serializable {
 
     public DetallePrestamo() {
     }
-
+    /**
+     * 
+     * @param dpEstado
+     * @param dpFechaADevolver
+     * @param dpTurno
+     * @param dpFechaDevolucion
+     * @param dpPrestamo
+     * @param dpPublicacion 
+     */
     public DetallePrestamo(boolean dpEstado, Date dpFechaADevolver, String dpTurno, Date dpFechaDevolucion, int dpPrestamo, String dpPublicacion) {
        this.dpEstado = dpEstado;
        this.dpFechaADevolver = dpFechaADevolver;

@@ -15,7 +15,11 @@ public class Autor  implements java.io.Serializable {
 
     public Autor() {
     }
-
+    /**
+     * 
+     * @param autApellidos
+     * @param autNombres 
+     */
     public Autor(String autApellidos, String autNombres) {
        this.autApellidos = autApellidos;
        this.autNombres = autNombres;

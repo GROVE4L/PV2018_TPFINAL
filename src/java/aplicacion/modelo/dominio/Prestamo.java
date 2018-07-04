@@ -18,46 +18,86 @@ public class Prestamo  implements java.io.Serializable {
 
     public Prestamo() {
     }
-
+    /**
+     * 
+     * @param preFechaPrestamo
+     * @param preEstado
+     * @param preAdministrativo
+     * @param preSocio 
+     */
     public Prestamo(Date preFechaPrestamo, boolean preEstado, String preAdministrativo, int preSocio) {
        this.preFechaPrestamo = preFechaPrestamo;
        this.preEstado = preEstado;
        this.preAdministrativo = preAdministrativo;
        this.preSocio = preSocio;
     }
-   
+    /**
+     * constructor de PreCodigo con su get
+     * @return 
+     */
     public Integer getPreCodigo() {
         return this.preCodigo;
     }
-    
+    /**
+     * constructor de PreCodigo con su set
+     * @param preCodigo 
+     */
     public void setPreCodigo(Integer preCodigo) {
         this.preCodigo = preCodigo;
     }
+    /**
+     * constructor de PreFechaPrestamo con su get
+     * @return 
+     */
     public Date getPreFechaPrestamo() {
         return this.preFechaPrestamo;
     }
-    
+    /**
+     * constructor de PreFechaPrestamo con su set
+     * @param preFechaPrestamo 
+     */
     public void setPreFechaPrestamo(Date preFechaPrestamo) {
         this.preFechaPrestamo = preFechaPrestamo;
     }
+    /**
+     * constructor de PreEstado
+     * @return 
+     */
     public boolean isPreEstado() {
         return this.preEstado;
     }
-    
+    /**
+     * constructor de PreEstado con su set
+     * @param preEstado 
+     */
     public void setPreEstado(boolean preEstado) {
         this.preEstado = preEstado;
     }
+    /**
+     * constructor de PreAdministrativo con su get
+     * @return 
+     */
     public String getPreAdministrativo() {
         return this.preAdministrativo;
     }
-    
+    /**
+     * constructor de PreAdiministrativo con su set
+     * @param preAdministrativo 
+     */
     public void setPreAdministrativo(String preAdministrativo) {
         this.preAdministrativo = preAdministrativo;
     }
+    /**
+     * constructor de PreSocio con su get
+     * @return 
+     */
     public int getPreSocio() {
         return this.preSocio;
     }
-    
+    /**
+     * constructor de PreSocio con su set
+     * @param preSocio 
+     */
     public void setPreSocio(int preSocio) {
         this.preSocio = preSocio;
     }

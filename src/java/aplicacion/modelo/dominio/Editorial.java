@@ -15,7 +15,11 @@ public class Editorial  implements java.io.Serializable {
 
     public Editorial() {
     }
-
+    /**
+     * 
+     * @param editNombre
+     * @param editEstado 
+     */
     public Editorial(String editNombre, boolean editEstado) {
        this.editNombre = editNombre;
        this.editEstado = editEstado;
