@@ -51,6 +51,7 @@ public class EditorialDAOImp implements IEditorialDAO {
         
         Session s = HibernateUtil.getSessionFactory().openSession();        
         s.beginTransaction();
+        editorial.setEditEstado(false);
         s.update(editorial);
         s.getTransaction().commit();
         s.close();
