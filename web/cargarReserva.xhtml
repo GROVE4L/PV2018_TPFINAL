@@ -25,8 +25,11 @@
                                 <p:outputLabel/>
                                 
                                 <p:outputLabel for="fechaCal" value="Fecha de Turno: "/>
-                                <p:calendar id="fechaCal" required="true" placeholder="dd/mm/aaaa" requiredMessage="Elija una fecha." 
-                                            pattern="dd/MM/yyyy" value="#{reservaFormBean.reserva.revFechaTurno}"/>
+                                <p:calendar id="fechaCal" required="true" placeholder="dd/mm/aaaa" 
+                                            requiredMessage="Elija una fecha." 
+                                            pattern="dd/MM/yyyy" 
+                                            value="#{reservaFormBean.reserva.revFechaTurno}"
+                                            mindate="Date()" maxdate="Date()+14"/>
                                 <p:outputLabel/>
                                 
                                 <p:commandButton icon="fa fa-plus" update="panelContenedor"

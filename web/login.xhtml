@@ -9,7 +9,25 @@
         <div class="container">
             <ui:composition template="./estructura/masterTemplate.xhtml">
                 <ui:define name="content">
-                    <div id="tooplate_main">                    
+                    <div id="tooplate_main">
+                        <p:panel id="basic" header="Informacion" footer="Dirección: Lavalle esq. Belgrano - San Salvador de Jujuy" 
+                                 style="margin-bottom:10px">
+                            <h:panelGrid columns="2" styleClass="ui-noborder">
+                                <p:graphicImage url="/resources/images/Iglesia_Jujuy.jpg" />
+                                <h:outputText
+                                    value="Referencias Históricas y Testimoniales:
+
+                                    El Convento de San Francisco se levantó hacia el año 1599, merced a la labor de dos religiosos venidos desde Santiago del Estero.
+
+                                    El edificio fue construido en un terreno donado para este fin por Don Alonso de Tobar, el cual estaba ubicado en las actuales calles Belgrano y Lavalle; en esos tiempos el predio correspondiente al Convento abarcaba toda la cuadra, es decir Belgrano, Lavalle, Otero y Alvear. Como es de imaginar, en estos primero tiempos, el Convento sólo contaba con una pobre capilla y unas cuantas celdas hechas de barro y cubiertas de paja.
+
+                                    En los primero meses del año 1609, debido a la angustiosa situación por la que pasaba la recientemente fundada San Salvador de Velazco en el Valle de Jujuy, el Convento fue cerrado hasta su reapertura en el año 1611, fecha en que los franciscanos se radicaron definitivamente en Jujuy.
+
+                                    Ante el derrumbe que había sufrido la Iglesia Matriz (actual Iglesia Catedral) entre los años 1630 y 1631, quedando de esta manera totalmente inutilizada, los servicios parroquiales debieron ser trasladados a la Iglesia de San Francisco, oficiando de Matriz por estos motivos en un plazo aproximado a los cuatro años.
+
+                                    Hacia el año 1647 posiblemente, en vista de la precariedad que presentaban las antiguas edificaciones, se comenzaron a realizar trabajos para la renovación de los edificios conventuales los cuales culminaron antes de 1680; se hicieron nuevas habitaciones para vivienda de religiosos, oficinas, paredes lisas y techos cubiertos con tejas." />
+                            </h:panelGrid>
+                        </p:panel>
                             <div class="contenedorUsuario">
                                 
                             </div>

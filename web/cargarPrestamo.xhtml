@@ -25,7 +25,10 @@
                                 <p:outputLabel/>
                                 
                                 <p:outputLabel for="fechaCal" value="Fecha de Prestamo: "/>
-                                <p:calendar id="fechaCal" required="true" placeholder="dd/mm/aaaa" requiredMessage="Elija una fecha." pattern="dd/MM/yyyy" value="#{prestamoFormBean.prestamo.preFechaPrestamo}"/>
+                                <p:calendar id="fechaCal" required="true" placeholder="dd/mm/aaaa" 
+                                            requiredMessage="Elija una fecha." pattern="dd/MM/yyyy" 
+                                            value="#{prestamoFormBean.prestamo.preFechaPrestamo}"
+                                            mindate="Date()" maxdate="Date()"/>
                                 <p:outputLabel/>
                                 
                                 <p:outputLabel for="inpSocio" value="¿Para que Socio es el Prestamo? "/>
@@ -35,7 +38,11 @@
                                 <p:outputLabel/>
                                 
                                 <p:outputLabel for="fechaCalDev" value="Fecha de Devolucion: "/>
-                                <p:calendar id="fechaCalDev" required="true" placeholder="dd/mm/aaaa" requiredMessage="Elija una fecha de devolucion." pattern="dd/MM/yyyy" value="#{prestamoFormBean.dp.dpFechaADevolver}"/>
+                                
+                                <p:calendar id="fechaCalDev" required="true" 
+                                            placeholder="dd/mm/aaaa" requiredMessage="Elija una fecha de devolucion." 
+                                            pattern="dd/MM/yyyy" value="#{prestamoFormBean.dp.dpFechaADevolver}"
+                                            mindate="Date()" maxdate="Date()+7"/>
                                 <p:outputLabel/>
                                 
                                 <p:outputLabel for="turno" value="Devolución:"/>
