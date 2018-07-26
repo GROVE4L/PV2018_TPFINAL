@@ -112,4 +112,38 @@ public class PerfilDAOImp implements IPerfilDAO {
         return listaAux;
     }
 
+    @Override
+    public String obtenerNyAPerfil(int Codigobuscar) {
+        String strAux;
+        Session s = HibernateUtil.getSessionFactory().openSession();        
+        Criteria crit = s.createCriteria(Perfil.class);
+        crit.add(Restrictions.like("perCodigo", Codigobuscar)); //1) como esta en clase 2)con que comparar        
+        if(crit.list().isEmpty())
+            strAux= null;
+        else
+        {
+            strAux= ((Perfil) crit.list().get(0)).getPerNombres();
+            strAux= strAux + " "+ ((Perfil) crit.list().get(0)).getPerApellidos();
+        }
+            
+        s.close();
+        return strAux;
+    }      
+    
+    @Override
+    public String obtenerDNIPerfil(int Codigobuscar) {
+        String strAux;
+        Session s = HibernateUtil.getSessionFactory().openSession();        
+        Criteria crit = s.createCriteria(Perfil.class);
+        crit.add(Restrictions.like("perCodigo", Codigobuscar)); //1) como esta en clase 2)con que comparar        
+        if(crit.list().isEmpty())
+            strAux= null;
+        else
+        {
+            strAux= ((Perfil) crit.list().get(0)).getPerDni();
+        }
+            
+        s.close();
+        return strAux;
+    } 
 }

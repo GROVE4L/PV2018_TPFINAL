@@ -102,4 +102,14 @@ public class PerfilBean implements Serializable{
         }
         return listaFinal;
     }
+    
+    public String obtenerNyAPerfil(int CodigoBuscar) {
+        PerfilDAOImp perfilDAOImp = new PerfilDAOImp();
+        return perfilDAOImp.obtenerNyAPerfil(CodigoBuscar);
+    }
+    
+    public String obtenerDNIPerfil(int CodigoBuscar) {
+        PerfilDAOImp perfilDAOImp = new PerfilDAOImp();
+        return perfilDAOImp.obtenerDNIPerfil(CodigoBuscar);
+    }
 }

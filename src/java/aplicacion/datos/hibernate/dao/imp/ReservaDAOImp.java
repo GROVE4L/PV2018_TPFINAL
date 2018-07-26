@@ -2,8 +2,10 @@ package aplicacion.datos.hibernate.dao.imp;
 
 import aplicacion.datos.hibernate.configuracion.HibernateUtil;
 import aplicacion.datos.hibernate.dao.IReservaDAO;
+import aplicacion.modelo.dominio.Perfil;
 import aplicacion.modelo.dominio.Reserva;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -81,4 +83,33 @@ public class ReservaDAOImp implements IReservaDAO {
         return objAux;
     }
 
+    @Override
+    public Date obtenerFechaReserva(int Codigobuscar) {
+        Date strAux;
+        Session s = HibernateUtil.getSessionFactory().openSession();        
+        Criteria crit = s.createCriteria(Reserva.class);
+        crit.add(Restrictions.like("revCodigo", Codigobuscar)); //1) como esta en clase 2)con que comparar        
+        if(crit.list().isEmpty())
+            strAux= null;
+        else 
+            strAux= ((Reserva) crit.list().get(0)).getRevFechaTurno();
+        s.close();
+        return strAux;
+    }
+    
+    @Override
+    public int obtenerCodigoPerfil(int Codigobuscar) {
+        int strAux;
+        Session s = HibernateUtil.getSessionFactory().openSession();        
+        Criteria crit = s.createCriteria(Reserva.class);
+        crit.add(Restrictions.like("revCodigo", Codigobuscar)); //1) como esta en clase 2)con que comparar        
+        if(crit.list().isEmpty())
+            strAux= 0;
+        else 
+            strAux= ((Reserva) crit.list().get(0)).getRevPerfil();
+        s.close();
+        return strAux;
+    }
+    
+            
 }

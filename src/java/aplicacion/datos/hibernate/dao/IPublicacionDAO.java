@@ -1,5 +1,6 @@
 package aplicacion.datos.hibernate.dao;
 
+import aplicacion.modelo.dominio.DetalleReserva;
 import aplicacion.modelo.dominio.Publicacion;
 import java.util.List;
 
@@ -15,4 +16,5 @@ public interface IPublicacionDAO {
     public int obtenerCodigoPublicacion(Publicacion p);
     public List<Publicacion> devolverPublicaciones();
     public List<Publicacion> devolverPublicacionesConStock();
+    public String devolverNombrePublicacion(String codigoPublicacion);
 }

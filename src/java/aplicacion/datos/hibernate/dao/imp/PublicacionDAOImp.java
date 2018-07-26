@@ -2,6 +2,7 @@ package aplicacion.datos.hibernate.dao.imp;
 
 import aplicacion.datos.hibernate.configuracion.HibernateUtil;
 import aplicacion.datos.hibernate.dao.IPublicacionDAO;
+import aplicacion.modelo.dominio.DetalleReserva;
 import aplicacion.modelo.dominio.Publicacion;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,20 @@ public class PublicacionDAOImp implements IPublicacionDAO {
             objAux = (Publicacion) crit.list().get(0);
         s.close();
         return objAux;
+    }
+    
+    @Override
+    public String devolverNombrePublicacion(String codigoPublicacion) {        
+        String strAux;
+        Session s = HibernateUtil.getSessionFactory().openSession();        
+        Criteria crit = s.createCriteria(Publicacion.class);
+        crit.add(Restrictions.like("pubCodigo", codigoPublicacion)); //1) como esta en clase 2)con que comparar        
+        if(crit.list().isEmpty())
+            strAux= "";
+        else 
+            strAux= ((Publicacion) crit.list().get(0)).getPubNombre();
+        s.close();
+        return strAux;
     }
     /**
      * obtiene codigo publicacion

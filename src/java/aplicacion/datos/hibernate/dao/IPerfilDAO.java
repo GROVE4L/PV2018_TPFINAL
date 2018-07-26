@@ -15,4 +15,8 @@ public interface IPerfilDAO {
     public Perfil obtenerPerfil(int codigoPerfilBuscado); //Obtiene el perfil de un codigo de Usuario
     public Perfil obtenerPerfilDirecto(int codigoPerfilBuscado); //Obtiene el perfil de un codigo de perfil
     public List<Perfil> listarPerfiles();
+    public String obtenerNyAPerfil(int Codigobuscar);
+    public String obtenerDNIPerfil(int Codigobuscar);
+    
+
 }

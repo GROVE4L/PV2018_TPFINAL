@@ -3,9 +3,11 @@ package aplicacion.controlador.beans;
 import aplicacion.datos.hibernate.dao.imp.ReservaDAOImp;
 import aplicacion.modelo.dominio.Reserva;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+
 
 /**
  *
@@ -77,4 +79,14 @@ public class ReservaBean implements Serializable{
         ReservaDAOImp reservaDAOImp = new ReservaDAOImp();
         return reservaDAOImp.obtenerUltimaReserva();
     }    
+    
+    public Date obtenerFechaReserva(int CodigoBuscar) {
+        ReservaDAOImp reservaDAOImp = new ReservaDAOImp();
+        return reservaDAOImp.obtenerFechaReserva(CodigoBuscar);
+    }
+    
+    public int obtenerCodigoPerfil(int CodigoBuscar) {
+        ReservaDAOImp reservaDAOImp = new ReservaDAOImp();
+        return reservaDAOImp.obtenerCodigoPerfil(CodigoBuscar);
+    }
 }

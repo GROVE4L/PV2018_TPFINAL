@@ -1,6 +1,7 @@
 package aplicacion.datos.hibernate.dao;
 
 import aplicacion.modelo.dominio.Reserva;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,4 +15,6 @@ public interface IReservaDAO{
     public void delete(Reserva re);
     public List<Reserva> devolverReservas();
     public Reserva obtenerUltimaReserva();
+    public Date obtenerFechaReserva(int Codigobuscar);
+    public int obtenerCodigoPerfil(int Codigobuscar);
 }

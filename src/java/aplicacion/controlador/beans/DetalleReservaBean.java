@@ -63,7 +63,7 @@ public class DetalleReservaBean implements Serializable{
      * @param dr
      * @return 
      */
-    public List<DetalleReserva> devolverDetalleReserva(DetalleReserva dr) {
+    public List<DetalleReserva> devolverDetalleReserva() {
         DetalleReservaDAOImp drDAOImp = new DetalleReservaDAOImp();
         return drDAOImp.devolverDetalleReservas();
     }

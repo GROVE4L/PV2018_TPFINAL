@@ -5,6 +5,7 @@ import aplicacion.controlador.beans.DetalleReservaBean;
 import aplicacion.controlador.beans.PerfilBean;
 import aplicacion.controlador.beans.PrestamoBean;
 import aplicacion.controlador.beans.PublicacionBean;
+
 import aplicacion.controlador.beans.ReservaBean;
 import aplicacion.modelo.dominio.DetallePrestamo;
 import aplicacion.modelo.dominio.DetalleReserva;
@@ -33,21 +34,81 @@ import javax.faces.context.FacesContext;
  */
 public class ReservaFormBean implements Serializable{
 
+    @ManagedProperty(value = "#{publicacionBean}")
+    private PublicacionBean publicacionBean;
+    
     @ManagedProperty(value = "#{reservaBean}")
     private ReservaBean reservaBean;
     
     @ManagedProperty(value = "#{detalleReservaBean}")
     private DetalleReservaBean detalleReservaBean;
     
+    @ManagedProperty(value = "#{perfilBean}")
+    private PerfilBean perfilBean;
+    
+    @ManagedProperty(value = "#{prestamoBean}")
+    private PrestamoBean prestamoBean;
+    
+    @ManagedProperty(value = "#{detallePrestamoBean}")
+    private DetallePrestamoBean detallePrestamoBean;
+    
+    private Prestamo prestamo;
+    private DetallePrestamo dp;
     private Reserva reserva;
     private DetalleReserva dr;
+    private DetalleReserva drProvisorio;
     private List<Publicacion> listadoAPrestar;
     
     public ReservaFormBean() {
         this.reserva = new Reserva();
-        this.dr = new DetalleReserva();        
+        this.dr = new DetalleReserva();
+        this.drProvisorio = new DetalleReserva();
+        this.prestamo = new Prestamo();
+        this.dp = new DetallePrestamo();
+        dp.setDpTurno("Mañana");
         this.listadoAPrestar = new ArrayList<Publicacion>();
     }
+
+    public PerfilBean getPerfilBean() {
+        return perfilBean;
+    }
+
+    public void setPerfilBean(PerfilBean perfilBean) {
+        this.perfilBean = perfilBean;
+    }
+
+    public PrestamoBean getPrestamoBean() {
+        return prestamoBean;
+    }
+
+    public void setPrestamoBean(PrestamoBean prestamoBean) {
+        this.prestamoBean = prestamoBean;
+    }
+
+    public DetallePrestamoBean getDetallePrestamoBean() {
+        return detallePrestamoBean;
+    }
+
+    public void setDetallePrestamoBean(DetallePrestamoBean detallePrestamoBean) {
+        this.detallePrestamoBean = detallePrestamoBean;
+    }
+
+    public Prestamo getPrestamo() {
+        return prestamo;
+    }
+
+    public void setPrestamo(Prestamo prestamo) {
+        this.prestamo = prestamo;
+    }
+
+    public DetallePrestamo getDp() {
+        return dp;
+    }
+
+    public void setDp(DetallePrestamo dp) {
+        this.dp = dp;
+    }
+    
     /**
      * constructor de ListadoAPrestar con su get
      * @return 
@@ -115,9 +176,29 @@ public class ReservaFormBean implements Serializable{
      * constructor de Dr con su set
      * @param dr 
      */
+    
+    
     public void setDr(DetalleReserva dr) {
         this.dr = dr;
     }
+
+    public PublicacionBean getPublicacionBean() {
+        return publicacionBean;
+    }
+
+    public void setPublicacionBean(PublicacionBean publicacionBean) {
+        this.publicacionBean = publicacionBean;
+    }
+
+    public DetalleReserva getDrProvisorio() {
+        return drProvisorio;
+    }
+
+    public void setDrProvisorio(DetalleReserva drProvisorio) {
+        this.drProvisorio = drProvisorio;
+    }
+    
+    
     /**
      * procedimiento llamado quitarDeLista
      * 
@@ -208,5 +289,79 @@ public class ReservaFormBean implements Serializable{
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("detalleReserva", this.dr);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("reserva", this.reserva);
         return "cargarReservaLibros?faces-redirect=true";
+    }
+    
+    /**
+     * listado de Detalle Reserva
+     * @return 
+     */
+    public List<DetalleReserva> listadoDetalleReserva() {        
+        return detalleReservaBean.devolverDetalleReserva();
+    }
+    
+    /**
+     * obtiene el obj de prestamo
+     * @return 
+     */
+    public Prestamo obtenerObjPrestamo() {
+        return (Prestamo) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("prestamo");
+    }
+    /**
+     * obtiene el obj de detalle prestamo
+     * @return 
+     */
+    public DetallePrestamo obtenerObjDetallePrestamo() {
+        return (DetallePrestamo) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("detallePrestamo");
+    }
+    public String obtenerNombrePublicacion(String CodigoBuscar){
+        return publicacionBean.buscarNombrePublicacion(CodigoBuscar);
+    }
+    
+    public Date obtenerFechaReserva(int CodigoBuscar){
+        return reservaBean.obtenerFechaReserva(CodigoBuscar);
+    }
+    
+    public int obtenerCodigoPerfil(int CodigoBuscar){
+        return reservaBean.obtenerCodigoPerfil(CodigoBuscar);
+    }
+    
+    public String obtenerNyAPerfil(){
+        return perfilBean.obtenerNyAPerfil(reservaBean.obtenerCodigoPerfil(this.drProvisorio.getDrevReserva()));
+                
+    }
+    
+    public String cargarLibrosAPrestamos(){
+        this.prestamo.setPreSocio(reservaBean.obtenerCodigoPerfil(this.drProvisorio.getDrevReserva()));
+        this.prestamo.setPreEstado(true);        
+        this.listadoAPrestar=null;
+        
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("detallePrestamo", this.dp);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("prestamo", this.prestamo);
+       
+        Prestamo objPrestamo = this.obtenerObjPrestamo();
+        DetallePrestamo objDetallePrestamo = this.obtenerObjDetallePrestamo();
+        prestamoBean.agregarPrestamo(objPrestamo);
+
+        objDetallePrestamo.setDpEstado(true);
+        objDetallePrestamo.setDpFechaDevolucion(new Date(1999, 9, 9));
+        objDetallePrestamo.setDpPrestamo(prestamoBean.obtenerUltimoPrestamo().getPreCodigo());
+
+        PublicacionBean pb = new PublicacionBean();
+        //for (Publicacion i : this.listadoAPrestar) {
+            objDetallePrestamo.setDpPublicacion(this.drProvisorio.getDrevPublicacion());
+            detallePrestamoBean.agregarDetallePrestamo(objDetallePrestamo);
+            
+            //i.setPubStock(i.getPubStock() - 1);
+            //pb.modificarPublicacion(i);
+        //}
+
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "Prestamo cargado en el Sistema!",
+                ""));
+
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("detallePrestamo", null);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("prestamo", null);
+        return "login?faces-redirect=true";
     }
 }

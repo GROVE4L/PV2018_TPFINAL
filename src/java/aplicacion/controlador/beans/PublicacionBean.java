@@ -1,6 +1,7 @@
 package aplicacion.controlador.beans;
 
 import aplicacion.datos.hibernate.dao.imp.PublicacionDAOImp;
+import aplicacion.modelo.dominio.DetalleReserva;
 import aplicacion.modelo.dominio.Publicacion;
 import java.io.Serializable;
 import java.util.List;
@@ -44,6 +45,11 @@ public class PublicacionBean implements Serializable{
     public Publicacion buscarPublicacion(Publicacion p) {
         PublicacionDAOImp publicacionDAOImp = new PublicacionDAOImp();
         return publicacionDAOImp.buscarPublicacion(p);
+    }
+    
+    public String buscarNombrePublicacion(String codigoPublicacionBuscado) {
+        PublicacionDAOImp publicacionDAOImp = new PublicacionDAOImp();
+        return publicacionDAOImp.devolverNombrePublicacion(codigoPublicacionBuscado);
     }
     /**
      * procemiento llamado agregarPublicacion
